@@ -1,0 +1,8 @@
+node_modules/
+conversations.db
+followups.json
+rapport.md
+*.db-journal
+*.db-wal
+*.db-shm
+.DS_Store

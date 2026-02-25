@@ -1,0 +1,296 @@
+[
+  {
+    "id": 1,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Har i opsagt mit gamle abonnement som vi aftalte i telefonen sidst jeg talte med jer"
+  },
+  {
+    "id": 2,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Sørger I for opsigelse af min nuværende udbyder (Yousee)"
+  },
+  {
+    "id": 3,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Opsiger Hiper min nuværende internetudbyder?"
+  },
+  {
+    "id": 4,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Hvordan insender jeg fuldtmagt til jer med i at gerne må opsige min gamle udbyder?"
+  },
+  {
+    "id": 5,
+    "category": "Øvrige",
+    "category_tag": null,
+    "text": "kan jeg skifte fra bredbånd til 5g?"
+  },
+  {
+    "id": 6,
+    "category": "Øvrige",
+    "category_tag": null,
+    "text": "jeg kan ikke ændre min email"
+  },
+  {
+    "id": 7,
+    "category": "Øvrige",
+    "category_tag": null,
+    "text": "Mit internet er arbejdsgiver betalt kan jeg skifte til at betale selv"
+  },
+  {
+    "id": 8,
+    "category": "Øvrige",
+    "category_tag": null,
+    "text": "Jeg har fået nyt telefonnummer"
+  },
+  {
+    "id": 9,
+    "category": "Hastighed",
+    "category_tag": null,
+    "text": "Får ikke leveret den hastighed internet jeg har betalt for"
+  },
+  {
+    "id": 10,
+    "category": "Hastighed",
+    "category_tag": null,
+    "text": "Jeg får kun 100 mbit når mit abonnement siger jeg burde have 1000 mbit"
+  },
+  {
+    "id": 11,
+    "category": "Hastighed",
+    "category_tag": null,
+    "text": "Hvordan kan det være jeg ikke tester 1000 mbit på wifi?"
+  },
+  {
+    "id": 12,
+    "category": "Hastighed",
+    "category_tag": null,
+    "text": "Min hastighed er lav"
+  },
+  {
+    "id": 13,
+    "category": "Hastighed",
+    "category_tag": null,
+    "text": "Jeg har problemer med min hastighed, bruger egen router."
+  },
+  {
+    "id": 14,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "text": "Hvordan kan jeg opsætte DynDNS til en udbyder der ikke er i routeren?"
+  },
+  {
+    "id": 15,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "text": "Kan man koble en mesh på det modem jeg har bestilt som er fra kabel?"
+  },
+  {
+    "id": 16,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "text": "Kan jeg købe et længere kabel mellem fiberbox og router"
+  },
+  {
+    "id": 17,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "text": "Hvordan skal jeg forholde mig, hvis der er betonvægge i min bolig, og der er to etager?"
+  },
+  {
+    "id": 18,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "text": "Hej jeg sidder og laver nat. Jeg kan ikke få det til at virke. Er det fordi jeg sidder bag et CGNAT."
+  },
+  {
+    "id": 19,
+    "category": "Ustabil",
+    "category_tag": null,
+    "text": "Vi oplever store problemer med forbindelsen i aften"
+  },
+  {
+    "id": 20,
+    "category": "Ustabil",
+    "category_tag": null,
+    "text": "Er der problemer med nettet omkring Herning? Jeg prøver og se fodbold via streaming, men det fungerer ikke"
+  },
+  {
+    "id": 21,
+    "category": "Ustabil",
+    "category_tag": null,
+    "text": "Jeg har meget dårlig forbindelse, hvad sker der ?"
+  },
+  {
+    "id": 22,
+    "category": "Ustabil",
+    "category_tag": null,
+    "text": "Mit internet er pisse dårligt altså"
+  },
+  {
+    "id": 23,
+    "category": "Ustabil",
+    "category_tag": null,
+    "text": "Mit internet er langsomt"
+  },
+  {
+    "id": 24,
+    "category": "Offline",
+    "category_tag": null,
+    "text": "Mit internet virker ikke."
+  },
+  {
+    "id": 25,
+    "category": "Offline",
+    "category_tag": null,
+    "text": "Vores internet virker ikke idag?"
+  },
+  {
+    "id": 26,
+    "category": "Offline",
+    "category_tag": null,
+    "text": "Mit fibernet virker ikke. Globus lyser rød"
+  },
+  {
+    "id": 27,
+    "category": "Offline",
+    "category_tag": null,
+    "text": "Mit internet er stoppet med at virke. Hvis jeg prøver at logge på får jeg en skærm hvis jeg skal indtatse konto nr. og aktiveringskode"
+  },
+  {
+    "id": 28,
+    "category": "Offline",
+    "category_tag": null,
+    "text": "Mit internet virker ikke og jeg har fulgt alle anvisninger"
+  },
+  {
+    "id": 29,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "Mit abonnement koster 99,- hvorfor har jeg betalt næsten 200kr på min første regning?"
+  },
+  {
+    "id": 30,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "Mit kort er spærret, kan jeg få lov at betale om 2 uger?"
+  },
+  {
+    "id": 31,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "Hej, i har trukket for meget i december"
+  },
+  {
+    "id": 32,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "Jeg har fået nyt kort, hvordan kan jeg tilmelde det?"
+  },
+  {
+    "id": 33,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "Hvorfor skal jeg allerede betale igen, når jeg har betalt en måned forud?"
+  },
+  {
+    "id": 34,
+    "category": "Regning",
+    "category_tag": null,
+    "text": "I har trukket for mange penge. Vi har betalt for november måned i vores første regning men i har nu trukket for november måned (igen)"
+  },
+  {
+    "id": 35,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "hvordan ændrer jeg min adresse"
+  },
+  {
+    "id": 36,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "jeg har brug for at overdrage abonnenemt i forbindelse med dødsfald"
+  },
+  {
+    "id": 37,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Hvor lang tid før en flytning skal jeg oplyste om en flytning og den nye addresse?"
+  },
+  {
+    "id": 38,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "Kan jeg tage min router med på min nye adresse?"
+  },
+  {
+    "id": 39,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "text": "hej hvad koster det at flytte ardresse"
+  },
+  {
+    "id": 40,
+    "category": "Etablering",
+    "category_tag": null,
+    "text": "kan vi få internet hurtigere hvis det er uden teknikerbesøg?"
+  },
+  {
+    "id": 41,
+    "category": "Etablering",
+    "category_tag": null,
+    "text": "Hvorfor skal fiberboksen skiftes"
+  },
+  {
+    "id": 42,
+    "category": "Etablering",
+    "category_tag": null,
+    "text": "Hejsa jeg ønsker status på min fiber etablering"
+  },
+  {
+    "id": 43,
+    "category": "Etablering",
+    "category_tag": null,
+    "text": "Hej jeg tror ikke vi har fiberboks? Følger den med?"
+  },
+  {
+    "id": 44,
+    "category": "Etablering",
+    "category_tag": null,
+    "text": "Hej. Hvordan fungerer det hvis man skal have jeres internet. Vi har ikke noget stik i huset? Hvordan tilslutter man routeren?"
+  },
+  {
+    "id": 45,
+    "category": "Udstyr",
+    "category_tag": null,
+    "text": "Jeg skal sende 3 routere tilbage men har kun 2"
+  },
+  {
+    "id": 46,
+    "category": "Udstyr",
+    "category_tag": null,
+    "text": "Hvordan sender jeg jeres router tilbage?"
+  },
+  {
+    "id": 47,
+    "category": "Udstyr",
+    "category_tag": null,
+    "text": "Hvornår kommer min router?"
+  },
+  {
+    "id": 48,
+    "category": "Udstyr",
+    "category_tag": null,
+    "text": "Hvor bliver min router sendt til?"
+  },
+  {
+    "id": 49,
+    "category": "Udstyr",
+    "category_tag": null,
+    "text": "Sender i returlabel til router?"
+  }
+]

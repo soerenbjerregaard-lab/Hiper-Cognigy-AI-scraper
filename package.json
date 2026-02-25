@@ -1,0 +1,16 @@
+{
+  "name": "hiper-cognigy-ai-scraper",
+  "version": "1.0.0",
+  "description": "Automatisk kvalitetstest af Hipers Cognigy AI-chatbot",
+  "main": "phase1_scrape.js",
+  "scripts": {
+    "phase1": "node phase1_scrape.js",
+    "phase3": "node phase3_followup.js",
+    "test-phase1": "node phase1_scrape.js --limit 3",
+    "test-phase3": "node phase3_followup.js --limit 1"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0",
+    "better-sqlite3": "^9.6.0"
+  }
+}
