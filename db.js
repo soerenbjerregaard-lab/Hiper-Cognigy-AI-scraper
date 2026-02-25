@@ -1,10 +1,14 @@
 // SQLite helpers for Hiper Cognigy AI Scraper
-const Database = require('better-sqlite3');
+// Bruger node:sqlite (built-in i Node 22+, ingen native build nødvendig)
+const { DatabaseSync } = require('node:sqlite');
 const config = require('./config');
 
+// Suppress experimental warning
+process.removeAllListeners('warning');
+
 function openDb() {
-  const db = new Database(config.DB_PATH);
-  db.pragma('journal_mode = WAL');
+  const db = new DatabaseSync(config.DB_PATH);
+  db.exec('PRAGMA journal_mode = WAL');
 
   db.exec(`
     CREATE TABLE IF NOT EXISTS conversations (

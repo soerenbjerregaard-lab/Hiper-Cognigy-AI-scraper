@@ -1,21 +1,25 @@
 // Konfiguration for Hiper Cognigy AI Scraper
-// IKKE_KUNDE_* koordinater skal måles på dag 1 via screenshot
 
 module.exports = {
   // Endpoint URL til Hiper Cognigy chat
   ENDPOINT: 'https://cognigy-assets.hiper.dk/Test-branch-til-soeren/',
 
-  // Koordinater til "Jeg er ikke kunde"-knap i chat onboarding
-  // Mål disse ved at køre: node measure_coords.js
-  IKKE_KUNDE_X: null, // TODO: Udfyld dag 1
-  IKKE_KUNDE_Y: null, // TODO: Udfyld dag 1
+  // Iframe selector (chat kører i cross-origin iframe)
+  IFRAME_SELECTOR: 'iframe[class*="cognigy-webchat"]',
+
+  // Tekst på "ikke-kunde"-knappen (bruges af frameLocator)
+  IKKE_KUNDE_TEXT: 'Jeg er ikke kunde',
 
   // Timeout i ms pr. bot-svar
   TIMEOUT_MS: 30000,
 
-  // Delay mellem samtaler (ms) – random interval for at undgå rate limiting
-  DELAY_MIN: 3000,
-  DELAY_MAX: 8000,
+  // Antal samtidige samtaler (parallel scraping)
+  // Kan overstyres med --concurrency N på kommandolinjen
+  CONCURRENCY: 5,
+
+  // Delay per worker mellem samtaler (ms) – lille buffer mod rate limiting
+  DELAY_MIN: 1000,
+  DELAY_MAX: 2000,
 
   // Delay efter page load inden onboarding-klik (ms)
   PAGE_LOAD_WAIT: 2500,
