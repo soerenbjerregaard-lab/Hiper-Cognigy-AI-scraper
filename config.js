@@ -28,7 +28,21 @@ module.exports = {
   ONBOARDING_WAIT: 1000,
 
   // Tekst-fragment der indikerer ægte handover (agentoverlevering)
-  HANDOVER_TEXT_MARKERS: ['sat i kø', 'stillet i kø', 'viderestiller', 'agent'],
+  HANDOVER_TEXT_MARKERS: [
+    'sat i kø',
+    'stillet i kø',
+    'viderestiller',
+    'viderestiller dig',
+    'sender dig videre',
+    'videre til en',
+    'kollega',
+    'medarbejder',
+    'agent',
+    'du vil høre fra os',
+    'kontakter dig',
+    'ringer dig op',
+    'tager kontakt',
+  ],
 
   // Database-fil
   DB_PATH: './conversations.db',
