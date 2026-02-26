@@ -11,6 +11,12 @@ const { openDb } = require('./db');
 const CONCURRENCY = 5;
 const TIMEOUT_MS  = 10000;
 
+// Tekstfragmenter der indikerer "siden findes ikke" i HTML-body
+const NOT_FOUND_MARKERS = [
+  'siden findes ikke', 'page not found', 'ikke fundet',
+  '404', 'find ikke siden', 'kunne ikke finde',
+];
+
 // Detektér soft 404: URL redirectede til en markant kortere/anden sti
 // Eks: /hjaelp/artikel/specifik  →  /hjaelp  = soft 404
 function isRedirectedAway(originalUrl, finalUrl) {
@@ -26,6 +32,12 @@ function isRedirectedAway(originalUrl, finalUrl) {
   } catch { return false; }
 }
 
+// Detektér content-level soft 404: server returnerer 200 men viser "siden findes ikke"
+function isContentNotFound(html) {
+  const lower = html.slice(0, 8000).toLowerCase(); // kun første ~8KB er nok
+  return NOT_FOUND_MARKERS.some(m => lower.includes(m));
+}
+
 async function checkUrl(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -36,13 +48,20 @@ async function checkUrl(url) {
       headers:  { 'User-Agent': 'Mozilla/5.0 (compatible; HiperLinkChecker/1.0)' },
     });
     clearTimeout(timer);
-    const finalUrl   = res.url;
-    const softDead   = isRedirectedAway(url, finalUrl);
-    const ok         = res.ok && !softDead;
-    return { ok, status: res.status, finalUrl, softDead };
+    const finalUrl = res.url;
+    const redirectDead = isRedirectedAway(url, finalUrl);
+    // Læs body for content soft 404 — kun for 200-svar der ikke allerede er flagret
+    let contentDead = false;
+    if (res.ok && !redirectDead) {
+      const html = await res.text();
+      contentDead = isContentNotFound(html);
+    }
+    const softDead = redirectDead || contentDead;
+    const ok       = res.ok && !softDead;
+    return { ok, status: res.status, finalUrl, softDead, contentDead };
   } catch (err) {
     clearTimeout(timer);
-    return { ok: false, status: err.name === 'AbortError' ? 0 : -1, finalUrl: url, softDead: false };
+    return { ok: false, status: err.name === 'AbortError' ? 0 : -1, finalUrl: url, softDead: false, contentDead: false };
   }
 }
 
@@ -87,7 +106,9 @@ async function run(db) {
         done++;
         const icon  = result.ok ? '✓' : '✗';
         const label = result.status === 0 ? 'timeout' : String(result.status);
-        const note  = result.softDead ? ` → redirect: ${result.finalUrl}` : '';
+        const note  = result.contentDead ? ' [content: ikke fundet]'
+                    : result.softDead    ? ` [redirect → ${result.finalUrl}]`
+                    : '';
         console.log(`[${done}/${unchecked.length}] ${icon} ${label}${note}  ${url}`);
       }
     }
