@@ -6,4 +6,6 @@ rapport.md
 *.db-shm
 .DS_Store
 conversations-*.csv
+conversations.csv
 check_dom.js
+.fuse_hidden*
