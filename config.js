@@ -11,7 +11,8 @@ module.exports = {
   IKKE_KUNDE_TEXT: 'Jeg er ikke kunde',
 
   // Timeout i ms pr. bot-svar
-  TIMEOUT_MS: 30000,
+  // GPT-4.1 er langsommere end GPT-3.5 – øget fra 30s til 45s
+  TIMEOUT_MS: 45000,
 
   // Antal samtidige samtaler (parallel scraping)
   // Kan overstyres med --concurrency N på kommandolinjen
