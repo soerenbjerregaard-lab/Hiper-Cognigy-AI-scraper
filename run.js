@@ -96,7 +96,7 @@ function exportCsv(db) {
   const now    = new Date();
   const pad    = n => String(n).padStart(2, '0');
   const ts     = `${pad(now.getHours())}.${pad(now.getMinutes())}-${pad(now.getDate())}-${pad(now.getMonth()+1)}-${now.getFullYear()}`;
-  const fname  = path.join(__dirname, `conversations-${ts}.csv`);
+  const fname  = path.join(__dirname, 'exports', `conversations-${ts}.csv`);
   const escape = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
 
   const lines = [cols.map(escape).join(',')];
