@@ -140,6 +140,8 @@ async function runScenario(browser, db, scenario, label) {
     await sleep(800);
 
     // Send alle spørgsmål i rækkefølge
+    // Stop hvis handover er sket – botten svarer ikke efter overdragelse til agent
+    let handoverOccurred = false;
     for (let i = 0; i < questions.length; i++) {
       const turn = i + 1;
       const q    = questions[i];
@@ -158,12 +160,14 @@ async function runScenario(browser, db, scenario, label) {
       saveConversation(db, sessionId, meta, turn, 'bot',  botText, handover, links);
       results.push({ turn, botText, handover });
 
+      if (handover) { handoverOccurred = true; break; } // stop ved handover
       if (i < questions.length - 1) await sleep(800);
     }
 
     const anyHandover = results.some(r => r.handover);
     const errors      = results.filter(r => r.botText.startsWith('ERROR:')).length;
-    const mark        = errors > 0 ? `✗(${errors} fejl)` : anyHandover ? '✓ [HO]' : '✓';
+    const hoTurn      = anyHandover ? ` [HO turn ${results.find(r => r.handover).turn}]` : '';
+    const mark        = errors > 0 ? `✗(${errors} fejl)` : anyHandover ? `✓${hoTurn}` : '✓';
     console.log(`${label} ${mark}`);
 
   } catch (err) {
