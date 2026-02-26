@@ -12,6 +12,23 @@ const config = require('./config');
 const fs = require('fs');
 const path = require('path');
 
+function exportCsv(db) {
+  const rows = db.prepare(
+    'SELECT * FROM conversations ORDER BY category, session_id, turn, role'
+  ).all();
+  if (rows.length === 0) return;
+  const cols = Object.keys(rows[0]);
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const ts = `${pad(now.getHours())}.${pad(now.getMinutes())}-${pad(now.getDate())}-${pad(now.getMonth()+1)}-${now.getFullYear()}`;
+  const filename = path.join(__dirname, `conversations-${ts}.csv`);
+  const escape = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const lines = [cols.map(escape).join(',')];
+  for (const row of rows) lines.push(cols.map(c => escape(row[c])).join(','));
+  fs.writeFileSync(filename, lines.join('\n'), 'utf8');
+  console.log(`\nCSV eksporteret → ${path.basename(filename)}  (${rows.length} rækker)`);
+}
+
 const FOLLOWUPS_PATH = path.join(__dirname, 'followups.json');
 const CONCURRENCY = config.CONCURRENCY;
 
@@ -200,7 +217,8 @@ async function main() {
     db.prepare(`SELECT COUNT(*) as n FROM conversations WHERE turn=? AND role='bot'`).get(t).n
   );
   console.log(`\n=== Færdig ===`);
-  console.log(`Turn 2: ${counts[0]}  Turn 3: ${counts[1]}  Turn 4: ${counts[2]}\n`);
+  console.log(`Turn 2: ${counts[0]}  Turn 3: ${counts[1]}  Turn 4: ${counts[2]}`);
+  exportCsv(db);
 }
 
 main().catch(err => {
