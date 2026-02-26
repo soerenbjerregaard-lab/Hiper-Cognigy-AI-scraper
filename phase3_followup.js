@@ -30,7 +30,12 @@ function exportCsv(db) {
 }
 
 const FOLLOWUPS_PATH = path.join(__dirname, 'followups.json');
-const CONCURRENCY = config.CONCURRENCY;
+
+const arg = (flag, def) => {
+  const i = process.argv.indexOf(flag);
+  return i !== -1 ? parseInt(process.argv[i + 1], 10) : def;
+};
+const CONCURRENCY = arg('--concurrency', config.CONCURRENCY || 5);
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -189,8 +194,7 @@ async function main() {
   const followups = JSON.parse(fs.readFileSync(FOLLOWUPS_PATH, 'utf8'));
   const db = openDb();
 
-  const limitArg = process.argv.indexOf('--limit');
-  const limitVal = limitArg !== -1 ? parseInt(process.argv[limitArg + 1], 10) : followups.length;
+  const limitVal = arg('--limit', followups.length);
   const queue = followups.slice(0, limitVal).map((e, i) => ({ entry: e, i: i + 1 }));
   const total = queue.length;
 
