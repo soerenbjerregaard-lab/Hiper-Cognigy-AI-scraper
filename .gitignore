@@ -9,3 +9,5 @@ conversations-*.csv
 conversations.csv
 check_dom.js
 .fuse_hidden*
+followups.json
+retry_errors.js

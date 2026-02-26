@@ -1,0 +1,541 @@
+[
+  {
+    "id": 1,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Har i opsagt mit gamle abonnement som vi aftalte i telefonen sidst jeg talte med jer",
+      "Jeg hørte intet fra jer i forrige uge – er det normalt, og hvad er processen?",
+      "Hvad gør jeg hvis deadline for opsigelse hos min gamle udbyder nærmer sig?",
+      "Kan jeg få en skriftlig bekræftelse på at opsigelsen er sendt?"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Sørger I for opsigelse af min nuværende udbyder (Yousee)",
+      "Jeg har fiber. Hvad skal jeg udfylde i fuldmagten og hvor finder jeg den?",
+      "Overholder Hiper opsigelsesvarslet hos Yousee automatisk?",
+      "Hvad sker der hvis Yousee ikke vil acceptere opsigelsen via fuldmagt?"
+    ]
+  },
+  {
+    "id": 3,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Opsiger Hiper min nuværende internetudbyder?",
+      "Hvad er fristen for at indsende fuldmagten, for at I kan nå at opsige til tiden?",
+      "Kan jeg ringe til jer, hvis noget går galt med opsigelsen?",
+      "Hvad hvis min nuværende udbyder har et langt opsigelsesvarsel – håndterer I det?"
+    ]
+  },
+  {
+    "id": 4,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Hvordan insender jeg fuldtmagt til jer med i at gerne må opsige min gamle udbyder?",
+      "Jeg kan ikke finde fuldmagten i Mit Hiper. Hvor er den præcist?",
+      "Hvad sker der hvis min gamle udbyder ikke modtager opsigelsen rettidigt?",
+      "Hvad er tidsfristen for at indsende fuldmagten?"
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "kan jeg skifte fra bredbånd til 5g?",
+      "Hvad er ventetiden ca.? Skal jeg holde chaten åben?",
+      "Er der prisforskel på fiber og 5G hos jer?",
+      "Hvad er fordele og ulemper ved 5G mobilt bredbånd sammenlignet med fiber?"
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "jeg kan ikke ændre min email",
+      "Jeg får fejlen \"E-mail er allerede i brug\". Hvad gør jeg?",
+      "Kan I ændre min e-mail for mig, siden jeg ikke kan gøre det selv?",
+      "Vil det gå ud over min login hvis mailen er forkert?"
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er arbejdsgiver betalt kan jeg skifte til at betale selv",
+      "Kan jeg ikke bare overtage betalingen selv, uden at involvere min arbejdsgiver?",
+      "Ændres prisen når jeg overtager betalingen fra min arbejdsgiver?",
+      "Hvad sker der med bindingsperioden, hvis der er en?"
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "Jeg har fået nyt telefonnummer",
+      "Jeg kan ikke finde profil-siden i Mit Hiper. Hvor er den henne?",
+      "Er det vigtigt at mit telefonnummer er opdateret? Hvad bruges det til?",
+      "Kan I opdatere det for mig, hvis jeg sender jer det?"
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Får ikke leveret den hastighed internet jeg har betalt for",
+      "Jeg måler via kabel og får stadig kun halvdelen af det jeg betaler for. Hvad nu?",
+      "Kan I se fra jeres side om der er et problem med min linje?",
+      "Hvornår kan en tekniker komme og kigge på det?"
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Jeg får kun 100 mbit når mit abonnement siger jeg burde have 1000 mbit",
+      "Jeg tester nu via kabel og får stadig kun 100 mbit. Hvad er næste skridt?",
+      "Kan I tjekke om der er fejl på min linje fra jeres side?",
+      "Skal jeg opgradere mit kabel fra Cat5 til Cat6 eller Cat7?"
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Hvordan kan det være jeg ikke tester 1000 mbit på wifi?",
+      "Kan jeg købe en bedre Hiper-router der understøtter WiFi 6?",
+      "Hvad er den bedste WiFi-hastighed jeg realistisk kan forvente indendørs med 1 gbit fiber?",
+      "Hvad sker der hvis jeg klager over at WiFi-hastigheden ikke lever op til mine forventninger?"
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Min hastighed er lav",
+      "Jeg har fiber. Hvad konkret skal jeg gøre nu?",
+      "Jeg prøvede at genstarte routeren men det hjalp ikke. Hvad er næste trin?",
+      "Gælder garantien på hastighed kun ved kabelforbundet test?"
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Jeg har problemer med min hastighed, bruger egen router.",
+      "Hvad er kravene til min router for at den kan klare den hastighed jeg betaler for?",
+      "Kan jeg låne en Hiper-router for at teste om problemet er min router?",
+      "Hvad koster det at bytte til jeres router permanent?"
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hvordan kan jeg opsætte DynDNS til en udbyder der ikke er i routeren?",
+      "Hvad er bridge mode præcist, og hvad mister jeg ved at aktivere det?",
+      "Understøtter Hipers router nogen DynDNS-udbydere som standard?",
+      "Kan jeg få en statisk IP-adresse i stedet for DynDNS?"
+    ]
+  },
+  {
+    "id": 15,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Kan man koble en mesh på det modem jeg har bestilt som er fra kabel?",
+      "Mister jeg internet under opsætning af bridge mode?",
+      "Hvad er bedst: mesh i bridge mode eller tilsluttet routerens LAN-port?",
+      "Anbefaler I bestemte mesh-systemer der virker godt med jeres udstyr?"
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Kan jeg købe et længere kabel mellem fiberbox og router",
+      "Hvad er den maksimale kabellængde jeg kan bruge uden at miste hastighed?",
+      "Skal det være Cat6 eller Cat7 kabel for at få fuld 1 gbit hastighed?",
+      "Gør det nogen forskel om kablet er afskærmet eller ikke?"
+    ]
+  },
+  {
+    "id": 17,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hvordan skal jeg forholde mig, hvis der er betonvægge i min bolig, og der er to etager?",
+      "Hvilke mesh-systemer anbefaler I, og sælger I dem selv?",
+      "Kan en tekniker komme ud og hjælpe med WiFi-optimering i min bolig?",
+      "Hvad koster et sådant besøg?"
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hej jeg sidder og laver nat. Jeg kan ikke få det til at virke. Er det fordi jeg sidder bag et CGNAT.",
+      "Jeg har fibernet, ikke mobilt bredbånd. Er jeg også bag CGNAT på fiber?",
+      "Hvad koster det at få en dedikeret statisk IP-adresse?",
+      "Understøtter Hiper IPv6, og løser det mit problem med NAT?"
+    ]
+  },
+  {
+    "id": 19,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Vi oplever store problemer med forbindelsen i aften",
+      "Vi har fiber. Hvad skal vi tjekke?",
+      "Det sker altid klokken 18-20. Er det fordi mange er online på samme tid?",
+      "Hvad er jeres SLA på oppetid, og giver I kompensation ved nedbrud?"
+    ]
+  },
+  {
+    "id": 20,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Er der problemer med nettet omkring Herning? Jeg prøver og se fodbold via streaming, men det fungerer ikke",
+      "Fiber. Og det sker altid ved streaming, aldrig når jeg surfer normalt. Hvad kan det skyldes?",
+      "Er der et sted jeg selv kan tjekke driftstatus for mit område?",
+      "Kan I prioritere min forbindelse, så streaming fungerer bedre?"
+    ]
+  },
+  {
+    "id": 21,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Jeg har meget dårlig forbindelse, hvad sker der ?",
+      "Jeg har fiber. Hvad skal jeg konkret gøre?",
+      "Problemet er kun om aftenen. Er det normal belastning, eller er der et underliggende problem?",
+      "Kan I se på linjens statistik om der er fejl fra jeres side?"
+    ]
+  },
+  {
+    "id": 22,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er pisse dårligt altså",
+      "Jeg har fiber. Det er langsomt og dropper ud konstant. Hvad gør jeg?",
+      "Skal jeg genstarte routeren og fiberboksen, og i hvilken rækkefølge?",
+      "Det sker dagligt og jeg er træt af det. Hvad er mine muligheder?"
+    ]
+  },
+  {
+    "id": 23,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er langsomt",
+      "Fiber. Hvad er næste skridt?",
+      "Jeg har genstartet routeren og fiberboksen men det hjalp ikke",
+      "Hvornår er det langsomt? Er det konstant eller på bestemte tidspunkter?"
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet virker ikke.",
+      "Jeg har fiber. Hvad er næste skridt?",
+      "Routeren er genstartet men der sker ingenting. Hvad gør jeg?",
+      "Fiberboksen lyser grønt men routeren lyser rødt. Hvad betyder det?"
+    ]
+  },
+  {
+    "id": 25,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Vores internet virker ikke idag?",
+      "Vi har fiber. Hvad skal vi tjekke?",
+      "Alle lysene på fiberboksen er slukket. Hvad betyder det?",
+      "Routeren og fiberboksen er genstartet men intet er sket. Hvad gør vi?"
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit fibernet virker ikke. Globus lyser rød",
+      "Jeg har tjekket alt og det sidder som det skal. Globus lyser stadig rød. Hvad nu?",
+      "Er der planlagt vedligehold i mit område, der kan forklare det?",
+      "Hvornår kan I sende en tekniker ud?"
+    ]
+  },
+  {
+    "id": 27,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er stoppet med at virke. Hvis jeg prøver at logge på får jeg en skærm hvis jeg skal indtatse konto nr. og aktiveringskode",
+      "Jeg kan ikke logge ind på Mit Hiper for at finde koden. Hvad gør jeg?",
+      "Jeg har fundet koden og indtastet den, men nettet virker stadig ikke. Hvad nu?",
+      "Kan jeg nulstille modemet helt og starte forfra?"
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet virker ikke og jeg har fulgt alle anvisninger",
+      "Hvordan fejlmelder jeg præcist via Mit Hiper? Kan du guide mig trin for trin?",
+      "Hvor lang tid tager det inden en tekniker kan kigge på det?",
+      "Kan jeg få kompensation for den tid internet ikke har virket?"
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Mit abonnement koster 99,- hvorfor har jeg betalt næsten 200kr på min første regning?",
+      "Hvad koster oprettelsen præcist? Det fremgår ikke klart af mit velkomstbrev",
+      "Vil min næste regning så være under 99kr, da jeg allerede har betalt frem?",
+      "Kan I sende mig en detaljeret specifikation af hvad den første regning dækkede?"
+    ]
+  },
+  {
+    "id": 30,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Mit kort er spærret, kan jeg få lov at betale om 2 uger?",
+      "Risikerer jeg at mit internet bliver lukket imens jeg venter?",
+      "Kan jeg tilmelde et nyt betalingskort selv i Mit Hiper?",
+      "Hvad er konsekvensen hvis betalingen udskydes mere end de 2 uger?"
+    ]
+  },
+  {
+    "id": 31,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Hej, i har trukket for meget i december",
+      "Jamen jeg er ikke ny kunde, jeg har haft Hiper i over et år. Forklaringen passer ikke",
+      "Hvad er den nemmeste måde at få refunderet et forkert trukket beløb?",
+      "Kan I sende mig en oversigt over alle betalinger det seneste år?"
+    ]
+  },
+  {
+    "id": 32,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Jeg har fået nyt kort, hvordan kan jeg tilmelde det?",
+      "Mit Hiper accepterer ikke mit nye kort. Hvad kan jeg gøre?",
+      "Understøtter I MobilePay eller anden betalingsmetode?",
+      "Hvad sker der med min abonnement hvis jeg ikke får tilmeldt et nyt kort i tide?"
+    ]
+  },
+  {
+    "id": 33,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Hvorfor skal jeg allerede betale igen, når jeg har betalt en måned forud?",
+      "Kan jeg se alle mine betalinger samlet et sted?",
+      "Kan jeg skifte til at modtage en faktura i stedet for automatisk betaling?",
+      "Hvad sker der hvis betalingen fejler én gang?"
+    ]
+  },
+  {
+    "id": 34,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "I har trukket for mange penge. Vi har betalt for november måned i vores første regning men i har nu trukket for november måned (igen)",
+      "Det er ikke vores første regning – vi har betalt til jer i 14 måneder",
+      "Hvad er jeres klageproces, og hvem kan jeg eskalere til?",
+      "Kan jeg midlertidigt sætte automatisk betaling på pause mens det undersøges?"
+    ]
+  },
+  {
+    "id": 35,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "hvordan ændrer jeg min adresse",
+      "Kan jeg ikke ændre adressen direkte i Mit Hiper selv?",
+      "Hvad nu hvis min fraflytningsdato og tilflytningsdato er den samme dag?",
+      "Hvor lang tid tager det, fra I modtager mailen til flytningen er effektueret?"
+    ]
+  },
+  {
+    "id": 36,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "jeg har brug for at overdrage abonnenemt i forbindelse med dødsfald",
+      "Hvad dokumentation skal jeg have klar til overdragelsen?",
+      "Beholder abonnementet sin nuværende pris, eller ændres det ved overdragelsen?",
+      "Hvad nu hvis den nye indehaver ikke har et MitID tilknyttet?"
+    ]
+  },
+  {
+    "id": 37,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Hvor lang tid før en flytning skal jeg oplyste om en flytning og den nye addresse?",
+      "Hvad sker der hvis der skal en tekniker ud – kan det nå at ske inden for 2 uger?",
+      "Sker flytningen automatisk på den angivne dato, eller skal jeg bekræfte noget?",
+      "Hvad sker der med min regning i forbindelse med flytningen?"
+    ]
+  },
+  {
+    "id": 38,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Kan jeg tage min router med på min nye adresse?",
+      "Hvad koster det at få en ny router, hvis jeg skal have en?",
+      "Kan jeg få den nye router inden jeg flytter, så jeg har internet fra dag 1?",
+      "Hvad gør jeg med min gamle router, hvis jeg skal have en ny?"
+    ]
+  },
+  {
+    "id": 39,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "hej hvad koster det at flytte ardresse",
+      "Hvad koster teknikerbesøget, hvis der er brug for det på den nye adresse?",
+      "Hvad sker der med mit abonnement i perioden fra jeg fraflytter til jeg tilflytter?",
+      "Kan jeg have internet på begge adresser i en overgangsperiode?"
+    ]
+  },
+  {
+    "id": 40,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "kan vi få internet hurtigere hvis det er uden teknikerbesøg?",
+      "Hvordan ved jeg om min bolig allerede er forberedt til fiber?",
+      "Hvad koster et teknikerbesøg, hvis det viser sig at være nødvendigt?",
+      "Kan jeg selv installere det, hvis alt er klar?"
+    ]
+  },
+  {
+    "id": 41,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hvorfor skal fiberboksen skiftes",
+      "Hvem betaler for det? Skal jeg selv betale for den nye fiberboks?",
+      "Hvor lang tid tager det at skifte fiberboksen, og mister jeg internet imens?",
+      "Kan jeg blive varslet i forvejen, så jeg ikke sidder uden internet midt i arbejdstiden?"
+    ]
+  },
+  {
+    "id": 42,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hejsa jeg ønsker status på min fiber etablering",
+      "Okay men hvornår hører jeg noget? Jeg har ventet i 2 uger allerede",
+      "Er der et sted jeg selv kan se status, uden at kontakte jer?",
+      "Hvem er underleverandøren i mit område, og kan jeg kontakte dem direkte?"
+    ]
+  },
+  {
+    "id": 43,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hej jeg tror ikke vi har fiberboks? Følger den med?",
+      "Hvad sker der hvis teknikerbesøget ikke er aftalt? Kommer der automatisk en?",
+      "Kan jeg installere fiberboksen selv, eller kræver det altid en tekniker?",
+      "Hvad koster teknikerbesøget?"
+    ]
+  },
+  {
+    "id": 44,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hej. Hvordan fungerer det hvis man skal have jeres internet. Vi har ikke noget stik i huset? Hvordan tilslutter man routeren?",
+      "Hvad koster det at få en tekniker ud og lave installationen?",
+      "Hvor lang tid skal jeg vente på at en tekniker kan komme?",
+      "Kan I give mig en fast dato, eller er det bare et skøn?"
+    ]
+  },
+  {
+    "id": 45,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Jeg skal sende 3 routere tilbage men har kun 2",
+      "Hvad er gebyret for en manglende router?",
+      "Kan jeg aflevere routerne personligt i stedet for at sende dem?",
+      "Hvad hvis jeg finder den tredje router bagefter – kan jeg stadig aflevere den?"
+    ]
+  },
+  {
+    "id": 46,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvordan sender jeg jeres router tilbage?",
+      "Kan jeg sende den via PostNord pakkeshop, eller skal det være direkte levering?",
+      "Inden for hvilken frist skal routeren være modtaget af jer?",
+      "Hvem betaler forsikringen på pakken, hvis routeren beskadiges undervejs?"
+    ]
+  },
+  {
+    "id": 47,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvornår kommer min router?",
+      "Min onlinedato er om 3 dage og jeg har stadig ikke modtaget routeren. Hvad gør jeg?",
+      "Kan jeg hente routeren direkte et sted i stedet for at vente på levering?",
+      "Hvad sker der med min onlinedato hvis routeren ikke er kommet til tiden?"
+    ]
+  },
+  {
+    "id": 48,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvor bliver min router sendt til?",
+      "Kan jeg ændre leveringsadressen til min hjemmeadresse?",
+      "Hvad sker der hvis pakken sendes retur, fordi jeg ikke nåede at hente den?",
+      "Kan jeg få den leveret til en pakkeautomat i stedet for en pakkeshop?"
+    ]
+  },
+  {
+    "id": 49,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Sender i returlabel til router?",
+      "Hvad er adressen jeg skal sende routeren til?",
+      "Hvad sker der hvis jeg ikke returnerer routeren? Hvad er gebyret?",
+      "Inden for hvilken frist skal routeren være returneret?"
+    ]
+  }
+]
