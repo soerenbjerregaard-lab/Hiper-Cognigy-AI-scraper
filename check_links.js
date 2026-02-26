@@ -33,9 +33,27 @@ function isRedirectedAway(originalUrl, finalUrl) {
 }
 
 // Detektér content-level soft 404: server returnerer 200 men viser "siden findes ikke"
-function isContentNotFound(html) {
-  const lower = html.slice(0, 8000).toLowerCase(); // kun første ~8KB er nok
-  return NOT_FOUND_MARKERS.some(m => lower.includes(m));
+// To mønstre:
+//  1. Siden indeholder kendte "ikke fundet"-fraser i teksten
+//  2. SPA-shell: <title> indeholder kun sitenavnet uden side-specifikt indhold
+//     (siden er ikke hydreret — JS renderer "ikke fundet" client-side)
+function isContentNotFound(html, originalUrl) {
+  const lower = html.slice(0, 8000).toLowerCase();
+
+  // Mønster 1: eksplicitte "ikke fundet"-fraser
+  if (NOT_FOUND_MARKERS.some(m => lower.includes(m))) return true;
+
+  // Mønster 2: <title> er bare sitenavnet (≤15 tegn) for en URL med dybe stier
+  try {
+    const urlSegs = new URL(originalUrl).pathname.replace(/\/$/, '').split('/').filter(Boolean).length;
+    if (urlSegs >= 2) {
+      const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
+      const title = titleMatch ? titleMatch[1].trim() : '';
+      if (title.length > 0 && title.length <= 15) return true; // kun sitenavnet, ingen sidebeskrivelse
+    }
+  } catch {}
+
+  return false;
 }
 
 async function checkUrl(url) {
@@ -54,7 +72,7 @@ async function checkUrl(url) {
     let contentDead = false;
     if (res.ok && !redirectDead) {
       const html = await res.text();
-      contentDead = isContentNotFound(html);
+      contentDead = isContentNotFound(html, url);
     }
     const softDead = redirectDead || contentDead;
     const ok       = res.ok && !softDead;
