@@ -5,3 +5,5 @@ rapport.md
 *.db-wal
 *.db-shm
 .DS_Store
+conversations-*.csv
+check_dom.js
