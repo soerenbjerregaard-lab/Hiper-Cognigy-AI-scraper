@@ -62,6 +62,7 @@ async function setupMessageQueue(page) {
     window.cognigyWebChat.onMessage((msg) => {
       if (msg.data && msg.data.handover_available === true) return;
       const text = msg.text || '';
+      if (!text) return; // skip tomme beskeder (quick replies, kort uden tekst)
       if (window.__botMsgResolvers.length > 0) {
         window.__botMsgResolvers.shift()(text);
       } else {
