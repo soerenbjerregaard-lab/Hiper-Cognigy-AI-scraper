@@ -19,13 +19,23 @@ const fs   = require('fs');
 const path = require('path');
 
 // ─── CLI args ────────────────────────────────────────────────────────────────
-const arg = (flag, def) => {
+const argInt = (flag, def) => {
   const i = process.argv.indexOf(flag);
   return i !== -1 ? parseInt(process.argv[i + 1], 10) : def;
 };
-const LIMIT       = arg('--limit', scenarios.length);
-const CONCURRENCY = arg('--concurrency', config.CONCURRENCY || 5);
+const argStr = (flag, def) => {
+  const i = process.argv.indexOf(flag);
+  return i !== -1 ? process.argv[i + 1] : def;
+};
+
+const LIMIT       = argInt('--limit', scenarios.length);
+const CONCURRENCY = argInt('--concurrency', config.CONCURRENCY || 5);
 const batch       = scenarios.slice(0, LIMIT);
+
+// Endpoint: --endpoint gpt5 | --endpoint gpt41 | --endpoint https://...
+const endpointArg = argStr('--endpoint', config.DEFAULT_ENDPOINT);
+const ENDPOINT    = config.ENDPOINTS[endpointArg] || endpointArg;
+const ENDPOINT_NAME = config.ENDPOINTS[endpointArg] ? endpointArg : 'custom';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -96,7 +106,7 @@ function exportCsv(db) {
   const now    = new Date();
   const pad    = n => String(n).padStart(2, '0');
   const ts     = `${pad(now.getHours())}.${pad(now.getMinutes())}-${pad(now.getDate())}-${pad(now.getMonth()+1)}-${now.getFullYear()}`;
-  const fname  = path.join(__dirname, 'exports', `conversations-${ts}.csv`);
+  const fname  = path.join(__dirname, 'exports', `conversations-${ENDPOINT_NAME}-${ts}.csv`);
   const escape = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
 
   const lines = [cols.map(escape).join(',')];
@@ -118,7 +128,7 @@ async function runScenario(browser, db, scenario, label) {
 
   try {
     // domcontentloaded er hurtigere end networkidle og mere robust under høj concurrency
-    await page.goto(config.ENDPOINT, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.goto(ENDPOINT, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await sleep(config.PAGE_LOAD_WAIT);
 
     // Sæt message-queue op (én listener for hele sessionen)
@@ -192,7 +202,7 @@ async function main() {
 
   console.log(`\n=== Hiper Cognigy AI Scraper ===`);
   console.log(`Scenarier: ${batch.length} | Parallelitet: ${CONCURRENCY}`);
-  console.log(`Endpoint:  ${config.ENDPOINT}\n`);
+  console.log(`Endpoint:  [${ENDPOINT_NAME}] ${ENDPOINT}\n`);
 
   const browser   = await chromium.launch({ headless: config.HEADLESS });
   const startTime = Date.now();

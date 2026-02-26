@@ -1,8 +1,14 @@
 // Konfiguration for Hiper Cognigy AI Scraper
 
 module.exports = {
-  // Endpoint URL til Hiper Cognigy chat
-  ENDPOINT: 'https://cognigy-assets.hiper.dk/x-scraping-new-prompt-gpt4-1/',
+  // Kendte endpoints – bruges med --endpoint <navn> på kommandolinjen
+  ENDPOINTS: {
+    'gpt41': 'https://cognigy-assets.hiper.dk/x-scraping-new-prompt-gpt4-1/',
+    'gpt5':  'https://cognigy-assets.hiper.dk/x-scraping-gpt5-endpoint/',
+  },
+
+  // Standard endpoint hvis --endpoint ikke angives
+  DEFAULT_ENDPOINT: 'gpt41',
 
   // Iframe selector (chat kører i cross-origin iframe)
   IFRAME_SELECTOR: 'iframe[class*="cognigy-webchat"]',
