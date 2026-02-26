@@ -9,6 +9,7 @@
 const { chromium } = require('playwright');
 const { openDb, saveConversation } = require('./db');
 const config = require('./config');
+const checkLinks = require('./check_links');
 const fs = require('fs');
 const path = require('path');
 
@@ -222,6 +223,7 @@ async function main() {
   );
   console.log(`\n=== Færdig ===`);
   console.log(`Turn 2: ${counts[0]}  Turn 3: ${counts[1]}  Turn 4: ${counts[2]}`);
+  await checkLinks.run(db);
   exportCsv(db);
 }
 

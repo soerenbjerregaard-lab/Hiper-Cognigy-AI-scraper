@@ -21,12 +21,23 @@ function openDb() {
       text         TEXT NOT NULL,
       handover     INTEGER NOT NULL DEFAULT 0,
       links        TEXT NOT NULL DEFAULT '[]',
+      dead_links   TEXT NOT NULL DEFAULT '[]',
       timestamp    DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE TABLE IF NOT EXISTS link_checks (
+      url          TEXT PRIMARY KEY,
+      status_code  INTEGER,
+      ok           INTEGER DEFAULT 0,
+      checked_at   DATETIME DEFAULT CURRENT_TIMESTAMP
     );
 
     CREATE INDEX IF NOT EXISTS idx_session ON conversations(session_id);
     CREATE INDEX IF NOT EXISTS idx_category ON conversations(category);
   `);
+
+  // Migrer eksisterende DB'er der mangler de nye kolonner/tabeller
+  try { db.exec('ALTER TABLE conversations ADD COLUMN dead_links TEXT NOT NULL DEFAULT "[]"'); } catch {}
 
   return db;
 }
