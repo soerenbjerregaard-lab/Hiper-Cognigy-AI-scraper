@@ -2,7 +2,7 @@
 
 module.exports = {
   // Endpoint URL til Hiper Cognigy chat
-  ENDPOINT: 'https://cognigy-assets.hiper.dk/Test-branch-til-soeren/',
+  ENDPOINT: 'https://cognigy-assets.hiper.dk/x-scraping-new-prompt-gpt4-1/',
 
   // Iframe selector (chat kører i cross-origin iframe)
   IFRAME_SELECTOR: 'iframe[class*="cognigy-webchat"]',
