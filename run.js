@@ -80,6 +80,7 @@ function nextBotMessage(page, timeoutMs = config.TIMEOUT_MS) {
 
 async function sendAndWait(page, message, timeoutMs) {
   const p = nextBotMessage(page, timeoutMs);
+  p.catch(() => {}); // undgå unhandled rejection hvis page lukkes før await
   await page.evaluate(q => window.cognigyWebChat.sendMessage(q), message);
   return p;
 }
@@ -116,7 +117,8 @@ async function runScenario(browser, db, scenario, label) {
   const results = []; // { turn, botText }
 
   try {
-    await page.goto(config.ENDPOINT, { waitUntil: 'networkidle' });
+    // domcontentloaded er hurtigere end networkidle og mere robust under høj concurrency
+    await page.goto(config.ENDPOINT, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await sleep(config.PAGE_LOAD_WAIT);
 
     // Sæt message-queue op (én listener for hele sessionen)
@@ -124,9 +126,11 @@ async function runScenario(browser, db, scenario, label) {
 
     // Åbn chat
     await page.evaluate(() => window.cognigyWebChat.open());
+    // Bemærk: null som andet argument (arg) er nødvendigt for at options virker korrekt
     await page.waitForFunction(
       () => document.querySelector('iframe[class*="cognigy-webchat"]') !== null,
-      { timeout: 10000 }
+      null,
+      { timeout: 15000 }
     );
     await sleep(1000);
 
@@ -228,6 +232,11 @@ async function main() {
   // CSV eksport
   exportCsv(db);
 }
+
+// Undgå at unhandled rejections crasher hele processen
+process.on('unhandledRejection', (err) => {
+  // Stille – fejl håndteres lokalt i runScenario
+});
 
 main().catch(err => {
   console.error('Fatal:', err);
