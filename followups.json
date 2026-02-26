@@ -6,7 +6,8 @@
     "original_question": "kan vi få internet hurtigere hvis det er uden teknikerbesøg?",
     "bot_answer_preview": "Med 5G-internet skal du bare sætte SIM-kortet i routeren, tilslutte strøm og tænde – så er du online med det samme. Hvis der skal installeres nyt udstyr eller kabler, kan det kræve tekniker eller entreprenør...",
     "followup_1": "Okay men hvad med fiber? Er det altid et teknikerbesøg eller kan det gå hurtigere?",
-    "followup_2": "Og hvad er leveringstiden typisk fra vi bestiller til vi har internet?"
+    "followup_2": "Og hvad er leveringstiden typisk fra vi bestiller til vi har internet?",
+    "followup_3": "Jeg kan se i Mit Hiper at der ikke er planlagt noget teknikerbesøg overhovedet. Hvad sker der nu?"
   },
   {
     "session_id": "38dc9dd0-f1e3-43c8-aa7e-92f41a0b56cf",
@@ -15,7 +16,8 @@
     "original_question": "Hej jeg tror ikke vi har fiberboks? Følger den med?",
     "bot_answer_preview": "Hvis du ikke har en fiberboks, vil der i de fleste tilfælde komme en tekniker og installere en for dig. Du kan se i Mit Hiper, om der er aftalt et teknikerbesøg...",
     "followup_1": "Jeg kan ikke se noget teknikerbesøg i Mit Hiper. Er det ikke registreret endnu, eller er det en fejl?",
-    "followup_2": "Hvad gør jeg hvis teknikeren ikke dukker op til det aftalte tidspunkt?"
+    "followup_2": "Hvad gør jeg hvis teknikeren ikke dukker op til det aftalte tidspunkt?",
+    "followup_3": "Hvad sker der hvis der hverken er fiberboks installeret eller teknikerbesøg planlagt? Kan vi bestille et?"
   },
   {
     "session_id": "62c37af3-7137-4de3-aa6a-3f59daeb0c57",
@@ -24,7 +26,8 @@
     "original_question": "Hvorfor skal fiberboksen skiftes",
     "bot_answer_preview": "En fiberboks skal skiftes, hvis den er blevet for gammel og ikke længere kan levere den nødvendige forbindelse. Det kan også skyldes, at boksen bruger en ældre fiberteknologi...",
     "followup_1": "Men hvem betaler for skiftet? Koster det mig noget?",
-    "followup_2": "Kan min forbindelse gå ned mens boksen skiftes, og i så fald hvor lang tid?"
+    "followup_2": "Kan min forbindelse gå ned mens boksen skiftes, og i så fald hvor lang tid?",
+    "followup_3": "Og hvad nu hvis jeg ikke vil betale 699 kr? Er der et billigere alternativ?"
   },
   {
     "session_id": "6a4cbd03-d1e3-4ae2-b356-23a7baf2eeb0",
@@ -33,7 +36,8 @@
     "original_question": "Hej. Hvordan fungerer det hvis man skal have jeres internet. Vi har ikke noget stik i huset? Hvordan tilslutter man routeren?",
     "bot_answer_preview": "Hvis der ikke er stik i huset, skal det typisk installeres først. Fx ved fiber kræver det ofte både en entreprenør og en tekniker. Entreprenøren fører fiberkablet ind til huset...",
     "followup_1": "Hvad koster det at få installeret? Skal vi betale for både entreprenør og tekniker?",
-    "followup_2": "Og hvornår kan vi tidligst forvente at have internet, hvis vi bestiller nu?"
+    "followup_2": "Og hvornår kan vi tidligst forvente at have internet, hvis vi bestiller nu?",
+    "followup_3": "Vi vil have fiber. Hvad er den samlede pris fra start til slut – inkl. etablering?"
   },
   {
     "session_id": "a4258ab6-b38f-4e18-8bfe-69b7435d7723",
@@ -51,7 +55,8 @@
     "original_question": "hvordan ændrer jeg min adresse",
     "bot_answer_preview": "Hvis du vil ændre din adresse og flytte dit abonnement, skal du sende en mail til kundeservice@hiper.dk fra den mail, du har registreret hos os...",
     "followup_1": "Skal jeg sende mailen fra en bestemt mailadresse? Hvad hvis jeg ikke husker hvilken mail jeg har registreret hos jer?",
-    "followup_2": "Hvad sker der med mit abonnement i perioden mellem fraflytning og indflytning? Betaler jeg stadig?"
+    "followup_2": "Hvad sker der med mit abonnement i perioden mellem fraflytning og indflytning? Betaler jeg stadig?",
+    "followup_3": "Jeg kan ikke logge ind i Mit Hiper fordi min registrerede email er forældet. Hvad gør jeg?"
   },
   {
     "session_id": "4c36dffe-9aed-4463-9000-e483ce37b64c",
@@ -60,7 +65,8 @@
     "original_question": "Hvor lang tid før en flytning skal jeg oplyste om en flytning og den nye addresse?",
     "bot_answer_preview": "Der er ikke et fast krav til, hvor lang tid før din flytning du skal give besked om din nye adresse. For at få en så nem flytning som muligt, anbefaler vi dog, at du giver os besked i god tid.",
     "followup_1": "Okay men hvad er 'god tid' konkret? Er 2 uger nok, eller bør det være mere?",
-    "followup_2": "Kan jeg flytte mit abonnement selvom der ikke er Hiper på min nye adresse endnu?"
+    "followup_2": "Kan jeg flytte mit abonnement selvom der ikke er Hiper på min nye adresse endnu?",
+    "followup_3": "Er 2 uger nok eller ikke? Jeg har brug for et konkret ja/nej svar."
   },
   {
     "session_id": "5bfe8be4-fc04-4aa3-8039-b7d7b9ccce5c",
@@ -69,7 +75,8 @@
     "original_question": "Kan jeg tage min router med på min nye adresse?",
     "bot_answer_preview": "Om du kan tage din router med til din nye adresse afhænger af, hvilken type internetforbindelse du får der. Hvis du får samme type (for eksempel fiber til fiber), kan du som regel bruge den samme router.",
     "followup_1": "Hvordan finder jeg ud af hvilken type forbindelse der er tilgængelig på min nye adresse?",
-    "followup_2": "Hvis jeg skal have en ny router – sender I den automatisk til min nye adresse?"
+    "followup_2": "Hvis jeg skal have en ny router – sender I den automatisk til min nye adresse?",
+    "followup_3": "Adressetjekket siger fiber er tilgængeligt. Kan I sende routeren til den nye adresse automatisk?"
   },
   {
     "session_id": "7633ebf6-2e36-4990-8abc-a770bd790d3d",
@@ -87,7 +94,8 @@
     "original_question": "hej hvad koster det at flytte ardresse",
     "bot_answer_preview": "Som udgangspunkt koster det ikke noget at flytte dit internet til en ny adresse. Der kan dog komme udgifter, hvis det kræver et teknikerbesøg for at få internet op at køre på din nye adresse.",
     "followup_1": "Hvad koster et teknikerbesøg typisk – er det et fast beløb?",
-    "followup_2": "Hvornår ved jeg om der er behov for teknikerbesøg på den nye adresse?"
+    "followup_2": "Hvornår ved jeg om der er behov for teknikerbesøg på den nye adresse?",
+    "followup_3": "Hvad nu hvis der allerede er en velfungerende fiberinstallation på den nye adresse – er teknikerbesøg stadig 699 kr?"
   },
   {
     "session_id": "0312c319-a23d-4583-8d23-7eac0b6844ce",
@@ -96,7 +104,8 @@
     "original_question": "Får ikke leveret den hastighed internet jeg har betalt for",
     "bot_answer_preview": "Der kan være flere grunde til, at du ikke oplever den hastighed, du har betalt for. Hvis du måler via Wi-Fi, kan du ikke forvente den fulde hastighed...",
     "followup_1": "Jeg tester med LAN-kabel og CAT5e – og får stadig kun halv hastighed. Hvad er næste skridt?",
-    "followup_2": "Hvad kan jeg kræve af jer hvis I konsekvent ikke leverer den aftalte hastighed?"
+    "followup_2": "Hvad kan jeg kræve af jer hvis I konsekvent ikke leverer den aftalte hastighed?",
+    "followup_3": "Jeg tester ALLEREDE med LAN-kabel og CAT5e og har sagt det fra start. Kan I tjekke min linje fra jeres side?"
   },
   {
     "session_id": "0e4ce470-7d8e-46f4-baa0-ff3a400d4b37",
@@ -105,7 +114,8 @@
     "original_question": "Hvordan kan det være jeg ikke tester 1000 mbit på wifi?",
     "bot_answer_preview": "De fleste enheder kan ikke opnå den fulde hastighed over Wi-Fi. Med 5Ghz Wi-Fi kan du normalt forvente omkring 200-400 Mbit...",
     "followup_1": "Jeg forstår det ikke. Jeg betaler for 1000 mbit – men kan altså ikke bruge dem på WiFi?",
-    "followup_2": "Hvad er så den maksimale WiFi-hastighed jeg realistisk kan forvente med 5GHz?"
+    "followup_2": "Hvad er så den maksimale WiFi-hastighed jeg realistisk kan forvente med 5GHz?",
+    "followup_3": "Hvad er så den realistiske maksimale WiFi-hastighed på en moderne MacBook Pro via 5GHz?"
   },
   {
     "session_id": "10f80de4-755a-4f8e-a2eb-707c2023ab40",
@@ -114,7 +124,8 @@
     "original_question": "Jeg får kun 100 mbit når mit abonnement siger jeg burde have 1000 mbit",
     "bot_answer_preview": "Typisk skyldes det, at du måler hastigheden via Wi-Fi. For at få mest muligt ud af Wi-Fi, skal du bruge 5Ghz-frekvensen – her kan du forvente 200-400 Mbit...",
     "followup_1": "Jeg tester med LAN-kabel og får stadig kun 100 mbit. Det er ikke et WiFi-problem.",
-    "followup_2": "Mit netværkskort understøtter kun 100 mbit. Kan I anbefale hvad jeg skal gøre?"
+    "followup_2": "Mit netværkskort understøtter kun 100 mbit. Kan I anbefale hvad jeg skal gøre?",
+    "followup_3": "Mit netværkskort understøtter kun 100 mbit. Hvad skal jeg købe for at få de 1000 mbit?"
   },
   {
     "session_id": "415cf09c-95e7-4f41-9729-25140f297488",
@@ -123,7 +134,8 @@
     "original_question": "Jeg har problemer med min hastighed, bruger egen router.",
     "bot_answer_preview": "Hvis du måler via Wi-Fi, vil du sjældent ramme den fulde hastighed. For at teste den maksimale hastighed skal du måle med kabel (LAN)...",
     "followup_1": "Jeg bruger et eget mesh-system. Kan det være årsag til hastighedsproblemerne?",
-    "followup_2": "Hvordan sætter jeg min egen router korrekt op til at virke med jeres fiber?"
+    "followup_2": "Hvordan sætter jeg min egen router korrekt op til at virke med jeres fiber?",
+    "followup_3": "Du svarer stadig ikke på mesh-spørgsmålet. Skal jeg sætte jeres router i bridgemode for at det virker?"
   },
   {
     "session_id": "da5d5d48-34be-4248-9e5c-be53830f6389",
@@ -132,7 +144,8 @@
     "original_question": "Min hastighed er lav",
     "bot_answer_preview": "For at hjælpe dig bedst muligt, vil jeg gerne vide, hvilken type forbindelse du har hos os – er det fiber, coax (kabel-tv-stik) eller mobilt bredbånd?",
     "followup_1": "Jeg har fiber. Giv mig nu fejlsøgningstrinnene – hvad skal jeg gøre?",
-    "followup_2": "Jeg har allerede genstartet routeren flere gange. Det hjælper ikke. Hvad ellers?"
+    "followup_2": "Jeg har allerede genstartet routeren flere gange. Det hjælper ikke. Hvad ellers?",
+    "followup_3": "Jeg sagde jo fiber! Genstart hjælper ikke. Hvad er næste konkrete skridt?"
   },
   {
     "session_id": "0e803597-d33f-4edf-bb58-bac02f204e47",
@@ -141,7 +154,8 @@
     "original_question": "Mit internet virker ikke.",
     "bot_answer_preview": "Kan du fortælle mig, om du har internet via fibernet, kabel-tv-stik (coax) eller 5G mobilt bredbånd? Så snart jeg ved det, guider jeg dig videre.",
     "followup_1": "Jeg har fibernet. Hvad skal jeg gøre?",
-    "followup_2": "Hvad gør jeg hvis ingen af fejlsøgningstrinnene virker? Kan I sende en tekniker?"
+    "followup_2": "Hvad gør jeg hvis ingen af fejlsøgningstrinnene virker? Kan I sende en tekniker?",
+    "followup_3": "Jeg sagde fibernet allerede i min første besked. Giv mig nu fejlsøgningstrinnene for fiber direkte."
   },
   {
     "session_id": "11b625f2-4947-4036-8836-fd93bc788056",
@@ -150,7 +164,8 @@
     "original_question": "Mit internet er stoppet med at virke. Hvis jeg prøver at logge på får jeg en skærm hvis jeg skal indtatse konto nr. og aktiveringskode",
     "bot_answer_preview": "Den skærm, hvor du skal indtaste konto nr. og aktiveringskode, betyder ofte at routeren endnu ikke er aktiveret. Har du internet via kabel-tv-stikket (coax)?",
     "followup_1": "Jeg har ikke fået nogen velkomstmail med aktiveringskode. Hvad gør jeg nu?",
-    "followup_2": "Hvad er mit kontonummer? Kan I finde det til mig, eller sende en ny aktiveringskode?"
+    "followup_2": "Hvad er mit kontonummer? Kan I finde det til mig, eller sende en ny aktiveringskode?",
+    "followup_3": "Jeg kan ikke logge ind i Mit Hiper overhovedet – hvad gør jeg?"
   },
   {
     "session_id": "5363e4d3-9126-42eb-8cf0-042e45a60996",
@@ -159,7 +174,8 @@
     "original_question": "Mit internet virker ikke og jeg har fulgt alle anvisninger",
     "bot_answer_preview": "For at hjælpe dig bedst muligt, vil jeg gerne lige høre hvilken type internet du har: Fiber, Kabel-tv (coax) eller Mobilt bredbånd (5G)?",
     "followup_1": "Jeg har fiber og har fulgt alle jeres guides. Det virker stadig ikke. Hvad er næste skridt?",
-    "followup_2": "Kan I se fra jeres side om der er en driftsfejl på min linje?"
+    "followup_2": "Kan I se fra jeres side om der er en driftsfejl på min linje?",
+    "followup_3": "Fejlmeldingen er oprettet i Mit Hiper. Hvornår kan jeg forvente at en tekniker kommer ud?"
   },
   {
     "session_id": "6e677bd8-9dd8-4e14-a2e7-6d7c8c09d8e0",
@@ -168,7 +184,8 @@
     "original_question": "Mit fibernet virker ikke. Globus lyser rød",
     "bot_answer_preview": "Sørg for, at netværkskablet sidder korrekt. Tjek at fiberboksen har strøm. Nulstil udstyret. Tjek for eventuelle driftsproblemer på driftsiden.",
     "followup_1": "Jeg har gjort alt det der – globus lyser stadig rød. Hvad er næste skridt?",
-    "followup_2": "Hvornår kan I sende en tekniker ud? Og koster det noget?"
+    "followup_2": "Hvornår kan I sende en tekniker ud? Og koster det noget?",
+    "followup_3": "Fejlmeldingen er oprettet. Det er kritisk – jeg arbejder hjemmefra. Kan I prioritere det?"
   },
   {
     "session_id": "dfd8a85a-6c89-48ff-8028-44290b6cb575",
@@ -177,7 +194,8 @@
     "original_question": "Vores internet virker ikke idag?",
     "bot_answer_preview": "For at jeg kan hjælpe dig bedst muligt, vil jeg gerne vide hvilken type internet du har hos Hiper: Fiber, Kabel-tv-stik (coax) eller Mobilt bredbånd (5G)?",
     "followup_1": "Vi har kabel-tv. Hvad gør vi?",
-    "followup_2": "Kan det være en driftsfejl i vores område? Hvordan checker jeg det?"
+    "followup_2": "Kan det være en driftsfejl i vores område? Hvordan checker jeg det?",
+    "followup_3": "Vi har gjort alt det der. Routerens lys er korrekte, men vi har stadig ingen forbindelse."
   },
   {
     "session_id": "36ab8e03-ab7f-4cc7-92e0-5ebf96ea071f",
@@ -186,7 +204,8 @@
     "original_question": "I har trukket for mange penge. Vi har betalt for november måned i vores første regning men i har nu trukket for november måned (igen)",
     "bot_answer_preview": "Den første regning hos Hiper dækker altid de første to måneder. Den næste regning, som kommer d. 1. i næste måned, dækker den tredje måned.",
     "followup_1": "Det giver ikke mening – vi startede i december, ikke november. Kan det alligevel ikke være en fejl?",
-    "followup_2": "Hvad gør jeg for at få pengene refunderet hvis det viser sig at være en fejl?"
+    "followup_2": "Hvad gør jeg for at få pengene refunderet hvis det viser sig at være en fejl?",
+    "followup_3": "Jeg startede 1. december og ser nu en betaling for dec+jan plus endnu en opkrævning. Kan I se mine regninger og bekræfte?"
   },
   {
     "session_id": "3d1f84bc-ffbc-4650-88e1-b87f15cbf799",
@@ -195,7 +214,8 @@
     "original_question": "Mit abonnement koster 99,- hvorfor har jeg betalt næsten 200kr på min første regning?",
     "bot_answer_preview": "Det er helt normalt, at din første regning er højere end dit normale abonnement. Første regning dækker nemlig: Fra den dag dit internet blev aktiveret og resten af måneden, den efterfølgende måned, eventuelle udgifter til oprettelse...",
     "followup_1": "Hvad er oprettelsesgebyret præcist? Det vidste jeg ikke jeg skulle betale.",
-    "followup_2": "Kan I sende mig en specificeret regning der viser præcis hvad de næsten 200 kr dækker over?"
+    "followup_2": "Kan I sende mig en specificeret regning der viser præcis hvad de næsten 200 kr dækker over?",
+    "followup_3": "Der er specifikt opkrævet 299 kr i oprettelsesgebyr. Er det det korrekte beløb – og hvad dækker det præcist?"
   },
   {
     "session_id": "59e173fd-e28a-4ef4-a004-e707fab013e4",
@@ -213,7 +233,8 @@
     "original_question": "Jeg har fået nyt kort, hvordan kan jeg tilmelde det?",
     "bot_answer_preview": "Når du har fået et nyt betalingskort, kan du tilføje det via Mit Hiper. Log ind, gå til 'Betaling' og indtast dine nye kortoplysninger.",
     "followup_1": "Kan jeg ikke bare ringe og give jer det nye kortnummer i stedet?",
-    "followup_2": "Hvad sker der med mit abonnement hvis kortet udløber inden jeg når at opdatere det?"
+    "followup_2": "Hvad sker der med mit abonnement hvis kortet udløber inden jeg når at opdatere det?",
+    "followup_3": "Kan I bekræfte at det nye kort er registreret korrekt, så min næste betaling ikke fejler?"
   },
   {
     "session_id": "a9846eca-42f2-4498-9c57-eb33d007ba08",
@@ -231,7 +252,8 @@
     "original_question": "Hvorfor skal jeg allerede betale igen, når jeg har betalt en måned forud?",
     "bot_answer_preview": "Betalingen sker som udgangspunkt forud for hver abonnementsperiode. Det betyder, at der trækkes en betaling hver måned, også selvom du har betalt for den første måned ved opstart.",
     "followup_1": "Det virker som om I trækker penge to gange inden for kort tid. Er det virkelig normalt?",
-    "followup_2": "Kan jeg skifte til at betale via faktura/MobilePay i stedet for automatisk kortbetaling?"
+    "followup_2": "Kan jeg skifte til at betale via faktura/MobilePay i stedet for automatisk kortbetaling?",
+    "followup_3": "Kan jeg ændre betalingsdatoen til en bestemt dato i måneden, eller er den altid fastsat?"
   },
   {
     "session_id": "1074c688-ed81-4a87-90f4-ba93f642c2fd",
@@ -240,7 +262,8 @@
     "original_question": "Sørger I for opsigelse af min nuværende udbyder (Yousee)",
     "bot_answer_preview": "Hvis du er ny Hiper-kunde og har bestilt fiber eller internet via kabel-tv-stikket, kan vi godt hjælpe med at opsige dit abonnement hos Yousee...",
     "followup_1": "Jeg kan ikke finde fuldmagtsformularen i Mit Hiper. Hvor er den henne?",
-    "followup_2": "Hvad sker der hvis jeg indsender fuldmagten for sent – altså efter 30 dage?"
+    "followup_2": "Hvad sker der hvis jeg indsender fuldmagten for sent – altså efter 30 dage?",
+    "followup_3": "Jeg kan stadig ikke finde formularen i Mit Hiper. Er der et direkte link I kan sende mig?"
   },
   {
     "session_id": "380a8eef-d309-4b07-a63b-9e1e5f14788c",
@@ -258,7 +281,8 @@
     "original_question": "Opsiger Hiper min nuværende internetudbyder?",
     "bot_answer_preview": "Hiper kan sagtens opsige dit nuværende abonnement for dig, hvis du har bestilt Fibernet eller internet via kabel-tv-stikket. Du skal bare udfylde en fuldmagt...",
     "followup_1": "Hvad sker der hvis jeg er i en bindingsperiode hos min nuværende udbyder?",
-    "followup_2": "Hvornår sker opsigelsen præcist? Risikerer jeg at betale dobbelt i en periode?"
+    "followup_2": "Hvornår sker opsigelsen præcist? Risikerer jeg at betale dobbelt i en periode?",
+    "followup_3": "Bindingsperioden slutter om præcis 2 måneder. Kan I registrere os som ny kunde nu med aktivering om 2 måneder?"
   },
   {
     "session_id": "4970f82b-039d-4483-bc98-53611cbdb414",
@@ -276,7 +300,8 @@
     "original_question": "Opsiger Hiper min nuværende internetudbyder?",
     "bot_answer_preview": "Hvis du er ny Hiper-kunde og har bestilt Fibernet eller internet via kabel-tv-stikket, kan vi opsige dit abonnement hos din nuværende internetudbyder...",
     "followup_1": "Hvad er mit kundenummer hos YouSee? Kan I hjælpe mig med at finde det til fuldmagten?",
-    "followup_2": "Opsiger I automatisk på den dato jeg angiver, eller skal jeg bekræfte noget efterfølgende?"
+    "followup_2": "Opsiger I automatisk på den dato jeg angiver, eller skal jeg bekræfte noget efterfølgende?",
+    "followup_3": "Jeg har fundet mit YouSee-kundenummer. Hvad udfylder jeg præcist i fuldmagten – felt for felt?"
   },
   {
     "session_id": "71109c83-86fa-4fd7-8989-1a0fd0d379bf",
@@ -285,7 +310,8 @@
     "original_question": "Sørger I for opsigelse af min nuværende udbyder (Yousee)",
     "bot_answer_preview": "Hvis du har bestilt fiber eller internet via kabel-tv-stikket hos Hiper, kan vi opsige dit abonnement hos din nuværende udbyder for dig. Du har op til 30 dage efter opstart til at indsende fuldmagten.",
     "followup_1": "Er det en garanti? Jeg vil absolut ikke risikere at betale for begge abonnementer på samme tid.",
-    "followup_2": "Kan I sende mig en bekræftelse på at opsigelsen faktisk er indsendt til Yousee?"
+    "followup_2": "Kan I sende mig en bekræftelse på at opsigelsen faktisk er indsendt til Yousee?",
+    "followup_3": "Hvad er den ideelle opsigelsesdato for at undgå dobbeltbetaling, hvis jeg starter hos jer den 1. marts?"
   },
   {
     "session_id": "7ba9bbbe-1e8f-43c6-9f8d-4884c1f0f32e",
@@ -294,7 +320,8 @@
     "original_question": "Hvordan insender jeg fuldtmagt til jer med i at gerne må opsige min gamle udbyder?",
     "bot_answer_preview": "Hvis du har bestilt fibernet eller internet via kabel-tv-stik hos Hiper, kan vi opsige dit abonnement. Du finder formularen i Mit Hiper eller den mail vi har sendt dig...",
     "followup_1": "Hvad sker der hvis min fraflytningsdato ændrer sig efter jeg har indsendt fuldmagten?",
-    "followup_2": "Jeg har indsendt fuldmagten. Hvornår modtager jeg en bekræftelse?"
+    "followup_2": "Jeg har indsendt fuldmagten. Hvornår modtager jeg en bekræftelse?",
+    "followup_3": "Hvad nu hvis min nye fraflytningsdato er TIDLIGERE end hvad jeg angav? Kan I rykke den frem?"
   },
   {
     "session_id": "ebd1ef90-64ee-4cfe-8262-24c830dc87c4",
@@ -312,7 +339,8 @@
     "original_question": "Kan man koble en mesh på det modem jeg har bestilt som er fra kabel?",
     "bot_answer_preview": "Du kan sagtens tilslutte et mesh-system til det kabel (COAX) modem, du har bestilt hos os. Det kræver, at du sætter dit modem i bridgemode...",
     "followup_1": "Jeg forstår ikke hvad bridgemode er. Kan du forklare det i simple ord?",
-    "followup_2": "Jeg har sat routeren i bridgemode men mit mesh-system kan ikke forbinde. Hvad er der galt?"
+    "followup_2": "Jeg har sat routeren i bridgemode men mit mesh-system kan ikke forbinde. Hvad er der galt?",
+    "followup_3": "Jeg har aktiveret bridgemode og sat mesh til. Nu er der ingen internet overhovedet – er det korrekt at Hiper-wifi forsvinder?"
   },
   {
     "session_id": "53ee559f-ec14-4bd3-9603-ea34f3947a47",
@@ -321,7 +349,8 @@
     "original_question": "Hej jeg sidder og laver nat. Jeg kan ikke få det til at virke. Er det fordi jeg sidder bag et CGNAT.",
     "bot_answer_preview": "For at jeg kan hjælpe dig bedst muligt, vil jeg gerne høre, om du bruger fiber, kabel-tv/coax eller 5G mobilt bredbånd fra Hiper?",
     "followup_1": "Jeg har fiber. Og ja CGNAT – kan det påvirke mit NAT og port forwarding til serveren?",
-    "followup_2": "Kan I give mig en statisk IP-adresse så jeg undgår CGNAT-problemerne?"
+    "followup_2": "Kan I give mig en statisk IP-adresse så jeg undgår CGNAT-problemerne?",
+    "followup_3": "Hvad koster en statisk IP hos jer, og er det tilgængeligt på fiber?"
   },
   {
     "session_id": "9a0226db-7cc1-4860-a936-320c4a1e6c6b",
@@ -330,7 +359,8 @@
     "original_question": "Kan jeg købe et længere kabel mellem fiberbox og router",
     "bot_answer_preview": "Du kan selv købe et længere LAN-kabel (CAT5e eller CAT6). Hiper sælger ikke kabler direkte. Typisk op til 30 meter for under 100 kr.",
     "followup_1": "Mister jeg noget hastighed med et længere kabel, eller er det ubetydelig?",
-    "followup_2": "Hvad er den maksimale kabellængde inden det begynder at gå ud over forbindelsen?"
+    "followup_2": "Hvad er den maksimale kabellængde inden det begynder at gå ud over forbindelsen?",
+    "followup_3": "Du svarede ikke på det jeg spurgte om. Mister jeg hastighed med et 15 meter LAN-kabel?"
   },
   {
     "session_id": "e33d97fb-241b-466e-b9a6-489d6eb7614a",
@@ -339,7 +369,8 @@
     "original_question": "Hvordan kan jeg opsætte DynDNS til en udbyder der ikke er i routeren?",
     "bot_answer_preview": "Der findes desværre ikke en officiel vejledning til at opsætte DynDNS med en udbyder, der ikke allerede er i routerens liste. Hvis du har brug for avancerede netværksfunktioner som DynDNS, kan du bruge din egen router bag Hiper-routeren i bridge mode.",
     "followup_1": "Hvad er forskellen på bridge mode og router mode konkret – hvad mister jeg?",
-    "followup_2": "Jeg bruger min egen router i bridge mode, men min IP skifter stadig. Hvad kan jeg gøre?"
+    "followup_2": "Jeg bruger min egen router i bridge mode, men min IP skifter stadig. Hvad kan jeg gøre?",
+    "followup_3": "Jeg aktiverede bridgemode og WiFi fra Hiper-routeren er væk. Er min DynDNS-opsætning nu fri til at fungere?"
   },
   {
     "session_id": "f54014f7-99e6-4d78-89db-a00e2753ed52",
@@ -348,7 +379,8 @@
     "original_question": "Hvordan skal jeg forholde mig, hvis der er betonvægge i min bolig, og der er to etager?",
     "bot_answer_preview": "Betonvægge og flere etager kan gøre det sværere for wifi-signalet. Du kan leje mesh-enheder direkte hos Hiper.",
     "followup_1": "Hvad koster det at leje mesh-enheder hos jer? Er det månedlig leje?",
-    "followup_2": "Kan jeg bruge mit eget mesh-system i stedet for jeres, eller kræver det speciel opsætning?"
+    "followup_2": "Kan jeg bruge mit eget mesh-system i stedet for jeres, eller kræver det speciel opsætning?",
+    "followup_3": "Hvad koster mesh-leje månedligt, og hvad er bindingsperioden?"
   },
   {
     "session_id": "4e11a3d3-c635-4764-bbd1-4839db417731",
@@ -357,7 +389,8 @@
     "original_question": "Jeg skal sende 3 routere tilbage men har kun 2",
     "bot_answer_preview": "Øv, det kan være lidt bøvlet! Som udgangspunkt vil vi gerne have alt udstyr retur, men hvis du kun har 2 af de 3 routere, skal du lige snakke med en kollega. Jeg sender dig videre nu.",
     "followup_1": "Hvornår kontakter kollegaen mig? Jeg venter stadig.",
-    "followup_2": "Hvad er gebyret for manglende udstyr – hvad risikerer jeg at betale?"
+    "followup_2": "Hvad er gebyret for manglende udstyr – hvad risikerer jeg at betale?",
+    "followup_3": "Hvad er gebyret for en manglende router, og kan det frafaldes hvis den er bortkommet?"
   },
   {
     "session_id": "6eb56c9e-9d1e-4f81-bcdb-f4ffe396ac29",
@@ -366,7 +399,8 @@
     "original_question": "Sender i returlabel til router?",
     "bot_answer_preview": "Som udgangspunkt sender vi ikke et returlabel. Du skal selv købe et returlabel hos et fragtfirma, f.eks. PostNord. I nogle tilfælde sender vi dog et returlabel...",
     "followup_1": "Jeg skifter fra coax til fiber. Er det et tilfælde hvor I sender mig et returlabel?",
-    "followup_2": "Hvad sker der hvis pakken går tabt under returneringen – er jeg ansvarlig?"
+    "followup_2": "Hvad sker der hvis pakken går tabt under returneringen – er jeg ansvarlig?",
+    "followup_3": "Det er nu 5 dage siden jeg skiftede til fiber. Hvornår modtager jeg returlabelet?"
   },
   {
     "session_id": "72fcec05-6305-4002-9116-8062c7c4d7f4",
@@ -375,7 +409,8 @@
     "original_question": "Hvornår kommer min router?",
     "bot_answer_preview": "Vi sender din router afsted 10 dage før din onlinedato. Du får besked med et forsendelsesnummer på mail, og en SMS når pakken kan hentes.",
     "followup_1": "Jeg har fået en SMS om at pakken er klar, men den er ikke i den pakkeshop der er angivet. Hvad gør jeg?",
-    "followup_2": "Hvad sker der hvis jeg ikke kan hente pakken inden afhentningsfristen udløber?"
+    "followup_2": "Hvad sker der hvis jeg ikke kan hente pakken inden afhentningsfristen udløber?",
+    "followup_3": "PostNord siger den er leveret til pakkeshoppen, men de kan ikke finde den. Nu hvad?"
   },
   {
     "session_id": "853526bc-c486-42dc-b1af-55231384120e",
@@ -384,7 +419,8 @@
     "original_question": "Hvordan sender jeg jeres router tilbage?",
     "bot_answer_preview": "Saml alt udstyr: router, strømforsyning, kabler, adapter mv. Pak det hele i en kasse. Send pakken med omdeling til Hiper A/S, C/o: MatKon, Måløv Byvej 229, 2760 Måløv.",
     "followup_1": "Hvad koster forsendelsen? Og skal det være en bestemt type kasse?",
-    "followup_2": "Hvornår kan jeg se at I har modtaget og registreret routeren?"
+    "followup_2": "Hvornår kan jeg se at I har modtaget og registreret routeren?",
+    "followup_3": "Hvad er gebyret hvis jeg ikke returnerer udstyret?"
   },
   {
     "session_id": "a838211f-dea5-41f0-9154-f3a86058770b",
@@ -393,7 +429,8 @@
     "original_question": "Hvor bliver min router sendt til?",
     "bot_answer_preview": "Vi sender din router til en PostNord pakkeshop eller pakkeboks, der ligger tæt på din adresse. Du får en mail med forsendelsesnummer og en SMS når pakken er klar.",
     "followup_1": "Kan jeg vælge hvilken pakkeshop den sendes til, eller vælger I selv?",
-    "followup_2": "Hvad nu hvis routeren ankommer men jeg er bortrejst i den periode og ikke kan hente den?"
+    "followup_2": "Hvad nu hvis routeren ankommer men jeg er bortrejst i den periode og ikke kan hente den?",
+    "followup_3": "Pakkeshoppen er 20 km væk og jeg har ikke bil. Kan I sende den direkte til min adresse i stedet?"
   },
   {
     "session_id": "808917b9-dc38-45a2-b3f7-d37dfbd08a06",
@@ -402,7 +439,8 @@
     "original_question": "Er der problemer med nettet omkring Herning? Jeg prøver og se fodbold via streaming, men det fungerer ikke",
     "bot_answer_preview": "Jeg kan desværre ikke se aktuel driftsstatus, men du kan altid tjekke for eventuelle driftsproblemer i dit område på driftsiden.",
     "followup_1": "Jeg har tjekket driftsiden og der er ingen fejl. Jeg har fiber. Hvad gør jeg nu?",
-    "followup_2": "Streamingen driller kun om aftenen. Er der mere belastning på nettet i den tid?"
+    "followup_2": "Streamingen driller kun om aftenen. Er der mere belastning på nettet i den tid?",
+    "followup_3": "Ingen fejl på driftsiden. Det er kun streaming der halter om aftenen. Kan routeren være årsagen?"
   },
   {
     "session_id": "a43acca0-042b-487d-9cd0-43af1e1032e8",
@@ -411,7 +449,8 @@
     "original_question": "Mit internet er langsomt",
     "bot_answer_preview": "Der kan være flere årsager til at internetforbindelsen opleves langsom. For at hjælpe dig bedst muligt: Kan du fortælle hvilken type internet du har og om du måler hastigheden på Wi-Fi eller kabel?",
     "followup_1": "Jeg har fiber og tester med LAN-kabel. Det er stadig langsomt. Hvad nu?",
-    "followup_2": "Kan I tjekke fra jeres side om der er noget galt med min linje?"
+    "followup_2": "Kan I tjekke fra jeres side om der er noget galt med min linje?",
+    "followup_3": "Alle punkter er tjekket. Speedtest viser 12 mbit på en 500 mbit-forbindelse. Hvornår sender I en tekniker?"
   },
   {
     "session_id": "a83123a7-3f9b-43e8-ae84-372efd4203c8",
@@ -420,7 +459,8 @@
     "original_question": "Vi oplever store problemer med forbindelsen i aften",
     "bot_answer_preview": "Kan du fortælle mig, om du har internet via fiber, kabel-tv-stik (coax) eller 5G (mobilt bredbånd)? Så kan jeg guide dig videre.",
     "followup_1": "Vi har fibernet. Forbindelsen dropper hvert 5. minut – hele aftenen.",
-    "followup_2": "Det her sker kun om aftenen. Er det noget med netbelastning i vores område?"
+    "followup_2": "Det her sker kun om aftenen. Er det noget med netbelastning i vores område?",
+    "followup_3": "Reset hjælper ikke – det dropper stadig hvert 5. minut. Kan I se noget usædvanligt fra jeres side?"
   },
   {
     "session_id": "ded6062b-c5ab-4ece-8908-c1353b812a78",
@@ -429,7 +469,8 @@
     "original_question": "Mit internet er pisse dårligt altså",
     "bot_answer_preview": "Kan du fortælle om du har fiber, kabel-tv (coax) eller 5G internet hos Hiper? Oplever du problemet på alle enheder eller kun nogle?",
     "followup_1": "Fiber. Det er på alle enheder. Hvad gør jeg nu?",
-    "followup_2": "Har I en service level agreement på oppetid? Hvad kan jeg kræve?"
+    "followup_2": "Har I en service level agreement på oppetid? Hvad kan jeg kræve?",
+    "followup_3": "Gjort alt det. Speedtest viser nu 3 mbit på 500 mbit-abonnement. Hvornår sender I tekniker?"
   },
   {
     "session_id": "dfae8f3e-f997-4ee8-bb92-ba6beba814c7",
@@ -438,7 +479,8 @@
     "original_question": "Jeg har meget dårlig forbindelse, hvad sker der ?",
     "bot_answer_preview": "For at jeg kan hjælpe dig bedst muligt, må jeg lige høre hvilken type internet du har hos os. Oplever du problemerne på alle dine enheder, eller kun nogle enkelte?",
     "followup_1": "Jeg har coax. Det virker slet ikke på nogen enheder. Hvad er fejlsøgningsprocessen?",
-    "followup_2": "Hvornår kan en tekniker komme ud og se på det fysisk?"
+    "followup_2": "Hvornår kan en tekniker komme ud og se på det fysisk?",
+    "followup_3": "Alle trin fulgt, routerens lys er korrekte, men ingen forbindelse. Hvornår kan en tekniker komme ud?"
   },
   {
     "session_id": "13bca87c-bd6a-4197-a1bc-8a0b9af4ac68",
@@ -447,7 +489,8 @@
     "original_question": "Mit internet er arbejdsgiver betalt kan jeg skifte til at betale selv",
     "bot_answer_preview": "Din arbejdsgiver skal starte processen ved at sende en mail til kundeservice@hiper.dk med dit navn og adresse, og give accept på, at abonnementet skal overgå til privat betaling.",
     "followup_1": "Min arbejdsgiver vil ikke hjælpe. Kan jeg ikke bare ændre det selv?",
-    "followup_2": "Hvad sker der med min abonnementspris når jeg overtager betalingen?"
+    "followup_2": "Hvad sker der med min abonnementspris når jeg overtager betalingen?",
+    "followup_3": "Hvad nu hvis min arbejdsgiver er gået konkurs og ikke kan sende en mail? Er der en alternativ procedure?"
   },
   {
     "session_id": "4d6b7208-66c5-482a-b752-8ac9b9fcab33",
@@ -474,7 +517,8 @@
     "original_question": "Jeg har fået nyt telefonnummer",
     "bot_answer_preview": "Du kan nemt opdatere dit telefonnummer ved at logge ind på Mit Hiper. Gå ind under 'Profil', så kan du ændre dit nummer og andre oplysninger.",
     "followup_1": "Jeg kan ikke logge ind i Mit Hiper. Hvad er login-siden og hvad gør jeg hvis jeg har glemt kodeordet?",
-    "followup_2": "Sender I SMS-notifikationer til mit nummer? Vil de nu automatisk gå til det nye nummer?"
+    "followup_2": "Sender I SMS-notifikationer til mit nummer? Vil de nu automatisk gå til det nye nummer?",
+    "followup_3": "Jeg har nulstillet kodeordet men får stadig fejlbesked ved login. Hvad gør jeg nu?"
   },
   {
     "session_id": "90643286-652b-486d-8652-a47fec3b3440",
@@ -483,6 +527,7 @@
     "original_question": "jeg kan ikke ændre min email",
     "bot_answer_preview": "Du kan ændre din emailadresse under 'Profil' i Mit Hiper, når du er logget ind. Hvis det driller, må du gerne beskrive lidt nærmere hvad der sker.",
     "followup_1": "Jeg kan finde 'Profil' men der er ingen mulighed for at ændre email. Er siden opdateret?",
-    "followup_2": "Jeg brugte den forkerte email da jeg oprettede mit abonnement. Kan I hjælpe mig med at skifte den?"
+    "followup_2": "Jeg brugte den forkerte email da jeg oprettede mit abonnement. Kan I hjælpe mig med at skifte den?",
+    "followup_3": "Jeg har prøvet Chrome, Firefox og Safari – ingen af dem kan vise email-feltet i Profil."
   }
 ]

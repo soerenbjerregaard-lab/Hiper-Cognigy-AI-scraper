@@ -11,9 +11,12 @@ import sqlite3
 import json
 import sys
 import os
+import csv
 import argparse
+from datetime import datetime
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'conversations.db')
+EXPORT_DIR = os.path.dirname(__file__)
 
 EVAL_SCHEMA = """{
   "session_id": "...",
@@ -28,6 +31,22 @@ EVAL_SCHEMA = """{
   "hallucination_risk": true | false,
   "notes": "Kort fri tekst"
 }"""
+
+def export_csv(conn):
+    rows = conn.execute(
+        'SELECT * FROM conversations ORDER BY category, session_id, turn, role'
+    ).fetchall()
+    cols = [d[0] for d in conn.execute('SELECT * FROM conversations LIMIT 1').description]
+    ts = datetime.now().strftime('%d-%m-%Y-%H:%M')
+    filename = f'conversations-{ts}.csv'
+    filepath = os.path.join(EXPORT_DIR, filename)
+    with open(filepath, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        writer.writerow(cols)
+        writer.writerows(rows)
+    print(f"\n# CSV eksporteret → {filename}  ({len(rows)} rækker)", file=sys.stderr)
+    return filepath
+
 
 def get_threads(conn, session_filter=None):
     query = """
@@ -78,6 +97,7 @@ def main():
 
     conn = sqlite3.connect(DB_PATH)
     sessions = get_threads(conn, args.session)
+    export_csv(conn)
     conn.close()
 
     if not sessions:
