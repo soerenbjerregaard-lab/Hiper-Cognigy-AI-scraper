@@ -63,6 +63,7 @@ async function runConversation(browser, question) {
     await sleep(config.PAGE_LOAD_WAIT);
 
     const welcomePromise = waitForBotMessage(page, 15000);
+    welcomePromise.catch(() => {}); // undgå unhandled rejection hvis context lukkes før await
     await page.evaluate(() => window.cognigyWebChat.open());
 
     await page.waitForFunction(
@@ -93,7 +94,7 @@ async function runConversation(browser, question) {
       handover: detectHandover(botResponse.text),
     };
   } finally {
-    await ctx.close();
+    try { await ctx.close(); } catch {}
   }
 }
 
