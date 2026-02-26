@@ -15,7 +15,7 @@ module.exports = {
 
   // Antal samtidige samtaler (parallel scraping)
   // Kan overstyres med --concurrency N på kommandolinjen
-  CONCURRENCY: 5,
+  CONCURRENCY: 8,
 
   // Delay per worker mellem samtaler (ms) – lille buffer mod rate limiting
   DELAY_MIN: 1000,
