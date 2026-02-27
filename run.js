@@ -96,10 +96,10 @@ async function sendAndWait(page, message, timeoutMs) {
 }
 
 // ─── CSV export ───────────────────────────────────────────────────────────────
-function exportCsv(db) {
+function exportCsv(db, runId) {
   const rows = db.prepare(
-    'SELECT * FROM conversations ORDER BY category, session_id, turn, role'
-  ).all();
+    'SELECT * FROM conversations WHERE run_id = ? ORDER BY category, session_id, turn, role'
+  ).all(runId);
   if (rows.length === 0) return;
 
   const cols   = Object.keys(rows[0]);
@@ -116,7 +116,7 @@ function exportCsv(db) {
 }
 
 // ─── Kør ét scenarie ──────────────────────────────────────────────────────────
-async function runScenario(browser, db, scenario, label) {
+async function runScenario(browser, db, scenario, label, runId) {
   const { category, category_tag, questions } = scenario;
   const sessionId = randomUUID();
   const meta      = { category, category_tag: category_tag || null };
@@ -170,8 +170,8 @@ async function runScenario(browser, db, scenario, label) {
       const handover = detectHandover(botText);
       const links    = extractLinks(botText);
 
-      saveConversation(db, sessionId, meta, turn, 'user', q,       false,    []);
-      saveConversation(db, sessionId, meta, turn, 'bot',  botText, handover, links);
+      saveConversation(db, sessionId, meta, turn, 'user', q,       false,    [], runId, ENDPOINT_NAME);
+      saveConversation(db, sessionId, meta, turn, 'bot',  botText, handover, links, runId, ENDPOINT_NAME);
       results.push({ turn, botText, handover });
 
       if (handover) { handoverOccurred = true; break; } // stop ved handover
@@ -188,8 +188,8 @@ async function runScenario(browser, db, scenario, label) {
     console.log(`${label} ✗ FATAL ${err.message}`);
     // Gem FATAL-fejl for turn 1 hvis ingen svar er gemt endnu
     if (results.length === 0) {
-      saveConversation(db, sessionId, meta, 1, 'user', questions[0],          false, []);
-      saveConversation(db, sessionId, meta, 1, 'bot',  `ERROR: ${err.message}`, false, []);
+      saveConversation(db, sessionId, meta, 1, 'user', questions[0],            false, [], runId, ENDPOINT_NAME);
+      saveConversation(db, sessionId, meta, 1, 'bot',  `ERROR: ${err.message}`, false, [], runId, ENDPOINT_NAME);
     }
   } finally {
     try { await ctx.close(); } catch {}
@@ -198,9 +198,11 @@ async function runScenario(browser, db, scenario, label) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
-  const db = openDb();
+  const db    = openDb();
+  const runId = randomUUID();
 
   console.log(`\n=== Hiper Cognigy AI Scraper ===`);
+  console.log(`Run ID:    ${runId}`);
   console.log(`Scenarier: ${batch.length} | Parallelitet: ${CONCURRENCY}`);
   console.log(`Endpoint:  [${ENDPOINT_NAME}] ${ENDPOINT}\n`);
 
@@ -214,7 +216,7 @@ async function main() {
     while (queue.length > 0) {
       const { scenario, idx } = queue.shift();
       const label = `[${String(idx).padStart(2)}/${total}] ${scenario.category.padEnd(22)}`;
-      await runScenario(browser, db, scenario, label);
+      await runScenario(browser, db, scenario, label, runId);
       if (queue.length > 0) {
         await sleep(config.DELAY_MIN + Math.random() * (config.DELAY_MAX - config.DELAY_MIN));
       }
@@ -240,7 +242,7 @@ async function main() {
   await checkLinks.run(db);
 
   // CSV eksport
-  exportCsv(db);
+  exportCsv(db, runId);
 }
 
 // Undgå at unhandled rejections crasher hele processen

@@ -13,6 +13,8 @@ function openDb() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS conversations (
       id           INTEGER PRIMARY KEY AUTOINCREMENT,
+      run_id       TEXT,
+      endpoint     TEXT,
       session_id   TEXT NOT NULL,
       category     TEXT NOT NULL,
       category_tag TEXT,
@@ -38,18 +40,22 @@ function openDb() {
 
   // Migrer eksisterende DB'er der mangler de nye kolonner/tabeller
   try { db.exec('ALTER TABLE conversations ADD COLUMN dead_links TEXT NOT NULL DEFAULT "[]"'); } catch {}
+  try { db.exec('ALTER TABLE conversations ADD COLUMN run_id TEXT'); } catch {}
+  try { db.exec('ALTER TABLE conversations ADD COLUMN endpoint TEXT'); } catch {}
 
   return db;
 }
 
 const insertStmt = (db) => db.prepare(`
-  INSERT INTO conversations (session_id, category, category_tag, turn, role, text, handover, links)
-  VALUES (@session_id, @category, @category_tag, @turn, @role, @text, @handover, @links)
+  INSERT INTO conversations (run_id, endpoint, session_id, category, category_tag, turn, role, text, handover, links)
+  VALUES (@run_id, @endpoint, @session_id, @category, @category_tag, @turn, @role, @text, @handover, @links)
 `);
 
-function saveConversation(db, sessionId, question, turn, role, text, handover = false, links = []) {
+function saveConversation(db, sessionId, question, turn, role, text, handover = false, links = [], runId = null, endpoint = null) {
   const stmt = insertStmt(db);
   stmt.run({
+    run_id:       runId,
+    endpoint:     endpoint,
     session_id:   sessionId,
     category:     question.category,
     category_tag: question.category_tag || null,
