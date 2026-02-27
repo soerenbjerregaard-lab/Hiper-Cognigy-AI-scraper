@@ -5,16 +5,17 @@
 // Hvert scenarie åbner en frisk chat-session og sender alle spørgsmål i rækkefølge.
 //
 // Usage:
-//   node run.js                     → alle 49 scenarier
-//   node run.js --limit 5           → de første 5 (test)
-//   node run.js --concurrency 5     → overstyr parallelitet
+//   node run.js                                          → alle 49 scenarier
+//   node run.js --limit 5                               → de første 5 (test)
+//   node run.js --concurrency 5                         → overstyr parallelitet
+//   node run.js --scenarios scenarios-extended.json     → brug udvidet scenariefil
+//   node run.js --scenarios scenarios-extended.json --persona frustrated → kun én persona
 
 const { chromium }   = require('playwright');
 const { randomUUID } = require('crypto');
 const { openDb, saveConversation } = require('./db');
 const config    = require('./config');
 const checkLinks = require('./check_links');
-const scenarios = require('./scenarios.json');
 const fs   = require('fs');
 const path = require('path');
 
@@ -27,6 +28,27 @@ const argStr = (flag, def) => {
   const i = process.argv.indexOf(flag);
   return i !== -1 ? process.argv[i + 1] : def;
 };
+
+// --scenarios flag: load custom scenarios file
+const scenariosFile = argStr('--scenarios', 'scenarios.json');
+const scenariosRaw  = JSON.parse(fs.readFileSync(path.join(__dirname, scenariosFile), 'utf8'));
+
+// --persona flag: expand variations into individual scenarios (kun ved extended fil)
+const personaFilter = argStr('--persona', null);
+let scenarios;
+if (personaFilter && scenariosRaw[0]?.variations) {
+  scenarios = scenariosRaw.flatMap(s =>
+    s.variations
+      .filter(v => v.persona === personaFilter)
+      .map(v => ({ ...s, id: v.id, questions: [v.q1, ...s.questions.slice(1)] }))
+  );
+  console.log(`Persona-filter: [${personaFilter}] → ${scenarios.length} scenarier`);
+} else if (scenariosRaw[0]?.variations && !personaFilter) {
+  // Extended fil uden persona-filter: brug original q1 (questions[0])
+  scenarios = scenariosRaw;
+} else {
+  scenarios = scenariosRaw;
+}
 
 const LIMIT       = argInt('--limit', scenarios.length);
 const CONCURRENCY = argInt('--concurrency', config.CONCURRENCY || 5);
