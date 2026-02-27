@@ -1,0 +1,3089 @@
+[
+  {
+    "id": 1,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Har i opsagt mit gamle abonnement som vi aftalte i telefonen sidst jeg talte med jer",
+      "Jeg hørte intet fra jer i forrige uge – er det normalt, og hvad er processen?",
+      "Hvad gør jeg hvis deadline for opsigelse hos min gamle udbyder nærmer sig?",
+      "Kan jeg få en skriftlig bekræftelse på at opsigelsen er sendt?"
+    ],
+    "topic": "Status på opsigelse hos gammel udbyder",
+    "intent": "Bekræfte at aftalt opsigelse er gennemført",
+    "variations": [
+      {
+        "id": "1-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "I lovede at opsige mit gamle abonnement! Er det sket eller ej?!"
+      },
+      {
+        "id": "1-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Kære Hiper. Vi aftalte under vores telefonsamtale at I ville opsige mit abonnement hos min tidligere udbyder. Har I fået gjort det?"
+      },
+      {
+        "id": "1-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er status på port-out processen fra min tidligere ISP? Vi aftalte pr. telefon at I håndterer opsigelsen."
+      },
+      {
+        "id": "1-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg tror I skulle gøre noget med mit gamle internet... er det sket?"
+      },
+      {
+        "id": "1-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hej har i husket at opsige mit gamle abonnement vi aftalte det i tlf"
+      },
+      {
+        "id": "1-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har kritisk brug for at vide om opsigelsen hos min gamle udbyder er sket – jeg kan ikke have overlappende regninger når jeg arbejder hjemmefra."
+      },
+      {
+        "id": "1-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny kunde og er ikke sikker på hvad der sker med min gamle udbyder – skulle I ikke opsige det for mig?"
+      },
+      {
+        "id": "1-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Vi aftalte for uger siden at I opsagde min gamle udbyder. Det er stadig ikke bekræftet. Hvad sker der?"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Sørger I for opsigelse af min nuværende udbyder (Yousee)",
+      "Jeg har fiber. Hvad skal jeg udfylde i fuldmagten og hvor finder jeg den?",
+      "Overholder Hiper opsigelsesvarslet hos Yousee automatisk?",
+      "Hvad sker der hvis Yousee ikke vil acceptere opsigelsen via fuldmagt?"
+    ],
+    "topic": "Hiper opsiger Yousee-abonnement på vegne af kunde",
+    "intent": "Få Hiper til at håndtere opsigelse hos Yousee",
+    "variations": [
+      {
+        "id": "2-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Kan I opsige Yousee for mig eller ej?! Jeg gider ikke sidde og betale to steder!"
+      },
+      {
+        "id": "2-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg ville høre om I hjælper med at opsige mit abonnement hos Yousee, da jeg nu er gået over til jer?"
+      },
+      {
+        "id": "2-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Tilbyder I en fuldmagtsbaseret opsigelse af Yousee på mine vegne? Hvad er den tekniske og juridiske proces?"
+      },
+      {
+        "id": "2-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Yousee... skal I ikke gøre noget med det? Jeg er jo skiftet til jer nu."
+      },
+      {
+        "id": "2-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "opsiger i yousee for mig eller skal jeg selv?"
+      },
+      {
+        "id": "2-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg arbejder hjemmefra og kan ikke undvære internet – kan I håndtere opsigelsen hos Yousee så jeg ikke selv skal stå for det?"
+      },
+      {
+        "id": "2-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er netop skiftet til Hiper. Tager I jer af at opsige hos Yousee, eller skal jeg selv kontakte dem?"
+      },
+      {
+        "id": "2-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Jeg har allerede bestilt hos jer. Hvornår opsiger I mit Yousee-abonnement – det koster mig penge hver dag det trækker ud."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Opsiger Hiper min nuværende internetudbyder?",
+      "Hvad er fristen for at indsende fuldmagten, for at I kan nå at opsige til tiden?",
+      "Kan jeg ringe til jer, hvis noget går galt med opsigelsen?",
+      "Hvad hvis min nuværende udbyder har et langt opsigelsesvarsel – håndterer I det?"
+    ],
+    "topic": "Kan Hiper opsige hos nuværende udbyder",
+    "intent": "Afklare om Hiper håndterer opsigelsen",
+    "variations": [
+      {
+        "id": "3-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Er det jer der opsiger min gamle udbyder eller ej?! Det er sgu da en simpel ting at afklare!"
+      },
+      {
+        "id": "3-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt usikker på processen. Hjælper I med at opsige hos min nuværende udbyder, eller skal jeg selv gøre det?"
+      },
+      {
+        "id": "3-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Tilbyder I håndtering af opsigelsesprocessen via fuldmagt, herunder varsling og koordinering med eksisterende udbyder?"
+      },
+      {
+        "id": "3-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Kan I... hjælpe med min gamle udbyder? Jeg er ikke helt sikker på hvad der sker."
+      },
+      {
+        "id": "3-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "opsiger i min gl udbyder for mig??"
+      },
+      {
+        "id": "3-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Inden jeg skifter – sørger I for at min eksisterende udbyder opsiges, så jeg ikke sidder uden internet midt i en arbejdsdag?"
+      },
+      {
+        "id": "3-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg overvejer at skifte til jer. Hvad sker der med mit nuværende internet – håndterer I opsigelsen?"
+      },
+      {
+        "id": "3-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Jeg skal skifte internet ASAP. Opsiger I min nuværende udbyder selv, eller skal jeg stå for det?"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "SBBU",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Hvordan insender jeg fuldtmagt til jer med i at gerne må opsige min gamle udbyder?",
+      "Jeg kan ikke finde fuldmagten i Mit Hiper. Hvor er den præcist?",
+      "Hvad sker der hvis min gamle udbyder ikke modtager opsigelsen rettidigt?",
+      "Hvad er tidsfristen for at indsende fuldmagten?"
+    ],
+    "topic": "Indsende fuldmagt til opsigelse af gammel udbyder",
+    "intent": "Finde ud af hvordan fuldmagt indsendes korrekt",
+    "variations": [
+      {
+        "id": "4-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg kan ikke finde ud af at sende den fuldmagt! Hvad er meningen?!"
+      },
+      {
+        "id": "4-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg skulle gerne indsende en fuldmagt, så I kan opsige hos min gamle udbyder for mig. Kan I hjælpe mig med at finde ud af hvordan det gøres?"
+      },
+      {
+        "id": "4-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvordan uploader eller fremsender jeg fuldmagtsdokumentet? Er det via Mit Hiper-portalen eller e-mail?"
+      },
+      {
+        "id": "4-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der var noget med et dokument jeg skulle sende ind... det var noget med min gamle udbyder?"
+      },
+      {
+        "id": "4-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvor sender jeg fuldmagten hen til opsigelse af gammel udbyder"
+      },
+      {
+        "id": "4-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg skal have sendt fuldmagten ind hurtigt – jeg kan ikke have to abonnementer køre sideløbende. Hvor sender jeg den?"
+      },
+      {
+        "id": "4-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg hørte at jeg skulle sende jer et dokument for at I kan opsige min gamle udbyder. Hvad skal jeg gøre?"
+      },
+      {
+        "id": "4-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Jeg har hørt der er en fuldmagt der skal sendes ind. Vil bare have det ordnet – hvad er proceduren?"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "kan jeg skifte fra bredbånd til 5g?",
+      "Hvad er ventetiden ca.? Skal jeg holde chaten åben?",
+      "Er der prisforskel på fiber og 5G hos jer?",
+      "Hvad er fordele og ulemper ved 5G mobilt bredbånd sammenlignet med fiber?"
+    ],
+    "topic": "Skifte fra bredbånd til 5G mobilt bredbånd",
+    "intent": "Undersøge muligheder og proces for skift til 5G",
+    "variations": [
+      {
+        "id": "5-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Er det overhovedet muligt at skifte til 5G? Jeg kan simpelthen ikke finde svaret på det!"
+      },
+      {
+        "id": "5-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg ville høre om det er muligt at skifte mit nuværende bredbånd ud med en 5G-løsning hos jer?"
+      },
+      {
+        "id": "5-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Tilbyder I en 5G FWA-løsning, og hvad er den tekniske procedure for at migrere fra mit nuværende abonnement?"
+      },
+      {
+        "id": "5-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Den der 5G... kan man få det i stedet for det jeg har nu?"
+      },
+      {
+        "id": "5-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kan man skifte til 5g?? hvad koster det"
+      },
+      {
+        "id": "5-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg overvejer 5G som backup til mit hjemmekontor – kan jeg skifte fra mit nuværende bredbånd?"
+      },
+      {
+        "id": "5-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ikke sikker på hvad I tilbyder – har I 5G internet som alternativ til fiber?"
+      },
+      {
+        "id": "5-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Er det muligt at skifte til 5G nu og her? Jeg vil gerne have det gjort hurtigt."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "jeg kan ikke ændre min email",
+      "Jeg får fejlen \"E-mail er allerede i brug\". Hvad gør jeg?",
+      "Kan I ændre min e-mail for mig, siden jeg ikke kan gøre det selv?",
+      "Vil det gå ud over min login hvis mailen er forkert?"
+    ],
+    "topic": "Problem med at ændre emailadresse i profil",
+    "intent": "Opdatere emailadresse på kontoen",
+    "variations": [
+      {
+        "id": "6-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg har prøvet tre gange at ændre min email og det virker ikke! Hvad er der galt?!"
+      },
+      {
+        "id": "6-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg forsøger at opdatere min e-mailadresse i Mit Hiper, men det lader desværre ikke til at virke. Kan I vejlede mig?"
+      },
+      {
+        "id": "6-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg får en fejl ved opdatering af primær e-mail i profilen. Er der kendte problemer med den funktion i portalen?"
+      },
+      {
+        "id": "6-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der er noget galt med min email... på siden... det virker ikke."
+      },
+      {
+        "id": "6-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kan ikke ændre min mail på mit hiper 😤 hvad gør jeg"
+      },
+      {
+        "id": "6-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har skiftet firmaemail og skal have opdateret min konto hos jer – men det fejler. Kan det fikses hurtigt?"
+      },
+      {
+        "id": "6-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og prøver at opsætte min profil korrekt, men kan ikke ændre emailadressen."
+      },
+      {
+        "id": "6-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har siddet med det der emailfelt i 20 minutter. Det virker ikke. Hvad er løsningen?"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er arbejdsgiver betalt kan jeg skifte til at betale selv",
+      "Kan jeg ikke bare overtage betalingen selv, uden at involvere min arbejdsgiver?",
+      "Ændres prisen når jeg overtager betalingen fra min arbejdsgiver?",
+      "Hvad sker der med bindingsperioden, hvis der er en?"
+    ],
+    "topic": "Overtage arbejdsgiverbetalt internetabonnement privat",
+    "intent": "Skifte faktureringsrelation til eget betalingskort",
+    "variations": [
+      {
+        "id": "7-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg vil selv betale for mit internet – kan det ikke bare ordnes?!"
+      },
+      {
+        "id": "7-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Min arbejdsgiver betaler i øjeblikket for mit internet. Jeg vil gerne høre om det er muligt selv at overtage betalingen fremover."
+      },
+      {
+        "id": "7-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan faktureringsrelationen på abonnementet overføres til mit private betalingskort uden at abonnementet ophører?"
+      },
+      {
+        "id": "7-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Min chef betaler nu... men jeg vil måske selv betale? Er det noget I kan ændre?"
+      },
+      {
+        "id": "7-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "arbejdsgiver betaler mit net vil selv betale er det muligt"
+      },
+      {
+        "id": "7-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg arbejder hjemmefra og min arbejdsgiver betaler – men jeg skifter job snart. Kan jeg overtage abonnementet selv?"
+      },
+      {
+        "id": "7-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Mit internet er sat op af min arbejdsgiver. Kan jeg skifte det over til at være mit eget private abonnement?"
+      },
+      {
+        "id": "7-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Skal have overtaget betalingen fra min arbejdsgiver ASAP. Hvad kræver det og kan det gøres hurtigt?"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Øvrige",
+    "category_tag": null,
+    "questions": [
+      "Jeg har fået nyt telefonnummer",
+      "Jeg kan ikke finde profil-siden i Mit Hiper. Hvor er den henne?",
+      "Er det vigtigt at mit telefonnummer er opdateret? Hvad bruges det til?",
+      "Kan I opdatere det for mig, hvis jeg sender jer det?"
+    ],
+    "topic": "Opdatere telefonnummer i profil",
+    "intent": "Registrere nyt telefonnummer på kontoen",
+    "variations": [
+      {
+        "id": "8-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg prøver at opdatere mit nummer men systemet accepterer det ikke! Hvad nu?!"
+      },
+      {
+        "id": "8-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har fået et nyt telefonnummer og ønsker at opdatere det i Mit Hiper, men er ikke sikker på hvordan man gør det."
+      },
+      {
+        "id": "8-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvordan opdaterer jeg mobilnummer i profilen via Mit Hiper-portalen? Er det under kontoindstillinger?"
+      },
+      {
+        "id": "8-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg har fået nyt nummer... jeg tænkte måske I skulle vide det?"
+      },
+      {
+        "id": "8-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "nyt telefonnr hvad gør jeg for at opdatere det hos jer"
+      },
+      {
+        "id": "8-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har fået nyt arbejdstelefonnummer og vil gerne have min Hiper-profil opdateret. Hvad er processen?"
+      },
+      {
+        "id": "8-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ikke helt inde i systemet endnu – hvor opdaterer jeg mit telefonnummer?"
+      },
+      {
+        "id": "8-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Mit nummer er ændret og jeg vil have det opdateret i jeres system nu. Hvad gør jeg?"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Får ikke leveret den hastighed internet jeg har betalt for",
+      "Jeg måler via kabel og får stadig kun halvdelen af det jeg betaler for. Hvad nu?",
+      "Kan I se fra jeres side om der er et problem med min linje?",
+      "Hvornår kan en tekniker komme og kigge på det?"
+    ],
+    "topic": "Faktisk hastighed under lovet abonnementshastighed",
+    "intent": "Få leveret den hastighed man betaler for",
+    "variations": [
+      {
+        "id": "9-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg betaler for en hastighed jeg IKKE får! Det er uacceptabelt og jeg vil have det fikset NU!"
+      },
+      {
+        "id": "9-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt bekymret for at den hastighed jeg modtager, ikke svarer til hvad jeg betaler for. Kan I hjælpe mig med at tjekke det?"
+      },
+      {
+        "id": "9-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Mine throughput-målinger via kabelforbundet speedtest viser konsistent underperformance ift. kontrakteret båndbredde. Hvad er næste diagnosticeringsskridt?"
+      },
+      {
+        "id": "9-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg tror ikke mit internet er særlig hurtigt... er det normalt?"
+      },
+      {
+        "id": "9-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "betaler for hurtig net men det er langsomt wtf"
+      },
+      {
+        "id": "9-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har video-møder hele dagen og mit internet er langsommere end jeg betaler for – det påvirker mit arbejde direkte. Hvornår kan det fixes?"
+      },
+      {
+        "id": "9-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny kunde og er ikke sikker på om den hastighed jeg oplever er det jeg skulle forvente?"
+      },
+      {
+        "id": "9-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har haft for lav hastighed i uger. Har fulgt jeres vejledning. Nu vil jeg have en konkret løsning."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Jeg får kun 100 mbit når mit abonnement siger jeg burde have 1000 mbit",
+      "Jeg tester nu via kabel og får stadig kun 100 mbit. Hvad er næste skridt?",
+      "Kan I tjekke om der er fejl på min linje fra jeres side?",
+      "Skal jeg opgradere mit kabel fra Cat5 til Cat6 eller Cat7?"
+    ],
+    "topic": "Kun 100 Mbit ved 1000 Mbit-abonnement",
+    "intent": "Diagnosticere og løse markant hastighedsgab",
+    "variations": [
+      {
+        "id": "10-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg betaler for 1000 mbit og får 100!! Det er skandaløst!"
+      },
+      {
+        "id": "10-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt forvirret over at min hastighedsmåler kun viser 100 mbit, selvom mit abonnement er på 1000 mbit. Kan I forklare det?"
+      },
+      {
+        "id": "10-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg observerer 100 Mbit/s downstream ved kabelforbundet speedtest – signifikant under kontrakteret 1 Gbit/s. Er der fejl på linjen eller CPE?"
+      },
+      {
+        "id": "10-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Mit internet virker ikke særlig hurtigt... 100 noget-eller-andet, er det godt?"
+      },
+      {
+        "id": "10-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "wtf 100mbit men jeg betaler for 1000???"
+      },
+      {
+        "id": "10-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har store filoverførsler til arbejde og kan kun få 100 Mbit af mine 1000. Det blokerer mit arbejde fuldstændigt."
+      },
+      {
+        "id": "10-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny kunde og er overrasket over at min speedtest kun viser 100 Mbit, selvom abonnementet siger 1000?"
+      },
+      {
+        "id": "10-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Det her har stået på for længe. 100 Mbit ud af 1000 Mbit. Hvad gør I ved det?"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Hvordan kan det være jeg ikke tester 1000 mbit på wifi?",
+      "Kan jeg købe en bedre Hiper-router der understøtter WiFi 6?",
+      "Hvad er den bedste WiFi-hastighed jeg realistisk kan forvente indendørs med 1 gbit fiber?",
+      "Hvad sker der hvis jeg klager over at WiFi-hastigheden ikke lever op til mine forventninger?"
+    ],
+    "topic": "WiFi-hastighed langt under abonnementshastighed",
+    "intent": "Forstå og forbedre WiFi-ydelse",
+    "variations": [
+      {
+        "id": "11-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg betaler for 1000 mbit og wifi er elendig! Er det normalt at wifi er så dårlig?!"
+      },
+      {
+        "id": "11-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt overrasket over at min trådløse forbindelse ikke viser 1000 mbit. Er det i orden, eller er der et problem?"
+      },
+      {
+        "id": "11-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er det normalt at WiFi 5 (802.11ac) har et teoretisk loft der forhindrer fuld 1 Gbit throughput, særligt på 2,4 GHz-båndet?"
+      },
+      {
+        "id": "11-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Wifi er ikke særlig hurtig... hvad er det normale?"
+      },
+      {
+        "id": "11-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "wifi er for langsom betaler for 1000mbit men der sker ikke noget"
+      },
+      {
+        "id": "11-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg er afhængig af WiFi til Teams-møder og kan ikke nå de hastigheder jeg betaler for. Hvad kan gøres?"
+      },
+      {
+        "id": "11-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og forventede at wifi ville have 1000 mbit – er det ikke sådan det virker?"
+      },
+      {
+        "id": "11-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Er træt af at høre at wifi altid er langsommere. Hvad er realistisk og hvad kan I konkret gøre?"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Min hastighed er lav",
+      "Jeg har fiber. Hvad konkret skal jeg gøre nu?",
+      "Jeg prøvede at genstarte routeren men det hjalp ikke. Hvad er næste trin?",
+      "Gælder garantien på hastighed kun ved kabelforbundet test?"
+    ],
+    "topic": "Generelt lav internethastighed",
+    "intent": "Finde årsag og løsning på lav hastighed",
+    "variations": [
+      {
+        "id": "12-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Mit internet er møglangsommt! I skal gøre noget ved det!"
+      },
+      {
+        "id": "12-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg oplever at min internethastighed er noget lav på det seneste. Kan I hjælpe mig med at finde ud af hvad der er galt?"
+      },
+      {
+        "id": "12-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg observerer konsistent lav throughput på fiber. Er der en diagnosticeringsguide eller kan I se linjekvaliteten fra jeres side?"
+      },
+      {
+        "id": "12-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Det der internet... det er ikke særlig godt. Hvad sker der?"
+      },
+      {
+        "id": "12-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "mit net er super langsomt hvad sker der"
+      },
+      {
+        "id": "12-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg kan ikke afvikle mine arbejdsprogrammer ordentligt fordi nettet er for langsomt. Hvornår kan det løses?"
+      },
+      {
+        "id": "12-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Er det normalt at hastigheden er sådan her? Jeg er ny og ved ikke hvad jeg skal forvente."
+      },
+      {
+        "id": "12-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Hastighed har været lav i lang tid. Hvad er løsningen?"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Hastighed",
+    "category_tag": null,
+    "questions": [
+      "Jeg har problemer med min hastighed, bruger egen router.",
+      "Hvad er kravene til min router for at den kan klare den hastighed jeg betaler for?",
+      "Kan jeg låne en Hiper-router for at teste om problemet er min router?",
+      "Hvad koster det at bytte til jeres router permanent?"
+    ],
+    "topic": "Hastighedsproblemer med egen router",
+    "intent": "Løse hastighedsproblemer ved brug af tredjeparts router",
+    "variations": [
+      {
+        "id": "13-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Hastighed er elendig og jeg bruger min egen router! Er det jeres problem eller min?!"
+      },
+      {
+        "id": "13-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg bruger min egen router og oplever lav hastighed. Er det muligt at I kan hjælpe, selvom det ikke er jeres udstyr?"
+      },
+      {
+        "id": "13-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg kører med egen managed router bag fiberboksen. Kan I verificere signal-kvaliteten på linjen uafhængigt af mit CPE?"
+      },
+      {
+        "id": "13-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg har min egen router... og internet er langsomt. Er det routerens fejl?"
+      },
+      {
+        "id": "13-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "langsomt net bruger min egen router hvad gøres"
+      },
+      {
+        "id": "13-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har sat min egen router op til hjemmekontoret, men hastigheden er ikke god nok til mine møder og uploads."
+      },
+      {
+        "id": "13-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg har min egen router som jeg gerne ville bruge – men nu er nettet langsomt. Er det fordi I ikke supporterer den?"
+      },
+      {
+        "id": "13-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Langsom hastighed, egen router. Vil bare vide hvad problemet er og hvornår det er løst."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hvordan kan jeg opsætte DynDNS til en udbyder der ikke er i routeren?",
+      "Hvad er bridge mode præcist, og hvad mister jeg ved at aktivere det?",
+      "Understøtter Hipers router nogen DynDNS-udbydere som standard?",
+      "Kan jeg få en statisk IP-adresse i stedet for DynDNS?"
+    ],
+    "topic": "Opsætte DynDNS med ikke-understøttet udbyder",
+    "intent": "Konfigurere DynDNS og evt. skaffe statisk IP",
+    "variations": [
+      {
+        "id": "14-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "DynDNS virker ikke med jeres router og min udbyder er ikke på listen! Hvad gør man?!"
+      },
+      {
+        "id": "14-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg forsøger at opsætte DynDNS, men min udbyder er desværre ikke at finde i routerindstillingerne. Kan I hjælpe mig?"
+      },
+      {
+        "id": "14-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er der mulighed for at konfigurere custom DDNS via routerens update-URL-felt, og understøttes f.eks. deSEC eller Cloudflare DDNS?"
+      },
+      {
+        "id": "14-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der er et eller andet med DynDNS... og det virker ikke. Hvad gør man?"
+      },
+      {
+        "id": "14-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "dynDNS virker ikke med jeres router min udbyder mangler hvad gør jeg"
+      },
+      {
+        "id": "14-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg kører en hjemmeserver til arbejde og har brug for DynDNS. Min udbyder er ikke i routermenuen – hvad er løsningen?"
+      },
+      {
+        "id": "14-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny hos jer og vil opsætte DynDNS, men kender ikke jeres router. Kan I guide mig?"
+      },
+      {
+        "id": "14-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har siddet med DynDNS-problemet i en time. Min udbyder er ikke i routeren. Hvad er løsningen?"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Kan man koble en mesh på det modem jeg har bestilt som er fra kabel?",
+      "Mister jeg internet under opsætning af bridge mode?",
+      "Hvad er bedst: mesh i bridge mode eller tilsluttet routerens LAN-port?",
+      "Anbefaler I bestemte mesh-systemer der virker godt med jeres udstyr?"
+    ],
+    "topic": "Tilslutte mesh-netværk til kabelmodem",
+    "intent": "Opsætte mesh-system med Hiper-udstyr",
+    "variations": [
+      {
+        "id": "15-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Kan jeg sætte et mesh-system på jeres modem eller ej?! Det burde vel ikke være så svært!"
+      },
+      {
+        "id": "15-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har bestilt et kabelmodem hos jer og overvejer at tilkøbe et mesh-system til bedre WiFi-dækning. Er det teknisk muligt at kombinere dem?"
+      },
+      {
+        "id": "15-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan Hiper-kabel CPE konfigureres i bridge mode for at placere et tredjeparts mesh-system som gateway?"
+      },
+      {
+        "id": "15-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Mesh... kan man sætte det på det modem I sender med?"
+      },
+      {
+        "id": "15-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kan man sætte mesh på jeres modem??"
+      },
+      {
+        "id": "15-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg arbejder i hele huset og har brug for godt WiFi overalt. Kan jeg tilslutte et Eero eller Orbi til jeres modem?"
+      },
+      {
+        "id": "15-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg har netop bestilt internet og vil gerne have godt WiFi i hele huset. Kan jeg bruge et mesh-system med jeres udstyr?"
+      },
+      {
+        "id": "15-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Kan mesh kobles direkte på modemet? Vil have et ja eller nej."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Kan jeg købe et længere kabel mellem fiberbox og router",
+      "Hvad er den maksimale kabellængde jeg kan bruge uden at miste hastighed?",
+      "Skal det være Cat6 eller Cat7 kabel for at få fuld 1 gbit hastighed?",
+      "Gør det nogen forskel om kablet er afskærmet eller ikke?"
+    ],
+    "topic": "Bruge længere kabel mellem fiberboks og router",
+    "intent": "Forstå kabellængde-begrænsninger og muligheder",
+    "variations": [
+      {
+        "id": "16-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg vil bare have et længere kabel! Er det noget I sælger eller ej?!"
+      },
+      {
+        "id": "16-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg vil gerne have routeren stående et andet sted i hjemmet. Er det i orden at bruge et lidt længere LAN-kabel end det medfølgende?"
+      },
+      {
+        "id": "16-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er der en specificeret maksimal kabellængde på 1000BASE-T segmentet mellem ONT og router inden der opleves degradering?"
+      },
+      {
+        "id": "16-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Det kabel er lidt kort... kan det forlænges?"
+      },
+      {
+        "id": "16-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kablet er for kort kan jeg få et længere"
+      },
+      {
+        "id": "16-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg vil have routeren tæt på mit arbejdsbord, men fiberboksen sidder et andet sted. Kan jeg bruge et 5 meter kabel uden problemer?"
+      },
+      {
+        "id": "16-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Installatøren satte fiberboksen op, men routeren kan ikke nå. Hvad gør jeg med kablet?"
+      },
+      {
+        "id": "16-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Vil have et længere LAN-kabel. Sælger I det og kan det leveres hurtigt?"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hvordan skal jeg forholde mig, hvis der er betonvægge i min bolig, og der er to etager?",
+      "Hvilke mesh-systemer anbefaler I, og sælger I dem selv?",
+      "Kan en tekniker komme ud og hjælpe med WiFi-optimering i min bolig?",
+      "Hvad koster et sådant besøg?"
+    ],
+    "topic": "WiFi-dækning med betonvægge og to etager",
+    "intent": "Forbedre WiFi-dækning i svær bolig",
+    "variations": [
+      {
+        "id": "17-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "WiFi virker ikke i halvdelen af huset pga. betonvægge! Hvad er løsningen?!"
+      },
+      {
+        "id": "17-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi har betonvægge og to etager, og WiFi-signalet er desværre lidt svagt visse steder. Hvad ville I anbefale?"
+      },
+      {
+        "id": "17-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er anbefalingen til mesh-topologi ved høj RF-dæmpning fra betonvægge og etageadskillelse? Tri-band vs. dual-band?"
+      },
+      {
+        "id": "17-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "WiFi er dårlig et sted i huset... vi har to etager. Hvad gør man?"
+      },
+      {
+        "id": "17-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "beton og 2 etager wifi sucks hvad gør jeg"
+      },
+      {
+        "id": "17-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har møder på første sal, men WiFi er for svagt der pga. beton. Hvad anbefaler I?"
+      },
+      {
+        "id": "17-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi har netop fået fiber, men er usikre på hvordan vi får godt WiFi i et hus med betonvægge og to etager."
+      },
+      {
+        "id": "17-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "WiFi er elendig pga. beton. Vil have en konkret løsningsanbefaling nu."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Support øvrige",
+    "category_tag": null,
+    "questions": [
+      "Hej jeg sidder og laver nat. Jeg kan ikke få det til at virke. Er det fordi jeg sidder bag et CGNAT.",
+      "Jeg har fibernet, ikke mobilt bredbånd. Er jeg også bag CGNAT på fiber?",
+      "Hvad koster det at få en dedikeret statisk IP-adresse?",
+      "Understøtter Hiper IPv6, og løser det mit problem med NAT?"
+    ],
+    "topic": "CGNAT-problem med server og ekstern adgang",
+    "intent": "Løse CGNAT-problem og få ekstern adgang",
+    "variations": [
+      {
+        "id": "18-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg arbejder nattevagt og kan slet ikke forbinde til min server! Er det det der CGNAT?!"
+      },
+      {
+        "id": "18-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg prøver at tilgå noget hjemmefra sent om aftenen, men kan ikke få forbindelsen til at virke. Kan det have noget med CGNAT at gøre?"
+      },
+      {
+        "id": "18-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er fiberlinjerne på Hiper-nettet bag CGNAT (RFC 6598), og er der mulighed for dedikeret public IPv4 eller native IPv6/64?"
+      },
+      {
+        "id": "18-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "CGNAT... er det noget jeg har? Det virker bare ikke."
+      },
+      {
+        "id": "18-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "cgnat problem? kan ikke connecte til noget udefra"
+      },
+      {
+        "id": "18-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg skal have adgang til min hjemmeserver under nattearbejde – er det CGNAT der spænder ben?"
+      },
+      {
+        "id": "18-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg prøver at opsætte noget fjernadgang men det virker ikke. Er der noget med CGNAT hos jer?"
+      },
+      {
+        "id": "18-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har brugt timer på at fejlsøge. Er det CGNAT? Hvad er løsningen og kan det laves om?"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Vi oplever store problemer med forbindelsen i aften",
+      "Vi har fiber. Hvad skal vi tjekke?",
+      "Det sker altid klokken 18-20. Er det fordi mange er online på samme tid?",
+      "Hvad er jeres SLA på oppetid, og giver I kompensation ved nedbrud?"
+    ],
+    "topic": "Ustabil forbindelse om aftenen",
+    "intent": "Finde årsag og løsning på aftensforbindelsesproblemer",
+    "variations": [
+      {
+        "id": "19-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Forbindelsen er ELENDIG i aften! Det er totalt uacceptabelt!"
+      },
+      {
+        "id": "19-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi oplever desværre en del problemer med internetforbindelsen i aften. Er der noget I kan gøre for os?"
+      },
+      {
+        "id": "19-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Vi observerer markante pakketab og latency-spikes i aften. Er der registrerede driftsfejl på backbone eller accessnettet?"
+      },
+      {
+        "id": "19-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Internet er ikke rigtig godt i aften... hvad sker der?"
+      },
+      {
+        "id": "19-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "net er mega dårlig i aften wtf sker der"
+      },
+      {
+        "id": "19-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vores internet er ustabilt og vi har aftenmøder online – hvornår er det stabilt igen?"
+      },
+      {
+        "id": "19-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi er relativt nye kunder og oplever store problemer i aften. Er det normalt eller er der et problem?"
+      },
+      {
+        "id": "19-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Forbindelsen har været elendig hele aftenen. Er der en fejl, og hvornår er det løst?"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Er der problemer med nettet omkring Herning? Jeg prøver og se fodbold via streaming, men det fungerer ikke",
+      "Fiber. Og det sker altid ved streaming, aldrig når jeg surfer normalt. Hvad kan det skyldes?",
+      "Er der et sted jeg selv kan tjekke driftstatus for mit område?",
+      "Kan I prioritere min forbindelse, så streaming fungerer bedre?"
+    ],
+    "topic": "Streaming virker ikke, mulig driftfejl i Herning",
+    "intent": "Kontrollere om der er driftproblemer i området",
+    "variations": [
+      {
+        "id": "20-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Fodbold-streamen crasher konstant! Er der et problem i Herning eller ej?!"
+      },
+      {
+        "id": "20-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg prøver at se en fodboldkamp via streaming, men det virker desværre ikke. Er der måske et problem med nettet i mit område?"
+      },
+      {
+        "id": "20-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er der registrerede driftsfejl på Hiper-nettet i Herning-området? Jeg oplever konsistent buffering og stream-drops."
+      },
+      {
+        "id": "20-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Streaming virker ikke rigtig... er der noget galt i Herning?"
+      },
+      {
+        "id": "20-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "streaming virker ikke er der nedbrud i herning???"
+      },
+      {
+        "id": "20-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg bruger streaming som afslapning efter en lang arbejdsdag, men det hakker konstant. Er der fejl i Herning?"
+      },
+      {
+        "id": "20-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny kunde og mit internet virker ikke til streaming. Er der måske et problem i mit område?"
+      },
+      {
+        "id": "20-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Streaming er nede og jeg prøver at se fodbold. Er der fejl i Herning og hvornår er det løst?"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Jeg har meget dårlig forbindelse, hvad sker der ?",
+      "Jeg har fiber. Hvad skal jeg konkret gøre?",
+      "Problemet er kun om aftenen. Er det normal belastning, eller er der et underliggende problem?",
+      "Kan I se på linjens statistik om der er fejl fra jeres side?"
+    ],
+    "topic": "Dårlig internetforbindelse uden klar årsag",
+    "intent": "Identificere og løse årsag til dårlig forbindelse",
+    "variations": [
+      {
+        "id": "21-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Forbindelsen er ad helvede til! Hvad sker der overhovedet?!"
+      },
+      {
+        "id": "21-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg oplever desværre en meget dårlig internetforbindelse på det seneste. Kan I fortælle mig hvad der sker?"
+      },
+      {
+        "id": "21-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg observerer intermittent forbindelsesudfald og høj latency. Er der aktive driftsfejl på infrastrukturen?"
+      },
+      {
+        "id": "21-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Internet er dårlig... hvad er der galt?"
+      },
+      {
+        "id": "21-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "net er super dårlig hvad er der galt"
+      },
+      {
+        "id": "21-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Forbindelsen er meget ustabil og det er umuligt at arbejde hjemmefra. Hvad sker der og hvornår er det løst?"
+      },
+      {
+        "id": "21-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og har oplevet dårlig forbindelse siden starten. Er det normalt hos jer?"
+      },
+      {
+        "id": "21-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Dårlig forbindelse i lang tid nu. Hvad er der galt og hvornår er det fikset?"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er pisse dårligt altså",
+      "Jeg har fiber. Det er langsomt og dropper ud konstant. Hvad gør jeg?",
+      "Skal jeg genstarte routeren og fiberboksen, og i hvilken rækkefølge?",
+      "Det sker dagligt og jeg er træt af det. Hvad er mine muligheder?"
+    ],
+    "topic": "Meget dårlig og ustabil internetforbindelse",
+    "intent": "Løse gentagende netudfald og lav hastighed",
+    "variations": [
+      {
+        "id": "22-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Internet er komplet elendig! Det duer ikke!"
+      },
+      {
+        "id": "22-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Internetforbindelsen er desværre ikke særlig god, og det bekymrer mig en del. Hvad kan I gøre?"
+      },
+      {
+        "id": "22-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeg oplever konstant pakketab og intermittent forbindelsesudfald på fiber. Kan I køre en linjediagnostik?"
+      },
+      {
+        "id": "22-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Det fungerer ikke rigtigt... der er noget galt."
+      },
+      {
+        "id": "22-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "mit net er bare lorte dårlig hvad gør i"
+      },
+      {
+        "id": "22-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Mit internet er for dårligt til at arbejde hjemmefra. Det dropper konstant. Hvad gøres?"
+      },
+      {
+        "id": "22-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg fortryder næsten at skifte til jer – internet er virkelig dårligt. Hvad sker der?"
+      },
+      {
+        "id": "22-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Internet er møgdårlig. Jeg har prøvet alt. Hvad er løsningen og hvornår sker det?"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "category": "Ustabil",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er langsomt",
+      "Fiber. Hvad er næste skridt?",
+      "Jeg har genstartet routeren og fiberboksen men det hjalp ikke",
+      "Hvornår er det langsomt? Er det konstant eller på bestemte tidspunkter?"
+    ],
+    "topic": "Langsomt internet uden klar årsag",
+    "intent": "Finde årsag til langsomt internet og løse det",
+    "variations": [
+      {
+        "id": "23-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Internet er fuldstændig ubrugeligt langsomt! I skal fikse det!"
+      },
+      {
+        "id": "23-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg synes internettet er blevet lidt langsommere på det seneste. Er der noget galt?"
+      },
+      {
+        "id": "23-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Min downstream-throughput er væsentlig under forventet ved kabelforbundet test. Kan I verificere linjestatus?"
+      },
+      {
+        "id": "23-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Internet er vist lidt langsomt... det er det, ja."
+      },
+      {
+        "id": "23-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "net er for langsomt hvad sker"
+      },
+      {
+        "id": "23-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Mit arbejde kræver hurtig forbindelse, men internet er langsomt i dag. Hvad kan I gøre?"
+      },
+      {
+        "id": "23-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Er det normalt at internet er langsomt? Jeg er ny og usikker på hvad jeg kan forvente."
+      },
+      {
+        "id": "23-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Internet er langsomt. Igen. Hvad er der galt?"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet virker ikke.",
+      "Jeg har fiber. Hvad er næste skridt?",
+      "Routeren er genstartet men der sker ingenting. Hvad gør jeg?",
+      "Fiberboksen lyser grønt men routeren lyser rødt. Hvad betyder det?"
+    ],
+    "topic": "Internet er helt nede",
+    "intent": "Genetablere internetforbindelsen",
+    "variations": [
+      {
+        "id": "24-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Internet er nede! Hvad sker der?!"
+      },
+      {
+        "id": "24-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har desværre ingen internetforbindelse. Kan I hjælpe mig med at finde ud af hvad der er galt?"
+      },
+      {
+        "id": "24-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Ingen WAN-konnektivitet på routeren. Er der registrerede driftsfejl, eller er det en lokal fejl på ONT eller CPE?"
+      },
+      {
+        "id": "24-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Internet er ikke... det virker ikke. Hvad gør man?"
+      },
+      {
+        "id": "24-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "net virker ikke hvad sker"
+      },
+      {
+        "id": "24-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Mit internet er nede og jeg har møder om en time. Hvad er der sket og hvornår er det oppe?"
+      },
+      {
+        "id": "24-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Internet virker ikke. Er det normalt at det går ned, eller er der noget galt?"
+      },
+      {
+        "id": "24-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Internet er nede. Igen. Hvornår er det oppe?"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Vores internet virker ikke idag?",
+      "Vi har fiber. Hvad skal vi tjekke?",
+      "Alle lysene på fiberboksen er slukket. Hvad betyder det?",
+      "Routeren og fiberboksen er genstartet men intet er sket. Hvad gør vi?"
+    ],
+    "topic": "Internet ude af drift",
+    "intent": "Finde årsag og genetablere forbindelsen",
+    "variations": [
+      {
+        "id": "25-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Vi har IKKE internet! Det er uacceptabelt!"
+      },
+      {
+        "id": "25-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi har desværre ingen internetforbindelse i dag. Kan I hjælpe os med at finde ud af hvad der er sket?"
+      },
+      {
+        "id": "25-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Ingen internettilgang fra vores side. Kan I verificere om der er et infrastrukturproblem eller om det er lokalt?"
+      },
+      {
+        "id": "25-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Internet virker ikke hos os... hvad sker der?"
+      },
+      {
+        "id": "25-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "vi har ikke net hvad sker der"
+      },
+      {
+        "id": "25-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi er to der arbejder hjemmefra og internet er nede. Hvornår er det oppe igen?"
+      },
+      {
+        "id": "25-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi er nye kunder og internet er allerede nede. Er det et problem hos jer?"
+      },
+      {
+        "id": "25-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Internet nede. Hvad er der sket og hvornår er det løst?"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit fibernet virker ikke. Globus lyser rød",
+      "Jeg har tjekket alt og det sidder som det skal. Globus lyser stadig rød. Hvad nu?",
+      "Er der planlagt vedligehold i mit område, der kan forklare det?",
+      "Hvornår kan I sende en tekniker ud?"
+    ],
+    "topic": "Fiber nede med rødt globuslys",
+    "intent": "Løse fiberfejl indikeret af rød indikator",
+    "variations": [
+      {
+        "id": "26-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Globuslyset er rødt og jeg har intet internet! Hvad er meningen?!"
+      },
+      {
+        "id": "26-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Fiberboksen har et rødt lys, som jeg forstår er et tegn på fejl. Kan I fortælle mig hvad det betyder og hvad jeg skal gøre?"
+      },
+      {
+        "id": "26-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "ONT-enhedens globus-indikator lyser rødt, hvilket indikerer manglende optisk sync. Er der aktiv fejl på linjestykket?"
+      },
+      {
+        "id": "26-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der er et rødt lys på boksen... er det slemt?"
+      },
+      {
+        "id": "26-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "globus rød lys hvad betyder det?? net virker ikke"
+      },
+      {
+        "id": "26-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Globus lyser rødt og jeg har intet internet til mit arbejde. Hvad sker der og hvornår er det løst?"
+      },
+      {
+        "id": "26-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og ved ikke hvad det røde lys på boksen betyder. Internet virker ikke."
+      },
+      {
+        "id": "26-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Rødt lys. Ingen internet. Har siddet med det i to timer. Hvad gøres?"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet er stoppet med at virke. Hvis jeg prøver at logge på får jeg en skærm hvis jeg skal indtatse konto nr. og aktiveringskode",
+      "Jeg kan ikke logge ind på Mit Hiper for at finde koden. Hvad gør jeg?",
+      "Jeg har fundet koden og indtastet den, men nettet virker stadig ikke. Hvad nu?",
+      "Kan jeg nulstille modemet helt og starte forfra?"
+    ],
+    "topic": "Internet ude, captive portal beder om aktivering",
+    "intent": "Aktivere forbindelsen igen og løse captive portal",
+    "variations": [
+      {
+        "id": "27-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Internet er nede og der kommer en mærkelig loginskærm! Hvad foregår der?!"
+      },
+      {
+        "id": "27-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Når jeg prøver at gå på internettet, vises der en skærm med et kontonummer og aktiveringskode. Det er lidt forvirrende – hvad skal jeg gøre?"
+      },
+      {
+        "id": "27-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Routeren redirecter HTTP-trafik til en captive portal med konto-ID og aktiveringskode. Ser ud til at forbindelsen er deaktiveret – hvad er årsagen?"
+      },
+      {
+        "id": "27-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der er en mærkelig skærm når jeg prøver internet... der skal stå noget kode?"
+      },
+      {
+        "id": "27-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "net nede og der er en mærkelig side der beder om kode hvad er det"
+      },
+      {
+        "id": "27-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Internet er gået ned og der er en skærm med kode. Jeg har møde om lidt. Hvad sker der?"
+      },
+      {
+        "id": "27-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og internet virker ikke. Der er en skærm der spørger om et kontonummer – hvad er det?"
+      },
+      {
+        "id": "27-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Internet nede, mærkelig loginskærm. Har siddet med det i en time. Hvad er løsningen?"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Offline",
+    "category_tag": null,
+    "questions": [
+      "Mit internet virker ikke og jeg har fulgt alle anvisninger",
+      "Hvordan fejlmelder jeg præcist via Mit Hiper? Kan du guide mig trin for trin?",
+      "Hvor lang tid tager det inden en tekniker kan kigge på det?",
+      "Kan jeg få kompensation for den tid internet ikke har virket?"
+    ],
+    "topic": "Internet virker ikke trods fulgt vejledning",
+    "intent": "Eskalere til tekniker efter eget fejlsøgning",
+    "variations": [
+      {
+        "id": "28-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg har gjort ALT I siger og internet virker STADIG ikke! Hvad nu?!"
+      },
+      {
+        "id": "28-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har fulgt alle jeres anvisninger omhyggeligt, men internettet virker desværre stadig ikke. Hvad er næste skridt?"
+      },
+      {
+        "id": "28-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Har gennemført standard fejlsøgningsprocedure inkl. power cycling af ONT og CPE. Fortsat ingen WAN-forbindelse. Eskalering til tekniker?"
+      },
+      {
+        "id": "28-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg har prøvet det hele... og det virker stadig ikke."
+      },
+      {
+        "id": "28-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "har prøvet alt net virker stadig ikke help"
+      },
+      {
+        "id": "28-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har fulgt alle jeres steps, men internet er stadig nede. Jeg mister arbejdstid. Hvad gøres nu?"
+      },
+      {
+        "id": "28-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og har prøvet at følge vejledningen, men internet virker stadig ikke. Hvad gør I nu?"
+      },
+      {
+        "id": "28-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Gjort alt hvad I siger. Virker stadig ikke. Vil have en tekniker nu."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Mit abonnement koster 99,- hvorfor har jeg betalt næsten 200kr på min første regning?",
+      "Hvad koster oprettelsen præcist? Det fremgår ikke klart af mit velkomstbrev",
+      "Vil min næste regning så være under 99kr, da jeg allerede har betalt frem?",
+      "Kan I sende mig en detaljeret specifikation af hvad den første regning dækkede?"
+    ],
+    "topic": "Første regning dobbelt så høj som abonnementspris",
+    "intent": "Forstå og afklare høj første regning",
+    "variations": [
+      {
+        "id": "29-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg skulle betale 99 kr og nu er der trukket 200! Hvad er det for noget?!"
+      },
+      {
+        "id": "29-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt forvirret over at min første regning var betydeligt højere end de 99 kr mit abonnement koster. Kan I forklare det?"
+      },
+      {
+        "id": "29-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Første faktura indeholder sandsynligvis proraterede gebyrer og oprettelsesomkostninger. Kan I fremsende en specificeret faktura?"
+      },
+      {
+        "id": "29-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Regningen var anderledes end forventet... der stod noget med 200 kr?"
+      },
+      {
+        "id": "29-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "wtf 200kr betalt men abonnement er 99 hvad er det"
+      },
+      {
+        "id": "29-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg er selvstændig og holder øje med udgifter. Første regning var dobbelt hvad der var aftalt – hvad dækker det?"
+      },
+      {
+        "id": "29-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny kunde og er overrasket over at min første regning er næsten dobbelt så høj som abonnementsprisen."
+      },
+      {
+        "id": "29-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "200 kr trukket. Abonnement er 99. Hvad er årsagen? Vil have svar nu."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Mit kort er spærret, kan jeg få lov at betale om 2 uger?",
+      "Risikerer jeg at mit internet bliver lukket imens jeg venter?",
+      "Kan jeg tilmelde et nyt betalingskort selv i Mit Hiper?",
+      "Hvad er konsekvensen hvis betalingen udskydes mere end de 2 uger?"
+    ],
+    "topic": "Spærret kort og ønske om betalingsudsættelse",
+    "intent": "Undgå afbrydelse af internet ved forsinket betaling",
+    "variations": [
+      {
+        "id": "30-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Mit kort er spærret og jeg kan ikke betale – lukker I internet ned nu?!"
+      },
+      {
+        "id": "30-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Mit betalingskort er desværre spærret og jeg kan ikke betale lige nu. Er det muligt at aftale en betalingsudsættelse på 2 uger?"
+      },
+      {
+        "id": "30-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan der oprettes en betalingsudsættelse på kontoen på 14 dage, og hvad er eskalationsproceduren ved fortsat misligholdelse?"
+      },
+      {
+        "id": "30-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg kan ikke betale lige nu... er det et problem?"
+      },
+      {
+        "id": "30-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kort spærret kan jeg betale om 2 uger??"
+      },
+      {
+        "id": "30-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Mit kort er spærret midlertidigt. Kan I give mig 2 uger uden at lukke for internet? Jeg arbejder hjemmefra."
+      },
+      {
+        "id": "30-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Mit kort er spærret og jeg er ny kunde. Hvad sker der nu, og kan I give mig tid til at ordne det?"
+      },
+      {
+        "id": "30-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Kort spærret. Kan jeg have 2 uger? Vil have svar hurtigt."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Hej, i har trukket for meget i december",
+      "Jamen jeg er ikke ny kunde, jeg har haft Hiper i over et år. Forklaringen passer ikke",
+      "Hvad er den nemmeste måde at få refunderet et forkert trukket beløb?",
+      "Kan I sende mig en oversigt over alle betalinger det seneste år?"
+    ],
+    "topic": "Forkert beløb trukket i december",
+    "intent": "Få refunderet fejlagtigt opkrævet beløb",
+    "variations": [
+      {
+        "id": "31-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "I har trukket for mange penge i december! Det er simpelthen ikke i orden!"
+      },
+      {
+        "id": "31-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har bemærket at der er trukket et beløb i december som ikke stemmer overens med hvad jeg plejer at betale. Kan I undersøge det?"
+      },
+      {
+        "id": "31-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Der er en diskrepans i december-fakturaen ift. aftalt abonnementspris. Kan I fremsende kontohistorik og identificere årsagen?"
+      },
+      {
+        "id": "31-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Regningen i december var anderledes... der var trukket for meget, tror jeg."
+      },
+      {
+        "id": "31-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "i har trukket for meget i december wtf"
+      },
+      {
+        "id": "31-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg holder styr på mine udgifter og der er trukket for meget i december. Kan det undersøges hurtigt?"
+      },
+      {
+        "id": "31-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ikke helt sikker på hvad jeg skulle betale, men december-regningen virker for høj."
+      },
+      {
+        "id": "31-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "For meget trukket i december. Vil have det refunderet og en forklaring. Nu."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Jeg har fået nyt kort, hvordan kan jeg tilmelde det?",
+      "Mit Hiper accepterer ikke mit nye kort. Hvad kan jeg gøre?",
+      "Understøtter I MobilePay eller anden betalingsmetode?",
+      "Hvad sker der med min abonnement hvis jeg ikke får tilmeldt et nyt kort i tide?"
+    ],
+    "topic": "Tilmelde nyt betalingskort",
+    "intent": "Opdatere betalingsoplysninger med nyt kort",
+    "variations": [
+      {
+        "id": "32-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg kan slet ikke finde ud af at tilmelde mit nye kort! Hvad er meningen?!"
+      },
+      {
+        "id": "32-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har fået udstedt et nyt bankkort og vil gerne opdatere mine betalingsoplysninger hos jer. Kan I vejlede mig i processen?"
+      },
+      {
+        "id": "32-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvordan opdateres betalingskortoplysningerne i Mit Hiper-portalen? Understøttes tokenisering via Nets eller Stripe?"
+      },
+      {
+        "id": "32-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Nyt kort... jeg skal vel tilmelde det et sted?"
+      },
+      {
+        "id": "32-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "nyt kort hvordan tilmelder jeg det?"
+      },
+      {
+        "id": "32-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg har fået nyt firmakort og skal have det tilmeldt ASAP, så betalingen ikke fejler."
+      },
+      {
+        "id": "32-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og ikke sikker på hvor jeg tilmelder mit betalingskort. Kan I guide mig?"
+      },
+      {
+        "id": "32-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Nyt kort. Vil have det tilmeldt inden næste betaling. Hvad gør jeg?"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "Hvorfor skal jeg allerede betale igen, når jeg har betalt en måned forud?",
+      "Kan jeg se alle mine betalinger samlet et sted?",
+      "Kan jeg skifte til at modtage en faktura i stedet for automatisk betaling?",
+      "Hvad sker der hvis betalingen fejler én gang?"
+    ],
+    "topic": "Forvirring over forudbetaling og ny opkrævning",
+    "intent": "Forstå betalingscyklus og opkrævningssystem",
+    "variations": [
+      {
+        "id": "33-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg har betalt forud og I opkræver mig IGEN! Det giver ingen mening!"
+      },
+      {
+        "id": "33-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt forvirret over at modtage en ny betalingsanmodning, selvom jeg forstod at jeg allerede havde betalt forud. Kan I forklare det?"
+      },
+      {
+        "id": "33-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan I redegøre for faktureringsmodellen? Jeg antog forudbetaling dækkede indeværende periode, men modtager allerede ny opkrævning."
+      },
+      {
+        "id": "33-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg troede jeg havde betalt... men der er en ny regning? Hvorfor?"
+      },
+      {
+        "id": "33-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "har betalt forud men der kommer ny regning?? wtf"
+      },
+      {
+        "id": "33-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg holder styr på mine udgifter og dette er forvirrende. Betalte forud men modtager ny regning allerede?"
+      },
+      {
+        "id": "33-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og forstår ikke betalingssystemet. Betalte forud men skal betale igen allerede?"
+      },
+      {
+        "id": "33-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Betalte forud. Ny opkrævning allerede. Forklar."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "category": "Regning",
+    "category_tag": null,
+    "questions": [
+      "I har trukket for mange penge. Vi har betalt for november måned i vores første regning men i har nu trukket for november måned (igen)",
+      "Det er ikke vores første regning – vi har betalt til jer i 14 måneder",
+      "Hvad er jeres klageproces, og hvem kan jeg eskalere til?",
+      "Kan jeg midlertidigt sætte automatisk betaling på pause mens det undersøges?"
+    ],
+    "topic": "Dobbeltopkrævning for november måned",
+    "intent": "Få refunderet dobbelt opkrævet beløb og klage",
+    "variations": [
+      {
+        "id": "34-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "I har dobbeltopkrævet os for november! Det er simpelthen ikke acceptabelt!"
+      },
+      {
+        "id": "34-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi har opdaget at I har trukket betaling for november måned to gange – første gang i vores startregning og nu igen. Det bør I naturligvis undersøge."
+      },
+      {
+        "id": "34-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Vi observerer en dobbeltfakturering for november. Første opkrævning skete i onboarding-fakturaen, anden nu. Request om kreditering og fejlanalyse."
+      },
+      {
+        "id": "34-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg tror I har trukket for november to gange... er det rigtigt?"
+      },
+      {
+        "id": "34-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "dobbelt betaling for november i trukket 2 gange wtf"
+      },
+      {
+        "id": "34-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi er et lille firma og november er opkrævet dobbelt. Det skal rettes hurtigt."
+      },
+      {
+        "id": "34-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Noget er galt med vores regning. Vi har betalt november to gange. Vi har haft jer i 14 måneder."
+      },
+      {
+        "id": "34-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "November opkrævet dobbelt. Vil have det refunderet nu og en forklaring."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "hvordan ændrer jeg min adresse",
+      "Kan jeg ikke ændre adressen direkte i Mit Hiper selv?",
+      "Hvad nu hvis min fraflytningsdato og tilflytningsdato er den samme dag?",
+      "Hvor lang tid tager det, fra I modtager mailen til flytningen er effektueret?"
+    ],
+    "topic": "Ændre adresse ved flytning",
+    "intent": "Flytte abonnement til ny adresse",
+    "variations": [
+      {
+        "id": "35-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg skal flytte og I skal ændre min adresse! Hvordan gøres det?!"
+      },
+      {
+        "id": "35-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg skal snart flytte og vil gerne høre hvad processen er for at ændre min adresse hos jer."
+      },
+      {
+        "id": "35-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er proceduren for adresseflytning af eksisterende abonnement? Selvbetjening via Mit Hiper eller kræver det support-kontakt?"
+      },
+      {
+        "id": "35-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg skal flytte... hvad gør man med internettet?"
+      },
+      {
+        "id": "35-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "skal flytte hvordan ændrer jeg adressen"
+      },
+      {
+        "id": "35-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg flytter om 3 uger og arbejder hjemmefra. Hvad gør jeg for at have internet klar på den nye adresse fra dag 1?"
+      },
+      {
+        "id": "35-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er relativt ny og skal flytte. Hvad gør jeg med mit abonnement?"
+      },
+      {
+        "id": "35-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Skal flytte snart. Hvad er processen for adresseændring og hvor lang tid tager det?"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "jeg har brug for at overdrage abonnenemt i forbindelse med dødsfald",
+      "Hvad dokumentation skal jeg have klar til overdragelsen?",
+      "Beholder abonnementet sin nuværende pris, eller ændres det ved overdragelsen?",
+      "Hvad nu hvis den nye indehaver ikke har et MitID tilknyttet?"
+    ],
+    "topic": "Overdragelse af abonnement ved dødsfald",
+    "intent": "Overføre abonnement til anden person efter dødsfald",
+    "variations": [
+      {
+        "id": "36-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Der er et dødsfald i familien og abonnementet skal overdrages. Hvad er proceduren?"
+      },
+      {
+        "id": "36-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg har desværre mistet et familiemedlem og har behov for at overdrage vedkommendes abonnement til en anden. Kan I hjælpe med processen?"
+      },
+      {
+        "id": "36-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Vi har brug for at effektuere en kontraktmæssig overdragelse af eksisterende abonnement pga. dødsfald. Hvilken dokumentation kræves?"
+      },
+      {
+        "id": "36-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der er sket noget trist i familien... abonnementet skal vel overdrages til nogen?"
+      },
+      {
+        "id": "36-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "dødsfald i familien skal overdrage abonnement hvad gør vi"
+      },
+      {
+        "id": "36-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi skal have overdraget et abonnement hurtigt i forbindelse med et dødsfald. Hvad er den hurtigste proces?"
+      },
+      {
+        "id": "36-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi er ikke sikre på hvad I kræver ved en overdragelse i forbindelse med dødsfald."
+      },
+      {
+        "id": "36-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Dødsfald. Abonnement skal overdrages. Hvad er den hurtigste vej?"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Hvor lang tid før en flytning skal jeg oplyste om en flytning og den nye addresse?",
+      "Hvad sker der hvis der skal en tekniker ud – kan det nå at ske inden for 2 uger?",
+      "Sker flytningen automatisk på den angivne dato, eller skal jeg bekræfte noget?",
+      "Hvad sker der med min regning i forbindelse med flytningen?"
+    ],
+    "topic": "Varsel og tidsfrister ved flytning",
+    "intent": "Kende tidsfrister og procedure for adresseflytning",
+    "variations": [
+      {
+        "id": "37-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg skal vide hvornår I skal have besked om min flytning! Det er ikke til at finde information om!"
+      },
+      {
+        "id": "37-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg vil gerne vide hvor lang tid i forvejen jeg bør give jer besked om min kommende flytning, så alt kan gå ordentligt til."
+      },
+      {
+        "id": "37-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er minimumsvarsel i kalenderdage for adresseflytning, og hvad er SLA på aktivering på ny adresse?"
+      },
+      {
+        "id": "37-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg skal flytte... skal I have besked nu eller hvad?"
+      },
+      {
+        "id": "37-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvornår skal i have besked om flytning??"
+      },
+      {
+        "id": "37-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg skal planlægge min flytning nøje for at sikre kontinuerlig internetadgang til mit arbejde. Hvad er jeres varselskrav?"
+      },
+      {
+        "id": "37-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ikke sikker på hvad I kræver af varsel ved flytning. Hvornår skal I vide det?"
+      },
+      {
+        "id": "37-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Hvad er varselskravet for flytning? Har brug for svar hurtigt."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "Kan jeg tage min router med på min nye adresse?",
+      "Hvad koster det at få en ny router, hvis jeg skal have en?",
+      "Kan jeg få den nye router inden jeg flytter, så jeg har internet fra dag 1?",
+      "Hvad gør jeg med min gamle router, hvis jeg skal have en ny?"
+    ],
+    "topic": "Medbring eksisterende router ved flytning",
+    "intent": "Afklare om router kan genbruges på ny adresse",
+    "variations": [
+      {
+        "id": "38-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Kan jeg bare tage routeren med eller skal jeg have en ny? Det er forvirrende!"
+      },
+      {
+        "id": "38-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg overvejer om jeg kan medbringe min nuværende router til min nye adresse, eller om der er behov for ny installation."
+      },
+      {
+        "id": "38-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er Hiper-routeren hardbound til den specifikke ONT, eller kan den genbruges på ny adresse med ny fiberboks?"
+      },
+      {
+        "id": "38-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Router... kan jeg tage den med når jeg flytter?"
+      },
+      {
+        "id": "38-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kan jeg tage routeren med til ny adresse"
+      },
+      {
+        "id": "38-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg skal have internet klar fra dag 1 på ny adresse. Kan routeren bare flyttes med?"
+      },
+      {
+        "id": "38-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg skal flytte og ved ikke om routeren kan bruges på ny adresse."
+      },
+      {
+        "id": "38-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Kan routeren flyttes med? Simpelt spørgsmål – vil have et hurtigt svar."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "category": "Flytning/overdragelse",
+    "category_tag": "SALES_HANDOVER_EXPECTED",
+    "questions": [
+      "hej hvad koster det at flytte ardresse",
+      "Hvad koster teknikerbesøget, hvis der er brug for det på den nye adresse?",
+      "Hvad sker der med mit abonnement i perioden fra jeg fraflytter til jeg tilflytter?",
+      "Kan jeg have internet på begge adresser i en overgangsperiode?"
+    ],
+    "topic": "Omkostninger ved adresseflytning",
+    "intent": "Kende pris og vilkår for flytning af abonnement",
+    "variations": [
+      {
+        "id": "39-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Hvad koster det at flytte og hvorfor koster det noget overhovedet?!"
+      },
+      {
+        "id": "39-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg overvejer at flytte og vil gerne vide om der er forbundet nogen omkostninger med at flytte mit abonnement til en ny adresse."
+      },
+      {
+        "id": "39-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er der et flytte- eller etableringgebyr ved adresseflytning, og er det afhængigt af om ny installation kræves?"
+      },
+      {
+        "id": "39-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Koster det noget at flytte... abonnementet?"
+      },
+      {
+        "id": "39-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvad koster det at flytte adresse??"
+      },
+      {
+        "id": "39-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg skal bruge et budget for min flytning. Hvad koster det at flytte internetabonnementet?"
+      },
+      {
+        "id": "39-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg overvejer at flytte og er ikke sikker på hvad det koster at tage mit abonnement med."
+      },
+      {
+        "id": "39-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Hvad er prisen for adresseflytning? Vil have et klart svar."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "kan vi få internet hurtigere hvis det er uden teknikerbesøg?",
+      "Hvordan ved jeg om min bolig allerede er forberedt til fiber?",
+      "Hvad koster et teknikerbesøg, hvis det viser sig at være nødvendigt?",
+      "Kan jeg selv installere det, hvis alt er klar?"
+    ],
+    "topic": "Fremskynde internetoprettelse uden teknikerbesøg",
+    "intent": "Få internet hurtigere ved at undgå teknikerbesøg",
+    "variations": [
+      {
+        "id": "40-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Vi venter på internet og gider ikke vente på en tekniker! Er der en hurtigere vej?!"
+      },
+      {
+        "id": "40-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi venter på at få internet installeret og undrer os om det er muligt at fremskynde processen ved at undvære et teknikerbesøg."
+      },
+      {
+        "id": "40-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan aktivering ske remote via ONT-provisionering uden on-site teknikerinstallation, forudsat eksisterende stik er til rådighed?"
+      },
+      {
+        "id": "40-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Kan man få internet hurtigere... uden at vente på tekniker?"
+      },
+      {
+        "id": "40-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "kan vi få net hurtigere uden tekniker??"
+      },
+      {
+        "id": "40-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi har akut brug for internet til hjemmekontor. Er der mulighed for hurtigere etablering uden teknikerbesøg?"
+      },
+      {
+        "id": "40-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi har netop bestilt og undrer os om vi kan undgå at vente på en tekniker."
+      },
+      {
+        "id": "40-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Vil have internet hurtigt. Kan teknikerbesøg undgås?"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hvorfor skal fiberboksen skiftes",
+      "Hvem betaler for det? Skal jeg selv betale for den nye fiberboks?",
+      "Hvor lang tid tager det at skifte fiberboksen, og mister jeg internet imens?",
+      "Kan jeg blive varslet i forvejen, så jeg ikke sidder uden internet midt i arbejdstiden?"
+    ],
+    "topic": "Fiberboks skal udskiftes",
+    "intent": "Forstå årsag og konsekvenser af fiberboksskifte",
+    "variations": [
+      {
+        "id": "41-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Hvad mener I fiberboksen skal skiftes?! Det lyder som om det er jeres problem!"
+      },
+      {
+        "id": "41-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt bekymret for at høre at fiberboksen skal skiftes. Kan I fortælle mig hvorfor det er nødvendigt?"
+      },
+      {
+        "id": "41-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er den tekniske årsag til at ONT-enheden skal udskiftes? Fejl, firmware-inkompatibilitet eller proaktiv udskiftning?"
+      },
+      {
+        "id": "41-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Skal boksen skiftes? Hvorfor det?"
+      },
+      {
+        "id": "41-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvorfor skal fiberboksen skiftes??"
+      },
+      {
+        "id": "41-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg arbejder hjemmefra og kan ikke undvære internet. Hvorfor skal fiberboksen skiftes og hvornår sker det?"
+      },
+      {
+        "id": "41-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og forstår ikke hvorfor fiberboksen allerede skal skiftes."
+      },
+      {
+        "id": "41-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Fiberboks skal skiftes. Hvornår sker det og hvem betaler?"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hejsa jeg ønsker status på min fiber etablering",
+      "Okay men hvornår hører jeg noget? Jeg har ventet i 2 uger allerede",
+      "Er der et sted jeg selv kan se status, uden at kontakte jer?",
+      "Hvem er underleverandøren i mit område, og kan jeg kontakte dem direkte?"
+    ],
+    "topic": "Status på igangværende fibretablering",
+    "intent": "Få opdatering på etableringsforløbet",
+    "variations": [
+      {
+        "id": "42-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg har ventet EVIGHEDER på min fiber! Hvad sker der?!"
+      },
+      {
+        "id": "42-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg vil gerne høre lidt om status på installationen af min fiberforbindelse, da jeg ikke har hørt noget i et stykke tid."
+      },
+      {
+        "id": "42-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan I give en statusopdatering på etableringsordren inkl. forventet aktiveringstidspunkt og evt. årsag til forsinkelse?"
+      },
+      {
+        "id": "42-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Min fiber... er den på vej? Hvad sker der?"
+      },
+      {
+        "id": "42-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvad er status på min fiber?? er den snart klar"
+      },
+      {
+        "id": "42-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg venter på fiber til mit hjemmekontor og har brug for at planlægge. Hvornår er det klar?"
+      },
+      {
+        "id": "42-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg har bestilt fiber men har ikke hørt noget. Hvad er status?"
+      },
+      {
+        "id": "42-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har ventet 2 uger. Hvad er status på min fibretablering?"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hej jeg tror ikke vi har fiberboks? Følger den med?",
+      "Hvad sker der hvis teknikerbesøget ikke er aftalt? Kommer der automatisk en?",
+      "Kan jeg installere fiberboksen selv, eller kræver det altid en tekniker?",
+      "Hvad koster teknikerbesøget?"
+    ],
+    "topic": "Fiberboks mangler ved installation",
+    "intent": "Afklare om fiberboks leveres og hvordan",
+    "variations": [
+      {
+        "id": "43-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Vi mangler en fiberboks! Kommer den eller skal vi selv sørge for det?!"
+      },
+      {
+        "id": "43-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi er ikke sikre på om vi har modtaget en fiberboks. Er det noget der leveres separat, eller følger den med installationen?"
+      },
+      {
+        "id": "43-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Er ONT-enheden inkluderet i leverancen ved nyt fiberabonnement, eller skal kunden anskaffe den selv?"
+      },
+      {
+        "id": "43-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Vi har ikke en fiberboks... eller har vi? Hvad er en fiberboks?"
+      },
+      {
+        "id": "43-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "mangler fiberboks følger den med??"
+      },
+      {
+        "id": "43-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi har bestilt internet og er klar til at sætte op – men har ingen fiberboks. Kommer den automatisk?"
+      },
+      {
+        "id": "43-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi er nye kunder og ikke sikre på om vi fik en fiberboks. Hvad gør vi?"
+      },
+      {
+        "id": "43-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Ingen fiberboks er ankommet. Hvornår kommer den?"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "category": "Etablering",
+    "category_tag": null,
+    "questions": [
+      "Hej. Hvordan fungerer det hvis man skal have jeres internet. Vi har ikke noget stik i huset? Hvordan tilslutter man routeren?",
+      "Hvad koster det at få en tekniker ud og lave installationen?",
+      "Hvor lang tid skal jeg vente på at en tekniker kan komme?",
+      "Kan I give mig en fast dato, eller er det bare et skøn?"
+    ],
+    "topic": "Ny fiberforbindelse til hus uden eksisterende stik",
+    "intent": "Forstå installationsprocessen fra bunden",
+    "variations": [
+      {
+        "id": "44-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Vi har INGEN stik og ingen ved hvad der skal ske! Hvad gøres?!"
+      },
+      {
+        "id": "44-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Vi overvejer at bestille internet hos jer, men vi har ikke noget stik i huset. Kan I fortælle os hvad processen er fra start til slut?"
+      },
+      {
+        "id": "44-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er installationsprocessen ved en adresse uden eksisterende fiberindstik? Kræver det gravearbejde og hvem koordinerer det?"
+      },
+      {
+        "id": "44-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Vi har ikke noget stik... hvad sker der så?"
+      },
+      {
+        "id": "44-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "ingen stik i huset hvad gør vi for at få jeres internet"
+      },
+      {
+        "id": "44-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vi er ved at flytte ind og har brug for internet til hjemmekontor fra dag 1. Ingen stik eksisterer. Hvad er processen?"
+      },
+      {
+        "id": "44-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Vi overvejer Hiper men ved ikke hvad der kræves. Vi har ikke noget stik."
+      },
+      {
+        "id": "44-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Ingen stik i huset. Hvad er processen og hvornår kan vi have internet?"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Jeg skal sende 3 routere tilbage men har kun 2",
+      "Hvad er gebyret for en manglende router?",
+      "Kan jeg aflevere routerne personligt i stedet for at sende dem?",
+      "Hvad hvis jeg finder den tredje router bagefter – kan jeg stadig aflevere den?"
+    ],
+    "topic": "Returnere udstyr med én manglende enhed",
+    "intent": "Afklare konsekvenser og proces ved manglende router",
+    "variations": [
+      {
+        "id": "45-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "I siger jeg skal returnere 3 routere men jeg har kun 2! Hvad gøres der?!"
+      },
+      {
+        "id": "45-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er lidt i tvivl om hvad jeg skal gøre, da I beder mig om at returnere 3 routere, men jeg kun har 2 liggende."
+      },
+      {
+        "id": "45-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Jeres system angiver 3 enheder til returnering, men jeg kan kun lokalisere 2. Hvad er proceduren og hvad er gebyret for den manglende?"
+      },
+      {
+        "id": "45-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg mangler en router... men ved ikke hvad der sker nu."
+      },
+      {
+        "id": "45-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "skal sende 3 routere men har kun 2 hvad sker der"
+      },
+      {
+        "id": "45-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Vil have returneret udstyret korrekt så jeg ikke opkræves unødigt. Hvad gøres når én mangler?"
+      },
+      {
+        "id": "45-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "I beder mig returnere 3 routere men jeg har kun haft 2. Hvad nu?"
+      },
+      {
+        "id": "45-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har 2 af 3 routere. Hvad koster den manglende og hvad er processen?"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvordan sender jeg jeres router tilbage?",
+      "Kan jeg sende den via PostNord pakkeshop, eller skal det være direkte levering?",
+      "Inden for hvilken frist skal routeren være modtaget af jer?",
+      "Hvem betaler forsikringen på pakken, hvis routeren beskadiges undervejs?"
+    ],
+    "topic": "Procedure for returnering af router",
+    "intent": "Forstå returneringsprocessen for router",
+    "variations": [
+      {
+        "id": "46-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg vil returnere routeren men ved ikke hvad der skal ske! Det er ikke beskrevet nogen steder!"
+      },
+      {
+        "id": "46-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg ønsker at sende routeren tilbage til jer og vil gerne vide hvad den korrekte procedure er."
+      },
+      {
+        "id": "46-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Hvad er returproceduren for Hiper-udstyr – er der et prepaid fragtmærke og en specificeret returadresse?"
+      },
+      {
+        "id": "46-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Jeg skal sende routeren tilbage... men hvordan?"
+      },
+      {
+        "id": "46-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvordan returnerer jeg routeren??"
+      },
+      {
+        "id": "46-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg opsiger abonnementet og skal returnere routeren. Hvad er den hurtigste og korrekte måde?"
+      },
+      {
+        "id": "46-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg skal returnere routeren og ved ikke hvad man gør."
+      },
+      {
+        "id": "46-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Vil returnere routeren nu. Hvad er processen?"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvornår kommer min router?",
+      "Min onlinedato er om 3 dage og jeg har stadig ikke modtaget routeren. Hvad gør jeg?",
+      "Kan jeg hente routeren direkte et sted i stedet for at vente på levering?",
+      "Hvad sker der med min onlinedato hvis routeren ikke er kommet til tiden?"
+    ],
+    "topic": "Ventetid på levering af router",
+    "intent": "Spore og fremskynde routerlevering",
+    "variations": [
+      {
+        "id": "47-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg venter stadig på min router! Hvad sker der?!"
+      },
+      {
+        "id": "47-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg vil gerne høre lidt om hvornår jeg kan forvente at modtage min router, da jeg endnu ikke har fået den."
+      },
+      {
+        "id": "47-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan I give en tracking-status eller forventet leveringstidspunkt for routeren? Hvad er det forventede forsendelsesvindue?"
+      },
+      {
+        "id": "47-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Router... er den på vej? Hvornår kommer den?"
+      },
+      {
+        "id": "47-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "hvornår kommer routeren?? venter"
+      },
+      {
+        "id": "47-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Min onlinedato nærmer sig og jeg har stadig ikke modtaget routeren. Hvad sker der?"
+      },
+      {
+        "id": "47-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg har netop bestilt og vil gerne vide hvornår routeren forventes leveret."
+      },
+      {
+        "id": "47-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Router er ikke kommet. Onlinedato er tæt på. Hvad sker der?"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Hvor bliver min router sendt til?",
+      "Kan jeg ændre leveringsadressen til min hjemmeadresse?",
+      "Hvad sker der hvis pakken sendes retur, fordi jeg ikke nåede at hente den?",
+      "Kan jeg få den leveret til en pakkeautomat i stedet for en pakkeshop?"
+    ],
+    "topic": "Leveringsadresse for router",
+    "intent": "Afklare og evt. ændre leveringsadresse",
+    "variations": [
+      {
+        "id": "48-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Jeg har ikke fået routeren og ved ikke hvad adresse I har! Hvad sker der?!"
+      },
+      {
+        "id": "48-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg er ikke helt sikker på hvilken adresse I har sendt min router til. Kan I oplyse mig om det?"
+      },
+      {
+        "id": "48-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Kan I bekræfte forsendelsesadressen på routerordren og give track and trace-information?"
+      },
+      {
+        "id": "48-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Router... er den sendt? Til hvilken adresse?"
+      },
+      {
+        "id": "48-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "til hvilken adresse sender i routeren?"
+      },
+      {
+        "id": "48-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Jeg arbejder fra to adresser og er ikke sikker på hvilken routeren er sendt til. Kan I tjekke?"
+      },
+      {
+        "id": "48-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg er ny og vil gerne vide om routeren er sendt til den rigtige adresse."
+      },
+      {
+        "id": "48-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Vil vide hvilken adresse routeren er sendt til. Har den ikke fået endnu."
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "category": "Udstyr",
+    "category_tag": null,
+    "questions": [
+      "Sender i returlabel til router?",
+      "Hvad er adressen jeg skal sende routeren til?",
+      "Hvad sker der hvis jeg ikke returnerer routeren? Hvad er gebyret?",
+      "Inden for hvilken frist skal routeren være returneret?"
+    ],
+    "topic": "Returlabel til returnering af router",
+    "intent": "Modtage returlabel og afklare returprocedure",
+    "variations": [
+      {
+        "id": "49-v1",
+        "persona": "frustrated",
+        "urgency": "high",
+        "q1": "Skal I ikke sende en returlabel?! Jeg kan ikke returnere uden en!"
+      },
+      {
+        "id": "49-v2",
+        "persona": "polite_elderly",
+        "urgency": "low",
+        "q1": "Jeg skal returnere min router og vil gerne vide om I sender et returmærke, eller om jeg selv skal arrangere det."
+      },
+      {
+        "id": "49-v3",
+        "persona": "tech_savvy",
+        "urgency": "medium",
+        "q1": "Inkluderer returproceduren et prepaid forsendelsesmærke fra jer, eller skal jeg selv arrangere og afholde fragt?"
+      },
+      {
+        "id": "49-v4",
+        "persona": "vague",
+        "urgency": "low",
+        "q1": "Der var noget med et mærke til at sende routeren... sender I det?"
+      },
+      {
+        "id": "49-v5",
+        "persona": "sms_style",
+        "urgency": "medium",
+        "q1": "sender i returlabel eller skal jeg selv skaffe??"
+      },
+      {
+        "id": "49-v6",
+        "persona": "work_from_home",
+        "urgency": "high",
+        "q1": "Skal returnere routeren hurtigt. Sender I returlabelen eller skal jeg finde en selv?"
+      },
+      {
+        "id": "49-v7",
+        "persona": "new_customer",
+        "urgency": "low",
+        "q1": "Jeg skal returnere routeren og er usikker på om I sender et returmærke."
+      },
+      {
+        "id": "49-v8",
+        "persona": "impatient",
+        "urgency": "high",
+        "q1": "Har I sendt returlabel? Vil have returneret routeren nu."
+      }
+    ]
+  }
+]
