@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 import { json } from '@sveltejs/kit';
 
@@ -13,7 +14,9 @@ function getDb() {
 }
 
 function readPromptTemplate() {
-  const p = path.resolve(process.cwd(), 'judge_prompt_v1.txt');
+  // Resolve relative to this file so it works regardless of cwd
+  // Path: src/routes/api/judge/ → up 4 → evidence-dashboard/
+  const p = fileURLToPath(new URL('../../../../judge_prompt_v1.txt', import.meta.url));
   return fs.readFileSync(p, 'utf8');
 }
 
