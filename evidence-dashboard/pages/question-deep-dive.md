@@ -44,6 +44,15 @@ title: Question Deep Dive
   background: #f2f4f7;
   border: 1px solid #dce1e8;
 }
+
+.bubble-bot a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+.bubble-bot a:hover {
+  color: #1d4ed8 !important;
+}
 </style>
 
 ```sql question_options
@@ -62,7 +71,6 @@ order by min(category), min(first_user_text)
 {#if inputs.question_key.value}
 ```sql question_overview
 select
-  question_key,
   min(first_user_text) as question_text,
   min(category) as category,
   count(*) as sessions,
@@ -73,7 +81,6 @@ select
   round(avg(avg_bot_chars), 1) as avg_bot_chars
 from simlab.sessions
 where question_key = '${inputs.question_key.value}'
-group by 1
 ```
 
   <BigValue data={question_overview} value=sessions title="Sessions for Question" fmt=num0/>
@@ -83,7 +90,6 @@ group by 1
 ```sql by_run
 select
   r.run_started_at,
-  s.run_id,
   s.endpoint,
   count(*) as sessions,
   round(avg(s.handover_flag), 4) as handover_rate_pct,
@@ -93,7 +99,7 @@ select
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id
 where s.question_key = '${inputs.question_key.value}'
-group by 1,2,3
+group by 1,2
 order by r.run_started_at
 ```
 
@@ -142,7 +148,7 @@ where s.session_id = '${inputs.session_id.value}'
 select
   turn,
   role,
-  replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br>', '\n'), '<br/>', '\n') as text
+  replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br/>', '<br>'), '<br />', '<br>') as text
 from simlab.turns
 where session_id = '${inputs.session_id.value}'
 order by turn, case when role = 'user' then 0 else 1 end
@@ -154,7 +160,7 @@ order by turn, case when role = 'user' then 0 else 1 end
           {#if row.role === 'user'}
             <div class="bubble-user"><b>Bruger (T{row.turn})</b><br/>{row.text}</div>
           {:else}
-            <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{row.text}</div>
+            <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{@html row.text}</div>
           {/if}
         {/each}
       </div>

@@ -37,6 +37,15 @@ title: Conversation Explorer + AI Judge
   border: 1px solid #dce1e8;
 }
 
+.bubble-bot a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+.bubble-bot a:hover {
+  color: #1d4ed8 !important;
+}
+
 .bubble-meta {
   font-size: 12px;
   color: #4b5563;
@@ -71,9 +80,7 @@ order by r.run_started_at desc
 
 ```sql session_metrics
 select
-  s.session_id,
   r.run_started_at,
-  s.run_id,
   s.endpoint,
   s.category,
   s.first_user_text,
@@ -81,10 +88,8 @@ select
   s.handover_flag,
   s.handover_turn,
   s.error_count,
-  s.timeout_count,
-  s.dead_link_turns,
   s.dead_link_count,
-  s.avg_bot_chars
+  round(s.avg_bot_chars) as avg_bot_chars
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id
 where s.session_id = '${inputs.session_id.value}'
@@ -95,7 +100,7 @@ select
   turn,
   role,
   handover,
-  replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br>', '\n'), '<br/>', '\n') as text,
+  replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br/>', '<br>'), '<br />', '<br>') as text,
   dead_links_json,
   timestamp
 from simlab.turns
@@ -160,7 +165,7 @@ limit 1
       {:else}
         <div class="bubble-bot">
           <div class="bubble-meta"><b>Bot</b> · T{row.turn}</div>
-          <div>{row.text}</div>
+          <div>{@html row.text}</div>
         </div>
       {/if}
     {/each}
@@ -172,7 +177,6 @@ limit 1
 {/if}
 
 ## AI Judge
-<p>Kør lokal AI Judge på Lenovo via Ollama.</p>
 
 <form method="get" action="/api/judge" target="judge_main" rel="noopener noreferrer">
   <input type="hidden" name="session_id" value={inputs.session_id.value} />

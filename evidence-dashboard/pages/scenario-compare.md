@@ -8,10 +8,11 @@ title: Scenario Compare
   }
 </script>
 
+
 <style>
 .compare-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 12px;
 }
@@ -50,6 +51,15 @@ title: Scenario Compare
   border: 1px solid #dce1e8;
 }
 
+.bubble-bot a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+.bubble-bot a:hover {
+  color: #1d4ed8 !important;
+}
+
 .empty {
   border: 1px dashed #d1d5db;
   border-radius: 8px;
@@ -78,46 +88,57 @@ where s.question_key = '${inputs.question_key.value}'
 order by r.run_started_at desc
 ```
 
+```sql default_sessions
+select
+  session_id,
+  row_number() over (order by run_started_at desc) as slot
+from (
+  select min(s.session_id) as session_id, r.run_started_at
+  from simlab.sessions s
+  join simlab.runs r on r.run_id = s.run_id
+  where s.question_key = '${inputs.question_key.value}'
+  group by s.run_id, r.run_started_at
+  order by r.run_started_at desc
+)
+```
+
 ```sql meta_a
-select r.run_started_at, s.run_id, s.endpoint, s.category, s.first_user_text,
-       s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count, s.avg_bot_chars
+select r.run_started_at, s.endpoint, s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id
 where s.session_id = '${inputs.session_a.value}'
 ```
 
 ```sql meta_b
-select r.run_started_at, s.run_id, s.endpoint, s.category, s.first_user_text,
-       s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count, s.avg_bot_chars
+select r.run_started_at, s.endpoint, s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id
 where s.session_id = '${inputs.session_b.value}'
 ```
 
 ```sql meta_c
-select r.run_started_at, s.run_id, s.endpoint, s.category, s.first_user_text,
-       s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count, s.avg_bot_chars
+select r.run_started_at, s.endpoint, s.turns_total, s.handover_flag, s.handover_turn, s.error_count, s.dead_link_count
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id
 where s.session_id = '${inputs.session_c.value}'
 ```
 
 ```sql chat_a
-select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br>', '\n'), '<br/>', '\n') as text
+select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br/>', '<br>'), '<br />', '<br>') as text
 from simlab.turns
 where session_id = '${inputs.session_a.value}'
 order by turn, case when role='user' then 0 else 1 end
 ```
 
 ```sql chat_b
-select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br>', '\n'), '<br/>', '\n') as text
+select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br/>', '<br>'), '<br />', '<br>') as text
 from simlab.turns
 where session_id = '${inputs.session_b.value}'
 order by turn, case when role='user' then 0 else 1 end
 ```
 
 ```sql chat_c
-select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br>', '\n'), '<br/>', '\n') as text
+select turn, role, replace(replace(replace(replace(text, '<p>', ''), '</p>', ''), '<br/>', '<br>'), '<br />', '<br>') as text
 from simlab.turns
 where session_id = '${inputs.session_c.value}'
 order by turn, case when role='user' then 0 else 1 end
@@ -157,19 +178,36 @@ limit 1
   <DropdownOption value="" valueLabel="Vælg samtaleemne"/>
 </Dropdown>
 
-{#if inputs.question_key.value}
+
+{#if inputs.question_key.value && default_sessions.length > 0}
+  {#key default_sessions[0]?.session_id}
   <Grid cols=3>
-    <Dropdown data={session_options} name=session_a value=session_id label=label>
+    <Dropdown data={session_options} name=session_a value=session_id label=label defaultValue={default_sessions[0]?.session_id}>
       <DropdownOption value="" valueLabel="Simulation A"/>
     </Dropdown>
-    <Dropdown data={session_options} name=session_b value=session_id label=label>
+    <Dropdown data={session_options} name=session_b value=session_id label=label defaultValue={default_sessions[1]?.session_id}>
       <DropdownOption value="" valueLabel="Simulation B"/>
     </Dropdown>
-    <Dropdown data={session_options} name=session_c value=session_id label=label>
+    <Dropdown data={session_options} name=session_c value=session_id label=label defaultValue={default_sessions[2]?.session_id}>
       <DropdownOption value="" valueLabel="Simulation C"/>
     </Dropdown>
   </Grid>
+  {/key}
+{:else if inputs.question_key.value}
+  <Grid cols=3>
+    <Dropdown data={session_options} name=session_a value=session_id label=label noDefault=true>
+      <DropdownOption value="" valueLabel="Simulation A"/>
+    </Dropdown>
+    <Dropdown data={session_options} name=session_b value=session_id label=label noDefault=true>
+      <DropdownOption value="" valueLabel="Simulation B"/>
+    </Dropdown>
+    <Dropdown data={session_options} name=session_c value=session_id label=label noDefault=true>
+      <DropdownOption value="" valueLabel="Simulation C"/>
+    </Dropdown>
+  </Grid>
+{/if}
 
+{#if inputs.question_key.value}
   <div class="compare-grid">
     <div class="compare-card">
       <h4>Simulation A</h4>
@@ -185,7 +223,7 @@ limit 1
             {#if row.role === 'user'}
               <div class="bubble-user"><b>Bruger (T{row.turn})</b><br/>{row.text}</div>
             {:else}
-              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{row.text}</div>
+              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{@html row.text}</div>
             {/if}
           {/each}
         </div>
@@ -219,7 +257,7 @@ limit 1
             {#if row.role === 'user'}
               <div class="bubble-user"><b>Bruger (T{row.turn})</b><br/>{row.text}</div>
             {:else}
-              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{row.text}</div>
+              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{@html row.text}</div>
             {/if}
           {/each}
         </div>
@@ -253,7 +291,7 @@ limit 1
             {#if row.role === 'user'}
               <div class="bubble-user"><b>Bruger (T{row.turn})</b><br/>{row.text}</div>
             {:else}
-              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{row.text}</div>
+              <div class="bubble-bot"><b>Bot (T{row.turn})</b><br/>{@html row.text}</div>
             {/if}
           {/each}
         </div>
@@ -276,3 +314,4 @@ limit 1
 {:else}
   <div class="empty" style="margin-top:12px;">Vælg et samtaleemne for at sammenligne simulationer på tværs af kørsler.</div>
 {/if}
+
