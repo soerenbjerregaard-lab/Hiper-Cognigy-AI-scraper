@@ -21,9 +21,9 @@ select
   min(first_user_text) as question_text,
   min(category) as category,
   count(*) as sessions,
-  round(avg(handover_flag) * 100, 1) as handover_rate_pct,
-  round(avg(case when error_count > 0 then 1 else 0 end) * 100, 1) as error_rate_pct,
-  round(avg(case when dead_link_count > 0 then 1 else 0 end) * 100, 1) as dead_link_rate_pct,
+  round(avg(handover_flag), 4) as handover_rate_pct,
+  round(avg(case when error_count > 0 then 1 else 0 end), 4) as error_rate_pct,
+  round(avg(case when dead_link_count > 0 then 1 else 0 end), 4) as dead_link_rate_pct,
   round(avg(turns_total), 2) as avg_turns,
   round(avg(avg_bot_chars), 1) as avg_bot_chars
 from simlab.sessions
@@ -41,9 +41,9 @@ select
   s.run_id,
   s.endpoint,
   count(*) as sessions,
-  round(avg(s.handover_flag) * 100, 1) as handover_rate_pct,
-  round(avg(case when s.error_count > 0 then 1 else 0 end) * 100, 1) as error_rate_pct,
-  round(avg(case when s.dead_link_count > 0 then 1 else 0 end) * 100, 1) as dead_link_rate_pct,
+  round(avg(s.handover_flag), 4) as handover_rate_pct,
+  round(avg(case when s.error_count > 0 then 1 else 0 end), 4) as error_rate_pct,
+  round(avg(case when s.dead_link_count > 0 then 1 else 0 end), 4) as dead_link_rate_pct,
   round(avg(s.turns_total), 2) as avg_turns
 from simlab.sessions s
 join simlab.runs r on r.run_id = s.run_id

@@ -6,10 +6,10 @@ title: Simulations Overview
 select
   count(distinct run_id) as runs,
   count(distinct session_id) as sessions,
-  round(avg(handover_flag) * 100, 1) as handover_rate_pct,
-  round(avg(case when error_count > 0 then 1 else 0 end) * 100, 1) as session_error_rate_pct,
-  round(avg(case when dead_link_count > 0 then 1 else 0 end) * 100, 1) as dead_link_session_rate_pct,
-  round(avg(case when turns_total >= 4 then 1 else 0 end) * 100, 1) as reach_t4_pct
+  round(avg(handover_flag), 4) as handover_rate_pct,
+  round(avg(case when error_count > 0 then 1 else 0 end), 4) as session_error_rate_pct,
+  round(avg(case when dead_link_count > 0 then 1 else 0 end), 4) as dead_link_session_rate_pct,
+  round(avg(case when turns_total >= 4 then 1 else 0 end), 4) as reach_t4_pct
 from simlab.sessions
 ```
 
@@ -43,9 +43,9 @@ order by 1
 select
   endpoint,
   count(*) as sessions,
-  round(avg(handover_flag) * 100, 1) as handover_rate_pct,
-  round(avg(case when error_count > 0 then 1 else 0 end) * 100, 1) as error_rate_pct,
-  round(avg(case when dead_link_count > 0 then 1 else 0 end) * 100, 1) as dead_link_rate_pct,
+  round(avg(handover_flag), 4) as handover_rate_pct,
+  round(avg(case when error_count > 0 then 1 else 0 end), 4) as error_rate_pct,
+  round(avg(case when dead_link_count > 0 then 1 else 0 end), 4) as dead_link_rate_pct,
   round(avg(turns_total), 2) as avg_turns
 from simlab.sessions
 group by 1
@@ -67,10 +67,10 @@ select
   r.run_id,
   r.endpoint,
   r.session_count,
-  round(avg(case when s.error_count > 0 then 1 else 0 end) * 100, 1) as session_error_rate_pct,
-  round(avg(case when s.timeout_count > 0 then 1 else 0 end) * 100, 1) as timeout_session_rate_pct,
-  round(avg(case when s.dead_link_count > 0 then 1 else 0 end) * 100, 1) as dead_link_session_rate_pct,
-  round(avg(s.handover_flag) * 100, 1) as handover_rate_pct
+  round(avg(case when s.error_count > 0 then 1 else 0 end), 4) as session_error_rate_pct,
+  round(avg(case when s.timeout_count > 0 then 1 else 0 end), 4) as timeout_session_rate_pct,
+  round(avg(case when s.dead_link_count > 0 then 1 else 0 end), 4) as dead_link_session_rate_pct,
+  round(avg(s.handover_flag), 4) as handover_rate_pct
 from simlab.runs r
 join simlab.sessions s on s.run_id = r.run_id
 group by 1,2,3,4
