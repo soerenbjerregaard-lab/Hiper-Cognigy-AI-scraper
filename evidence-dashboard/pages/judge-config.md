@@ -2,6 +2,12 @@
 title: AI Judge Config
 ---
 
+<script>
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem("showQueries", "false");
+  }
+</script>
+
 ```sql cfg
 select config_key, config_value
 from simlab.judge_config

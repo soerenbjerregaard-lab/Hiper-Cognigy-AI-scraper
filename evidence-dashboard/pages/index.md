@@ -2,6 +2,12 @@
 title: Simulations Overview
 ---
 
+<script>
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem("showQueries", "false");
+  }
+</script>
+
 ```sql kpi
 select
   count(distinct run_id) as runs,
@@ -32,12 +38,16 @@ group by 1
 order by 1
 ```
 
-<LineChart
-  data={runs_over_time}
-  x=run_date
-  y=sessions
-  title="Sessions per Day"
-/>
+{#if runs_over_time.length > 1}
+  <LineChart
+    data={runs_over_time}
+    x=run_date
+    y=sessions
+    title="Sessions per Day"
+  />
+{:else}
+  <DataTable data={runs_over_time} title="Sessions per Day (table view)"/>
+{/if}
 
 ```sql endpoint_summary
 select
@@ -52,19 +62,21 @@ group by 1
 order by sessions desc
 ```
 
-<BarChart
-  data={endpoint_summary}
-  x=endpoint
-  y=handover_rate_pct
-  title="Handover Rate by Endpoint"
-/>
+{#if endpoint_summary.length > 1}
+  <BarChart
+    data={endpoint_summary}
+    x=endpoint
+    y=handover_rate_pct
+    title="Handover Rate by Endpoint"
+  />
+{/if}
 
 <DataTable data={endpoint_summary} rows=20 title="Endpoint Summary"/>
 
 ```sql run_health
 select
   r.run_started_at,
-  r.run_id,
+  substr(r.run_id, 1, 8) as run_short,
   r.endpoint,
   r.session_count,
   round(avg(case when s.error_count > 0 then 1 else 0 end), 4) as session_error_rate_pct,
