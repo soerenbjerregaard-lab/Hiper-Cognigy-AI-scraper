@@ -81,5 +81,6 @@ order by r.run_started_at desc
 
 ## Next Views
 - [Question Deep Dive](question-deep-dive)
+- [Scenario Compare](scenario-compare)
 - [Conversation Explorer + AI Judge](conversation)
 - [AI Judge Config](judge-config)
