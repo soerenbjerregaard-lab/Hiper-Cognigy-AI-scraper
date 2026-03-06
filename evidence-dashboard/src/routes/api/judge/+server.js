@@ -51,6 +51,49 @@ function normalizeJudge(raw) {
   };
 }
 
+function escapeHtml(s) {
+  return String(s ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function renderJudgeHtml({ sessionId, judgeModel, promptVersion, judge }) {
+  const html = `
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif; margin: 0; padding: 12px; background: #fff; color: #111; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px; }
+    .label { font-size: 12px; color: #666; margin-bottom: 4px; }
+    .value { font-size: 16px; font-weight: 600; }
+    .block { border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; margin-top: 8px; white-space: pre-wrap; line-height: 1.35; }
+    .meta { font-size: 12px; color: #666; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="meta">Session: <b>${escapeHtml(sessionId)}</b> · Model: <b>${escapeHtml(judgeModel)}</b> · Prompt: <b>${escapeHtml(promptVersion)}</b></div>
+  <div class="grid">
+    <div class="card"><div class="label">Response Quality</div><div class="value">${escapeHtml(judge.response_quality)}</div></div>
+    <div class="card"><div class="label">Context Coherence</div><div class="value">${escapeHtml(judge.context_coherence)}</div></div>
+    <div class="card"><div class="label">Helpfulness</div><div class="value">${escapeHtml(judge.helpfulness)}</div></div>
+    <div class="card"><div class="label">Confidence</div><div class="value">${escapeHtml(judge.confidence)}</div></div>
+    <div class="card"><div class="label">Handover Assessment</div><div class="value">${escapeHtml(judge.handover_assessment)}</div></div>
+    <div class="card"><div class="label">Dead Links Found</div><div class="value">${escapeHtml(judge.dead_links_found)}</div></div>
+  </div>
+  <div class="block"><b>Summary</b>\n${escapeHtml(judge.summary)}</div>
+  <div class="block"><b>Analysis Notes</b>\n${escapeHtml(judge.analysis_notes)}</div>
+  ${judge.inconclusive_reason ? `<div class="block"><b>Inconclusive Reason</b>\n${escapeHtml(judge.inconclusive_reason)}</div>` : ''}
+</body>
+</html>`;
+  return html;
+}
+
 async function callJudge(prompt) {
   const res = await fetch(`${OLLAMA_BASE_URL}/api/generate`, {
     method: 'POST',
@@ -76,6 +119,7 @@ async function callJudge(prompt) {
 
 export async function GET({ url }) {
   const sessionId = url.searchParams.get('session_id');
+  const responseFormat = url.searchParams.get('format') || 'json';
   if (!sessionId) return json({ error: 'Missing session_id' }, { status: 400 });
 
   const db = getDb();
@@ -136,6 +180,18 @@ export async function GET({ url }) {
     judge.inconclusive_reason,
     JSON.stringify(judge),
   );
+
+  if (responseFormat === 'html') {
+    return new Response(
+      renderJudgeHtml({
+        sessionId,
+        judgeModel: OLLAMA_MODEL,
+        promptVersion: PROMPT_VERSION,
+        judge,
+      }),
+      { headers: { 'Content-Type': 'text/html; charset=utf-8' } },
+    );
+  }
 
   return json({ ok: true, session_id: sessionId, judge_model: OLLAMA_MODEL, prompt_version: PROMPT_VERSION, judge });
 }

@@ -70,10 +70,12 @@ Use this endpoint to score the selected conversation with local Ollama on Lenovo
 
 `GET /api/judge?session_id=<session_id>`
 
-<form method="get" action="/api/judge" target="_blank" rel="noopener noreferrer">
+<form method="get" action="/api/judge" target="judge_main" rel="noopener noreferrer">
   <input type="hidden" name="session_id" value={inputs.session_id.value} />
+  <input type="hidden" name="format" value="html" />
   <button type="submit">Run AI Judge on this conversation</button>
 </form>
+<iframe name="judge_main" style="width:100%; min-height:280px; border:1px solid #e5e7eb; border-radius:8px; margin-top:8px"></iframe>
 
 Selected session endpoint: `/api/judge?session_id={inputs.session_id.value}`
 

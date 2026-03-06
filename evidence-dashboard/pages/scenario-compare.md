@@ -129,10 +129,12 @@ order by turn, case when role='user' then 0 else 1 end
 {/each}
 </div>
 
-<form method="get" action="/api/judge" target="_blank" rel="noopener noreferrer" style="margin-top:10px">
+<form method="get" action="/api/judge" target="judge_a" rel="noopener noreferrer" style="margin-top:10px">
   <input type="hidden" name="session_id" value={inputs.session_a.value} />
+  <input type="hidden" name="format" value="html" />
   <button type="submit">Run AI Judge</button>
 </form>
+<iframe name="judge_a" style="width:100%; min-height:260px; border:1px solid #e5e7eb; border-radius:8px; margin-top:8px"></iframe>
 
 ```sql judge_a
 select judged_at, response_quality, context_coherence, helpfulness,
@@ -177,10 +179,12 @@ order by turn, case when role='user' then 0 else 1 end
 {/each}
 </div>
 
-<form method="get" action="/api/judge" target="_blank" rel="noopener noreferrer" style="margin-top:10px">
+<form method="get" action="/api/judge" target="judge_b" rel="noopener noreferrer" style="margin-top:10px">
   <input type="hidden" name="session_id" value={inputs.session_b.value} />
+  <input type="hidden" name="format" value="html" />
   <button type="submit">Run AI Judge</button>
 </form>
+<iframe name="judge_b" style="width:100%; min-height:260px; border:1px solid #e5e7eb; border-radius:8px; margin-top:8px"></iframe>
 
 ```sql judge_b
 select judged_at, response_quality, context_coherence, helpfulness,
@@ -225,10 +229,12 @@ order by turn, case when role='user' then 0 else 1 end
 {/each}
 </div>
 
-<form method="get" action="/api/judge" target="_blank" rel="noopener noreferrer" style="margin-top:10px">
+<form method="get" action="/api/judge" target="judge_c" rel="noopener noreferrer" style="margin-top:10px">
   <input type="hidden" name="session_id" value={inputs.session_c.value} />
+  <input type="hidden" name="format" value="html" />
   <button type="submit">Run AI Judge</button>
 </form>
+<iframe name="judge_c" style="width:100%; min-height:260px; border:1px solid #e5e7eb; border-radius:8px; margin-top:8px"></iframe>
 
 ```sql judge_c
 select judged_at, response_quality, context_coherence, helpfulness,
