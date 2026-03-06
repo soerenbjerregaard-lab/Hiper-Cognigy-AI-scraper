@@ -118,7 +118,7 @@ async function sendAndWait(page, message, timeoutMs) {
 }
 
 // ─── CSV export ───────────────────────────────────────────────────────────────
-function exportCsv(db, runId) {
+function exportCsv(db, runId, runMeta = {}) {
   const rows = db.prepare(
     'SELECT * FROM conversations WHERE run_id = ? ORDER BY category, session_id, turn, role'
   ).all(runId);
@@ -135,6 +135,18 @@ function exportCsv(db, runId) {
   for (const row of rows) lines.push(cols.map(c => escape(row[c])).join(','));
   fs.writeFileSync(fname, lines.join('\n'), 'utf8');
   console.log(`\nCSV eksporteret → ${path.basename(fname)}  (${rows.length} rækker)`);
+
+  const manifest = {
+    run_id: runId,
+    exported_at: new Date().toISOString(),
+    endpoint_name: ENDPOINT_NAME,
+    endpoint_url: ENDPOINT,
+    rows: rows.length,
+    ...runMeta,
+  };
+  const mname = path.join(__dirname, 'exports', `runmeta-${ENDPOINT_NAME}-${ts}.json`);
+  fs.writeFileSync(mname, JSON.stringify(manifest, null, 2), 'utf8');
+  console.log(`Run-meta eksporteret → ${path.basename(mname)}`);
 }
 
 // ─── Kør ét scenarie ──────────────────────────────────────────────────────────
@@ -263,8 +275,13 @@ async function main() {
   // Link-validering
   await checkLinks.run(db);
 
-  // CSV eksport
-  exportCsv(db, runId);
+  // CSV + run metadata eksport
+  exportCsv(db, runId, {
+    scenarios: batch.length,
+    concurrency: CONCURRENCY,
+    elapsed_seconds: elapsed,
+    timeout_ms: config.TIMEOUT_MS,
+  });
 }
 
 // Undgå at unhandled rejections crasher hele processen

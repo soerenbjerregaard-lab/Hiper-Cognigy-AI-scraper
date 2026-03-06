@@ -27,6 +27,7 @@ node run.js --endpoint gpt5 --limit 5 --concurrency 4
 ```
 
 Output skrives til `exports/conversations-<endpoint>-<HH.MM-DD-MM-YYYY>.csv` og gemmes automatisk i git.
+Der skrives også en run-manifest fil: `exports/runmeta-<endpoint>-<HH.MM-DD-MM-YYYY>.json` med endpoint-navn, endpoint-URL og run-konfiguration.
 
 ## Kendte endpoints
 
@@ -92,6 +93,11 @@ conversations (
 DB nulstilles manuelt før hver ny testkørsel:
 ```bash
 rm conversations.db
+```
+
+Alternativt kan du nulstille sim-data sikkert (arkiverer gamle exports først):
+```bash
+./scripts/reset_sim_data.sh
 ```
 
 ## Deploy

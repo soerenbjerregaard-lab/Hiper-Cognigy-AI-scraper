@@ -1,0 +1,4 @@
+name: simlab
+type: sqlite
+options:
+  filename: simlab.db
