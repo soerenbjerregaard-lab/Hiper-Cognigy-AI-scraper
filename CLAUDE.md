@@ -1,6 +1,21 @@
 # Hiper Cognigy AI Scraper
 
-## Formål
+## Den større rejse
+
+Dette projekt er ét stop på en bevidst læringsrejse:
+
+1. **Scraping** — automatisér dataindsamling med Playwright, gem i SQLite
+2. **Data exposure** — forstå og visualisér egne databaser via dashboards i browseren
+3. **Lokal LLM analyse** — berig Python-indsamlede data med on-demand LLM-vurderinger fra lokale modeller (Ollama/Llama/Qwen m.fl.)
+4. **Opskalering** — forstå hvad der er muligt med lokal compute, hvad der kræver "dyrt jern", og hvad der potentielt kan sælges til virksomheder
+
+Målet er ikke produktet i sig selv. Målet er at blive stærk på lokal LLM-analyse: hvad kan en 8B model bruges til? Hvad er latency? Hvad er kvaliteten på struktureret output? Hvad kræver mere compute?
+
+Eksperimentet her (chatbot-scraping + kvalitetsanalyse) er en konkret sandkasse for at lære det.
+
+**Vigtig regel for beslutninger:** Vælg altid det simpleste tool der løser opgaven. Undgå overengineering. Streamlit > React for interne analyseværktøjer. Python-script > dashboard hvis UI ikke er nødvendigt. Lokal LLM > cloud-API når eksperimentet handler om lokal compute.
+
+## Formål (dette specifikke projekt)
 At bygge et automatiseret test-framework til Hipers Cognigy AI-chatbot. Systemet kører strukturerede test-scenarier mod chatten i parallelle sessioner via Playwright, gemmer alle svar i SQLite og eksporterer til CSV. Formålet er at afdække svagshed i bot-svarene – herunder forkerte handovers, dårlige links og vidensgab – med henblik på at løfte svarkvaliteten.
 
 ## Arkitektur
