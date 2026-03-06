@@ -89,7 +89,7 @@ def render_column(col_label, session_id, slot):
     cache_key = f"judge_{slot}_{session_id}"
 
     if st.button("🤖 Kør AI Judge", key=btn_key, use_container_width=True):
-        with st.spinner("Kalder Qwen…"):
+        with st.spinner("Kalder AI Judge… (2–5 min)"):
             try:
                 result = judge_module.run_judge(session_id)
                 st.session_state[cache_key] = {"ok": True, "data": result}

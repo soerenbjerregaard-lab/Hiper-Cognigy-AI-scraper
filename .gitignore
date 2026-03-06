@@ -1,5 +1,6 @@
 node_modules/
 conversations.db
+simlab.db
 rapport.md
 *.db-journal
 *.db-wal
@@ -12,3 +13,5 @@ check_dom.js
 followups.json
 retry_errors.js
 *.log
+__pycache__/
+streamlit_app/__pycache__/

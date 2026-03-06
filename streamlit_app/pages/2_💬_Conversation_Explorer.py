@@ -90,7 +90,7 @@ st.markdown('<div class="section-header">AI Judge</div>', unsafe_allow_html=True
 judge_key = f"judge_{session_id}"
 
 if st.button("🤖 Kør AI Judge på denne samtale", use_container_width=True):
-    with st.spinner("Kalder Qwen via Ollama… (15–45 sek)"):
+    with st.spinner("Kalder AI Judge via Ollama… (2–5 min på CPU – vær tålmodig)"):
         try:
             result = judge_module.run_judge(session_id)
             st.session_state[judge_key] = {"ok": True, "data": result}

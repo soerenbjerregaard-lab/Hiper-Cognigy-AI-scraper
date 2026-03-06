@@ -9,12 +9,12 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 EXPORTS_DIR = ROOT / 'exports'
 SCENARIOS_FILE = ROOT / 'scenarios.json'
 SCENARIOS_EXT_FILE = ROOT / 'scenarios-extended.json'
-DB_PATH = ROOT / 'evidence-dashboard' / 'sources' / 'simlab' / 'simlab.db'
-JUDGE_PROMPT_FILE = ROOT / 'evidence-dashboard' / 'judge_prompt_v1.txt'
+DB_PATH = ROOT / 'simlab.db'
+JUDGE_PROMPT_FILE = ROOT / 'streamlit_app' / 'judge_prompt_v1.txt'
 
 
 def normalize_text(s: str) -> str:

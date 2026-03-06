@@ -15,7 +15,7 @@ for f in exports/*.csv exports/runmeta-*.json; do
 done
 
 : > conversations.db
-rm -f evidence-dashboard/sources/simlab/simlab.db
+rm -f simlab.db
 
 if [ "$found" -eq 1 ]; then
   echo "Archived prior exports to exports/archive/$TS"

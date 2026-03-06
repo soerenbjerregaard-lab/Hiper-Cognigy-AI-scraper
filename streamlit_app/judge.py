@@ -5,9 +5,9 @@ from pathlib import Path
 import db
 
 OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b-instruct")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:1b")
 PROMPT_VERSION = "v1"
-PROMPT_PATH = Path(__file__).parent.parent / "evidence-dashboard/judge_prompt_v1.txt"
+PROMPT_PATH = Path(__file__).parent / "judge_prompt_v1.txt"
 
 
 def read_prompt():
@@ -40,8 +40,8 @@ def normalize_judge(raw):
         "handover_should_have_happened": 1 if _normalize_num(raw.get("handover_should_have_happened")) > 0 else 0,
         "handover_unnecessary":        1 if _normalize_num(raw.get("handover_unnecessary")) > 0 else 0,
         "dead_links_found":            max(0, int(_normalize_num(raw.get("dead_links_found"), 0))),
-        "summary":                     str(raw.get("summary") or "")[:500],
-        "analysis_notes":              str(raw.get("analysis_notes") or "")[:2000],
+        "summary":                     str(raw.get("summary") or "")[:300],
+        "analysis_notes":              str(raw.get("analysis_notes") or "")[:600],
         "confidence":                  max(0.0, min(1.0, _normalize_num(raw.get("confidence"), 0.5))),
         "inconclusive_reason":         str(raw.get("inconclusive_reason") or "")[:300],
     }
@@ -57,7 +57,7 @@ def _call_ollama(prompt):
             "format": "json",
             "options": {"temperature": 0},
         },
-        timeout=120,
+        timeout=600,
     )
     resp.raise_for_status()
     data = resp.json()

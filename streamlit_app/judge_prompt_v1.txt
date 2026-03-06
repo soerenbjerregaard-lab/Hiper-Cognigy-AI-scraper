@@ -46,8 +46,8 @@ Tjek om botten nævner specifikke URL'er i sine svar. Sæt dead_links_found til 
   "handover_should_have_happened": 0,
   "handover_unnecessary": 0,
   "dead_links_found": 0,
-  "summary": "<maks 80 ord på dansk: hvad handlede samtalen om og din overordnede vurdering>",
-  "analysis_notes": "<maks 250 ord på dansk: konkrete observationer – hvad gik godt, hvad gik galt, specifikke fejl, manglende viden eller handover-problemer du bemærkede>",
+  "summary": "<maks 40 ord på dansk: hvad handlede samtalen om og din overordnede vurdering>",
+  "analysis_notes": "<maks 80 ord på dansk: konkrete observationer – hvad gik godt, hvad gik galt, specifikke fejl>",
   "confidence": <tal 0.0–1.0>,
   "inconclusive_reason": "<kun hvis samtalen er for kort eller teknisk fejlet til at bedømme – ellers tom streng>"
 }

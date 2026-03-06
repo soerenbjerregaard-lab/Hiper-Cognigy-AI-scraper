@@ -1,0 +1,11 @@
+{
+  "run_id": "384fdc92-d594-4458-b6e2-86b13fd0fecb",
+  "exported_at": "2026-03-06T22:42:58.417Z",
+  "endpoint_name": "gpt41",
+  "endpoint_url": "https://cognigy-assets.hiper.dk/x-scraping-new-prompt-gpt4-1/",
+  "rows": 312,
+  "scenarios": 49,
+  "concurrency": 8,
+  "elapsed_seconds": 359,
+  "timeout_ms": 45000
+}

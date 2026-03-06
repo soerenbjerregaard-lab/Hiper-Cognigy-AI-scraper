@@ -4,7 +4,7 @@ from pathlib import Path
 
 DB_PATH = os.environ.get(
     "SIMLAB_DB",
-    str(Path(__file__).parent.parent / "evidence-dashboard/sources/simlab/simlab.db"),
+    str(Path(__file__).parent.parent / "simlab.db"),
 )
 
 
