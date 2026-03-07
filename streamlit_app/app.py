@@ -11,9 +11,9 @@ st.set_page_config(
 )
 
 pg = st.navigation([
-    st.Page("pages/home.py",                             title="📊 Oversigt",         icon="📊", default=True),
-    st.Page("pages/1_🔍_Scenario_Compare.py",            title="🔍 Scenario Compare",  icon="🔍"),
-    st.Page("pages/2_💬_Conversation_Explorer.py",       title="💬 Samtaleudforsker",  icon="💬"),
-    st.Page("pages/3_📈_Question_Deep_Dive.py",          title="📈 Deep Dive",         icon="📈"),
+    st.Page("pages/home.py",                             title="📊 Oversigt",              icon="📊", default=True),
+    st.Page("pages/1_🔍_Scenario_Compare.py",            title="🔍 Sammenlign scenarier",  icon="🔍"),
+    st.Page("pages/2_💬_Conversation_Explorer.py",       title="💬 Samtaleudforsker",      icon="💬"),
+    st.Page("pages/3_📈_Question_Deep_Dive.py",          title="📈 Spørgsmålsanalyse",     icon="📈"),
 ])
 pg.run()

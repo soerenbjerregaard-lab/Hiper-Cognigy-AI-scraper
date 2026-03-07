@@ -3,20 +3,62 @@ import streamlit as st
 
 def metric_row(metrics):
     """Render a row of custom metric cards that never truncate.
-    metrics = list of (label, value) tuples.
+    metrics = list of (label, value) or (label, value, color) tuples.
+    color is optional – defaults to #1e40af (blue). Use signal_color() to compute.
     """
-    cards = "".join(
-        f'<div style="flex:1;min-width:110px;background:#f8fafc;border:1px solid #e2e8f0;'
-        f'border-radius:10px;padding:0.85rem 1rem">'
-        f'<div style="font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;'
-        f'letter-spacing:0.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{label}</div>'
-        f'<div style="font-size:1.75rem;font-weight:700;color:#1e40af;margin-top:2px">{value}</div>'
-        f'</div>'
-        for label, value in metrics
-    )
+    cards = []
+    for item in metrics:
+        label, value = item[0], item[1]
+        color = item[2] if len(item) > 2 else "#1e40af"
+        tooltip = item[3] if len(item) > 3 else ""
+        tip_attr = f' title="{tooltip}"' if tooltip else ""
+        cards.append(
+            f'<div style="flex:1;min-width:110px;background:#f8fafc;border:1px solid #e2e8f0;'
+            f'border-radius:10px;padding:0.85rem 1rem;cursor:default"{tip_attr}>'
+            f'<div style="font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;'
+            f'letter-spacing:0.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{label}</div>'
+            f'<div style="font-size:1.75rem;font-weight:700;color:{color};margin-top:2px">{value}</div>'
+            f'</div>'
+        )
     return (
-        f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin:0.5rem 0 1rem">{cards}</div>'
+        f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin:0.5rem 0 1rem">{"".join(cards)}</div>'
     )
+
+
+def signal_color(value, thresholds, low_is_good=True):
+    """Return a hex color based on value vs thresholds.
+    thresholds = (yellow_boundary, red_boundary).
+    low_is_good=True:  value < yellow → green, < red → yellow, else red.
+    low_is_good=False: value > yellow → green, > red → yellow, else red.
+    """
+    GREEN, YELLOW, RED = "#16a34a", "#d97706", "#dc2626"
+    y, r = thresholds
+    if low_is_good:
+        if value <= y:
+            return GREEN
+        elif value <= r:
+            return YELLOW
+        else:
+            return RED
+    else:
+        if value >= y:
+            return GREEN
+        elif value >= r:
+            return YELLOW
+        else:
+            return RED
+
+
+_HA_LABELS = {
+    "correct":     "✅ Korrekt – handover var berettiget",
+    "unnecessary": "⚠️ Unødvendig – botten burde selv have svaret",
+    "missing":     "🚨 Manglende – botten burde have sendt videre",
+    "n/a":         "— Ingen handover i denne samtale",
+}
+
+def translate_handover_assessment(raw: str) -> str:
+    """Map English DB value → readable Danish label."""
+    return _HA_LABELS.get((raw or "").lower().strip(), raw or "ukendt")
 
 
 def meta_pills(items):
@@ -92,16 +134,16 @@ def inject_css():
     }
     .chat-bot a { color: #1e40af; }
     .handover-badge {
-        display: inline-block;
+        display: block;
         background: #fef3c7;
-        border: 1px solid #fbbf24;
-        border-radius: 5px;
-        padding: 1px 7px;
-        font-size: 0.7rem;
+        border: 1px solid #f59e0b;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.78rem;
+        font-weight: 600;
         color: #92400e;
-        margin-top: 4px;
-        float: right;
-        clear: both;
+        margin-top: 6px;
+        text-align: center;
     }
     .dead-link-note {
         font-size: 0.7rem;

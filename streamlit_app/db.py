@@ -83,6 +83,94 @@ def get_run_health():
     """)
 
 
+def get_category_summary():
+    """Per-category performance: handover, errors, dead links, avg turns."""
+    return query("""
+        SELECT
+            category,
+            COUNT(*)                                                                        AS sessions,
+            ROUND(AVG(handover_flag) * 100, 1)                                             AS handover_pct,
+            ROUND(AVG(CASE WHEN error_count > 0 THEN 1.0 ELSE 0 END) * 100, 1)            AS error_pct,
+            ROUND(AVG(CASE WHEN dead_link_count > 0 THEN 1.0 ELSE 0 END) * 100, 1)        AS deadlink_pct,
+            ROUND(AVG(turns_total), 1)                                                     AS avg_turns
+        FROM sessions
+        WHERE category IS NOT NULL AND category != ''
+        GROUP BY category
+        ORDER BY handover_pct DESC
+    """)
+
+
+def get_handover_turn_distribution():
+    """For sessions WITH handover: how many at turn 1, 2, 3+."""
+    return query("""
+        SELECT
+            CASE
+                WHEN handover_turn = 1 THEN '1 – Straks (tur 1)'
+                WHEN handover_turn = 2 THEN '2 – Tur 2'
+                WHEN handover_turn >= 3 THEN '3+ – Sent (tur 3+)'
+                ELSE 'Ukendt'
+            END AS handover_when,
+            handover_turn,
+            COUNT(*) AS sessions
+        FROM sessions
+        WHERE handover_flag = 1
+          AND handover_turn IS NOT NULL
+        GROUP BY handover_turn
+        ORDER BY handover_turn
+    """)
+
+
+def get_judge_aggregate():
+    """Overall AI judge averages across all judged sessions."""
+    rows = query("""
+        SELECT
+            COUNT(DISTINCT session_id)                  AS judged_sessions,
+            ROUND(AVG(response_quality), 2)             AS avg_quality,
+            ROUND(AVG(context_coherence), 2)            AS avg_context,
+            ROUND(AVG(helpfulness), 2)                  AS avg_helpfulness,
+            ROUND(AVG(confidence), 2)                   AS avg_confidence,
+            ROUND(100.0 * SUM(CASE WHEN handover_assessment = 'unnecessary' THEN 1 ELSE 0 END)
+                  / NULLIF(COUNT(*), 0), 1)             AS unnecessary_handover_pct,
+            ROUND(100.0 * SUM(CASE WHEN handover_assessment = 'missing' THEN 1 ELSE 0 END)
+                  / NULLIF(COUNT(*), 0), 1)             AS missing_handover_pct
+        FROM ai_judgements
+    """)
+    return rows[0] if rows else None
+
+
+def get_quality_trend_by_run():
+    """Average AI judge scores per run, ordered by run date."""
+    return query("""
+        SELECT
+            r.run_started_at,
+            r.endpoint,
+            COUNT(DISTINCT j.session_id)        AS judged,
+            ROUND(AVG(j.response_quality), 2)   AS avg_quality,
+            ROUND(AVG(j.helpfulness), 2)        AS avg_helpfulness,
+            ROUND(AVG(j.context_coherence), 2)  AS avg_context
+        FROM ai_judgements j
+        JOIN sessions s ON s.session_id = j.session_id
+        JOIN runs r ON r.run_id = s.run_id
+        GROUP BY r.run_id, r.run_started_at, r.endpoint
+        ORDER BY r.run_started_at
+    """)
+
+
+def get_top_handover_questions(limit=5):
+    """Return questions with highest handover rate, min 2 sessions."""
+    return query("""
+        SELECT MIN(first_user_text) AS question_text,
+               MIN(category)        AS category,
+               COUNT(*)             AS sessions,
+               ROUND(AVG(handover_flag) * 100, 1) AS handover_rate_pct
+        FROM sessions
+        GROUP BY question_key
+        HAVING COUNT(*) >= 2
+        ORDER BY handover_rate_pct DESC
+        LIMIT ?
+    """, (limit,))
+
+
 # ── Scenario Compare ──────────────────────────────────────────────────────────
 
 def get_topic_options():

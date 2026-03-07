@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 import pandas as pd
 import db
-from style import inject_css, metric_row
+from style import inject_css, metric_row, signal_color
 
 inject_css()
 
@@ -27,8 +27,8 @@ def render_chat(turns):
 
 # ── Page ──────────────────────────────────────────────────────────────────────
 
-st.title("📈 Deep Dive")
-st.caption("Analysér ét spørgsmål på tværs af alle kørsler")
+st.title("📈 Spørgsmålsanalyse")
+st.caption("Analysér ét spørgsmål på tværs af alle test-kørsler – se om svarkvaliteten ændrer sig over tid")
 
 questions = db.get_question_options()
 q_labels  = [q["label"] for q in questions]
@@ -47,11 +47,17 @@ if overview:
     ov = overview[0]
     st.markdown(f"**Spørgsmål:** {ov['question_text']}")
     st.markdown(f"**Kategori:** `{ov['category']}`")
+    ho_val = float(ov['handover_rate_pct'] or 0)
+    er_val = float(ov['error_rate_pct'] or 0)
     st.markdown(metric_row([
-        ("Sessioner",  ov["sessions"]),
-        ("Handover",   f"{ov['handover_rate_pct']}%"),
-        ("Fejlrate",   f"{ov['error_rate_pct']}%"),
-        ("Gns. turns", ov["avg_turns"]),
+        ("Sessioner",    ov["sessions"],            "#1e40af", "Antal test-samtaler for dette spørgsmål"),
+        ("Handover",     f"{ho_val}%",
+         signal_color(ho_val, (20, 50), low_is_good=True),
+         "Andel samtaler sendt videre til menneske"),
+        ("Fejlrate",     f"{er_val}%",
+         signal_color(er_val, (5, 15), low_is_good=True),
+         "Andel samtaler med tekniske fejl"),
+        ("Gns. ture",    ov["avg_turns"],           "#1e40af", "Gennemsnitligt antal beskeder i samtalen"),
     ]), unsafe_allow_html=True)
 
 st.divider()
@@ -59,16 +65,17 @@ st.divider()
 left_col, right_col = st.columns([3, 2], gap="large")
 
 with left_col:
-    st.markdown('<div class="section-header">Performance per kørsel</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">Resultat per kørsel</div>', unsafe_allow_html=True)
     by_run = db.get_question_by_run(question_key)
     if by_run:
         df_run = pd.DataFrame(by_run)
         df_run.columns = ["Startet", "Endpoint", "Sessioner", "Handover %",
-                           "Fejl %", "Dead links %", "Gns. turns"]
+                           "Fejl %", "Døde links %", "Gns. ture"]
         st.dataframe(df_run, use_container_width=True, hide_index=True)
 
         if len(by_run) > 1:
-            st.markdown('<div class="section-header">Handover-trend</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">Handover-rate over tid</div>', unsafe_allow_html=True)
+            st.caption("Faldende kurve = botten bliver bedre til at svare selv")
             st.line_chart(
                 pd.DataFrame(by_run).set_index("run_started_at")["handover_rate_pct"],
                 color="#1e40af",
@@ -88,8 +95,13 @@ with right_col:
         if meta:
             m = meta[0]
             st.markdown(metric_row([
-                ("Turns",    m["turns_total"]),
-                ("Handover", "✅" if m["handover_flag"] else "—"),
-                ("Links",    m["dead_link_count"]),
+                ("Ture",        m["turns_total"],
+                 "#1e40af", "Antal beskeder i samtalen"),
+                ("Handover",    "✅ Ja" if m["handover_flag"] else "Nej",
+                 "#dc2626" if m["handover_flag"] else "#16a34a",
+                 "Kunden sendt videre til et menneske"),
+                ("Døde links",  m["dead_link_count"],
+                 "#dc2626" if m["dead_link_count"] else "#16a34a",
+                 "Ødelagte links i bot-svar"),
             ]), unsafe_allow_html=True)
         render_chat(db.get_conversation(session_id))

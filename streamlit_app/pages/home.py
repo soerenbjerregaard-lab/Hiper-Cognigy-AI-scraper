@@ -5,65 +5,223 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 import pandas as pd
 import db
-from style import inject_css, metric_row
+from style import inject_css, metric_row, signal_color
 
 inject_css()
 
-st.title("📊 Simlab Dashboard")
+st.title("📊 Chatbot-kvalitet")
 st.caption("Automatiseret kvalitetsanalyse af Hipers Cognigy AI-chatbot")
 
-# ── KPI cards (custom HTML – never truncates) ─────────────────────────────────
+# ── Intro for nye brugere ─────────────────────────────────────────────────────
+with st.expander("ℹ️ Hvad viser dette dashboard?"):
+    st.markdown("""
+**Kort fortalt:** Vi sender automatisk test-spørgsmål til Hipers chatbot og måler hvor godt den svarer.
+
+- **En kørsel** = én test-runde, hvor alle scenarier sendes til chatten parallelt
+- **En session** = én samtale (spørgsmål + opfølgning) med chatbotten
+- **Handover** = chatten sender kunden videre til et menneske. Høj rate → botten kan ikke selv svare
+- **Dead links** = links i bot-svar der ikke virker (404-fejl, forkerte URL'er)
+- **Fejlrate** = sessioner hvor noget gik teknisk galt (timeout, ingen svar)
+- **4+ ture** = samtaler hvor kunden stillede opfølgningsspørgsmål (tegn på engageret dialog)
+- **Endpoint** = den specifikke chatbot-konfiguration der blev testet
+
+**Farvekoder:** <span style="color:#16a34a;font-weight:700">Grøn</span> = godt · <span style="color:#d97706;font-weight:700">Gul</span> = opmærksom · <span style="color:#dc2626;font-weight:700">Rød</span> = kritisk
+
+Brug sidemenuen til at dykke ned i specifikke samtaler og sammenligne scenarier.
+""", unsafe_allow_html=True)
+
+# ── KPI cards (color-coded) ───────────────────────────────────────────────────
 kpis = db.get_kpis()
 if kpis:
     k = kpis[0]
+    handover_val  = float(k['handover_rate_pct'] or 0)
+    error_val     = float(k['session_error_rate_pct'] or 0)
+    deadlink_val  = float(k['dead_link_session_rate_pct'] or 0)
+    t4_val        = float(k['reach_t4_pct'] or 0)
+
+    # Overall health score: 100 minus penalties for problems
+    health = max(0, min(100, round(100 - handover_val * 0.5 - error_val * 2 - deadlink_val * 1.5)))
+    health_color = signal_color(health, (70, 40), low_is_good=False)
+
+    # Build explanation of what pulls the score down
+    drivers = []
+    if handover_val > 50:
+        drivers.append(f"høj handover-rate ({handover_val}%)")
+    elif handover_val > 20:
+        drivers.append(f"forhøjet handover-rate ({handover_val}%)")
+    if error_val > 15:
+        drivers.append(f"høj fejlrate ({error_val}%)")
+    elif error_val > 5:
+        drivers.append(f"forhøjet fejlrate ({error_val}%)")
+    if deadlink_val > 15:
+        drivers.append(f"mange døde links ({deadlink_val}%)")
+    elif deadlink_val > 5:
+        drivers.append(f"forhøjede døde links ({deadlink_val}%)")
+    driver_text = "Primære problemer: " + ", ".join(drivers) if drivers else "Ingen kritiske problemer fundet"
+
+    st.markdown(
+        f'<div style="display:flex;align-items:center;gap:1rem;margin:0 0 0.8rem">'
+        f'<div style="font-size:2.5rem;font-weight:800;color:{health_color}">{health}</div>'
+        f'<div>'
+        f'<div style="font-size:0.85rem;font-weight:700;color:#475569">Samlet sundhedsscore</div>'
+        f'<div style="font-size:0.75rem;color:#94a3b8">0–100 · Baseret på fejl, handover og døde links</div>'
+        f'<div style="font-size:0.75rem;color:#64748b;margin-top:2px">{driver_text}</div>'
+        f'</div>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
     st.markdown(metric_row([
-        ("Kørsler",    int(k["runs"] or 0)),
-        ("Sessioner",  int(k["sessions"] or 0)),
-        ("Handover",   f"{k['handover_rate_pct'] or 0}%"),
-        ("Fejlrate",   f"{k['session_error_rate_pct'] or 0}%"),
-        ("Dead links", f"{k['dead_link_session_rate_pct'] or 0}%"),
-        ("Når T4",     f"{k['reach_t4_pct'] or 0}%"),
+        ("Kørsler",         int(k["runs"] or 0),
+         "#1e40af", "Antal test-runder der er blevet kørt"),
+        ("Sessioner",       int(k["sessions"] or 0),
+         "#1e40af", "Antal individuelle samtaler med chatbotten"),
+        ("Handover-rate",   f"{handover_val}%",
+         signal_color(handover_val, (20, 50), low_is_good=True),
+         "Andel samtaler sendt videre til menneske. Lavt = botten klarer det selv"),
+        ("Fejlrate",        f"{error_val}%",
+         signal_color(error_val, (5, 15), low_is_good=True),
+         "Andel sessioner med tekniske fejl (timeout, tomt svar)"),
+        ("Dead links",      f"{deadlink_val}%",
+         signal_color(deadlink_val, (5, 15), low_is_good=True),
+         "Andel sessioner med ødelagte links i bot-svar"),
+        ("4+ ture",         f"{t4_val}%",
+         signal_color(t4_val, (60, 30), low_is_good=False),
+         "Samtaler med 4+ beskeder. Høj = engagerede samtaler"),
     ]), unsafe_allow_html=True)
 
 st.divider()
 
-# ── Trend + endpoint summary ──────────────────────────────────────────────────
-col_chart, col_ep = st.columns([2, 3])
+# ── Indsigt 1: Kategori-performance ──────────────────────────────────────────
+col_cat, col_timing = st.columns([3, 2])
 
-with col_chart:
-    st.markdown('<div class="section-header">Sessioner per dag</div>', unsafe_allow_html=True)
-    trend = db.get_runs_over_time()
-    if len(trend) > 1:
-        df_trend = pd.DataFrame(trend).set_index("run_date")
-        st.line_chart(df_trend["sessions"], color="#1e40af")
-    elif trend:
-        # Only 1 date – just show the number nicely
-        t = trend[0]
-        st.markdown(
-            f'<div style="font-size:0.9rem;color:#475569;padding:0.5rem 0">'
-            f'<b>{t["run_date"]}</b> · {t["sessions"]} sessioner fra {t["runs"]} kørsel(er)</div>',
-            unsafe_allow_html=True,
-        )
+with col_cat:
+    st.markdown('<div class="section-header">Handover-rate per emneområde</div>', unsafe_allow_html=True)
+    st.caption("Hvilken type kundespørgsmål er chatbotten dårligst til at håndtere?")
+    cats = db.get_category_summary()
+    if cats:
+        for c in cats:
+            ho = float(c["handover_pct"] or 0)
+            col = signal_color(ho, (20, 50), low_is_good=True)
+            bar_w = min(int(ho), 100)
+            st.markdown(
+                f'<div style="display:flex;align-items:center;gap:0.6rem;margin:0.3rem 0;'
+                f'padding:0.45rem 0.75rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px">'
+                f'<div style="flex:1;font-size:0.84rem;font-weight:600;color:#0f172a">{c["category"]}</div>'
+                f'<div style="font-size:0.72rem;color:#94a3b8;min-width:5rem;text-align:right">'
+                f'{c["sessions"]} sess. · {c["avg_turns"]} ture</div>'
+                f'<div style="display:flex;align-items:center;gap:0.4rem;min-width:70px">'
+                f'<div style="height:5px;width:{bar_w}px;max-width:50px;background:{col};border-radius:3px"></div>'
+                f'<div style="font-size:0.9rem;font-weight:700;color:{col};min-width:2.5rem;text-align:right">{ho}%</div>'
+                f'</div></div>',
+                unsafe_allow_html=True,
+            )
     else:
-        st.info("Ingen data endnu")
+        st.info("Ingen kategoridata endnu")
 
-with col_ep:
-    st.markdown('<div class="section-header">Endpoint overblik</div>', unsafe_allow_html=True)
-    endpoints = db.get_endpoint_summary()
-    if endpoints:
-        df_ep = pd.DataFrame(endpoints)
-        df_ep.columns = ["Endpoint", "Sessioner", "Handover %", "Fejl %", "Dead links %", "Gns. turns"]
-        st.dataframe(df_ep, use_container_width=True, hide_index=True)
+with col_timing:
+    st.markdown('<div class="section-header">Hvornår sker handover?</div>', unsafe_allow_html=True)
+    st.caption("Giver botten op straks, eller efter forsøg?")
+    dist = db.get_handover_turn_distribution()
+    if dist:
+        total_ho = sum(d["sessions"] for d in dist)
+        labels = {
+            1: ("Tur 1 – straks",   "Botten kan slet ikke hjælpe",     "#dc2626"),
+            2: ("Tur 2 – tidligt",  "Botten prøvede én gang og gav op", "#d97706"),
+        }
+        for d in dist:
+            turn = d["handover_turn"]
+            pct  = round(d["sessions"] / total_ho * 100) if total_ho else 0
+            if turn <= 2:
+                label, sub, col = labels.get(turn, (f"Tur {turn}", "", "#64748b"))
+            else:
+                label, sub, col = "Tur 3+ – sent", "Prøvede længe, men fejlede", "#d97706"
+            st.markdown(
+                f'<div style="padding:0.5rem 0.75rem;margin:0.3rem 0;background:#f8fafc;'
+                f'border-left:4px solid {col};border-radius:0 8px 8px 0">'
+                f'<div style="font-size:0.84rem;font-weight:700;color:{col}">'
+                f'{label} · {pct}% ({d["sessions"]} sess.)</div>'
+                f'<div style="font-size:0.72rem;color:#64748b;margin-top:1px">{sub}</div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+    else:
+        st.info("Ingen handover-data endnu")
 
 st.divider()
 
-# ── Run health ─────────────────────────────────────────────────────────────────
+# ── Indsigt 2: AI-dommer aggregat ────────────────────────────────────────────
+agg = db.get_judge_aggregate()
+if agg and agg.get("judged_sessions"):
+    st.markdown('<div class="section-header">AI-dommer: Samlet kvalitetsvurdering</div>', unsafe_allow_html=True)
+    st.caption(f"Baseret på {agg['judged_sessions']} bedømte samtaler")
+
+    q_col  = signal_color(float(agg["avg_quality"] or 0),    (3.5, 2.5), low_is_good=False)
+    h_col  = signal_color(float(agg["avg_helpfulness"] or 0),(3.5, 2.5), low_is_good=False)
+    c_col  = signal_color(float(agg["avg_context"] or 0),    (3.5, 2.5), low_is_good=False)
+
+    st.markdown(metric_row([
+        ("Gns. svarkvalitet",   f"{agg['avg_quality']}/5",     q_col,
+         "Gennemsnit af AI-dommerens svarkvalitetsscore. 1=ubrugelig, 5=perfekt"),
+        ("Gns. hjælpsomhed",    f"{agg['avg_helpfulness']}/5", h_col,
+         "Løser botten typisk kundens problem?"),
+        ("Gns. kontekstscore",  f"{agg['avg_context']}/5",     c_col,
+         "Husker botten typisk hvad der er sagt tidligere?"),
+        ("Unødv. handover",     f"{agg['unnecessary_handover_pct'] or 0}%", "#d97706",
+         "Andel samtaler hvor botten sendte videre, men burde selv have svaret"),
+        ("Manglende handover",  f"{agg['missing_handover_pct'] or 0}%",    "#dc2626",
+         "Andel samtaler hvor botten BURDE have sendt videre, men ikke gjorde det"),
+    ]), unsafe_allow_html=True)
+
+    # Quality trend if multiple runs judged
+    trend_data = db.get_quality_trend_by_run()
+    if len(trend_data) > 1:
+        st.markdown('<div class="section-header">Kvalitetstrend per kørsel</div>', unsafe_allow_html=True)
+        st.caption("Stiger den gennemsnitlige AI-dommer score mellem kørsler?")
+        df_qt = pd.DataFrame(trend_data).set_index("run_started_at")[
+            ["avg_quality", "avg_helpfulness", "avg_context"]
+        ]
+        df_qt.columns = ["Svarkvalitet", "Hjælpsomhed", "Kontekst"]
+        st.line_chart(df_qt)
+
+    st.divider()
+
+# ── Indsigt 3: Top 5 problematiske spørgsmål ─────────────────────────────────
+st.markdown('<div class="section-header">Top 5 – Spørgsmål med højeste handover-rate</div>', unsafe_allow_html=True)
+st.caption("Start din analyse her – åbn disse i Spørgsmålsanalyse for at se detaljerne")
+top_q = db.get_top_handover_questions(5)
+if top_q:
+    for i, q in enumerate(top_q, 1):
+        ho = float(q["handover_rate_pct"] or 0)
+        bar_color = signal_color(ho, (20, 50), low_is_good=True)
+        bar_width = min(int(ho), 100)
+        st.markdown(
+            f'<div style="display:flex;align-items:center;gap:0.75rem;margin:0.4rem 0;padding:0.5rem 0.75rem;'
+            f'background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px">'
+            f'<div style="font-size:0.78rem;font-weight:700;color:#94a3b8;min-width:1.2rem">{i}.</div>'
+            f'<div style="flex:1;min-width:0">'
+            f'<div style="font-size:0.85rem;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'
+            f'{q["question_text"]}</div>'
+            f'<div style="font-size:0.72rem;color:#64748b">{q["category"]} · {q["sessions"]} sessioner</div>'
+            f'</div>'
+            f'<div style="display:flex;align-items:center;gap:0.5rem;min-width:80px">'
+            f'<div style="height:6px;width:{bar_width}px;max-width:60px;background:{bar_color};border-radius:3px"></div>'
+            f'<div style="font-size:0.95rem;font-weight:700;color:{bar_color}">{ho}%</div>'
+            f'</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+st.divider()
+
+# ── Kørsels-sundhed (teknisk overblik) ────────────────────────────────────────
 st.markdown('<div class="section-header">Kørsels-sundhed</div>', unsafe_allow_html=True)
+st.caption("Teknisk oversigt per test-kørsel – lav fejl- og handover-rate er bedst")
 run_health = db.get_run_health()
 if run_health:
     df_rh = pd.DataFrame(run_health)
-    df_rh.columns = ["Startet", "Run-ID", "Endpoint", "Sessioner",
-                      "Fejl %", "Timeout %", "Dead links %", "Handover %"]
+    df_rh.columns = ["Startet", "Kørsel", "Endpoint", "Sessioner",
+                      "Fejl %", "Timeout %", "Døde links %", "Handover %"]
     st.dataframe(df_rh, use_container_width=True, hide_index=True)
 else:
     st.info("Ingen kørsler i databasen endnu")

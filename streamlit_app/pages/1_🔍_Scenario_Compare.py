@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 import db
 import judge as judge_module
-from style import inject_css, meta_pills
+from style import inject_css, meta_pills, translate_handover_assessment
 
 inject_css()
 
@@ -43,12 +43,12 @@ def render_chat(turns):
 
 def render_judge(r):
     sc1, sc2, sc3, sc4 = st.columns(4)
-    sc1.metric("Svar", f"{r['response_quality']:.1f}/5")
-    sc2.metric("Kontekst", f"{r['context_coherence']:.1f}/5")
-    sc3.metric("Hjælp", f"{r['helpfulness']:.1f}/5")
-    sc4.metric("Conf.", f"{r['confidence']:.2f}")
+    sc1.metric("Svarkvalitet", f"{r['response_quality']:.1f}/5", help="Er svaret korrekt og fyldestgørende? 1=ubrugelig, 3=acceptabel, 5=perfekt")
+    sc2.metric("Kontekst", f"{r['context_coherence']:.1f}/5", help="Husker botten hvad der blev sagt tidligere? 1=ingen sammenhæng, 5=perfekt hukommelse")
+    sc3.metric("Hjælpsomhed", f"{r['helpfulness']:.1f}/5", help="Løser svaret kundens problem? 1=slet ikke, 3=delvist, 5=fuldt løst")
+    sc4.metric("Sikkerhed", f"{r['confidence']:.2f}", help="AI-dommerens tillid til sin egen vurdering. 0=usikker, 1=helt sikker")
     st.markdown(
-        f'<div class="judge-ha">Handover: {r.get("handover_assessment","n/a")}</div>',
+        f'<div class="judge-ha">Handover-vurdering: {translate_handover_assessment(r.get("handover_assessment","n/a"))}</div>',
         unsafe_allow_html=True,
     )
     if r.get("summary"):
@@ -88,8 +88,9 @@ def render_column(col_label, session_id, slot):
     btn_key   = f"btn_{slot}_{session_id}"
     cache_key = f"judge_{slot}_{session_id}"
 
-    if st.button("🤖 Kør AI Judge", key=btn_key, use_container_width=True):
-        with st.spinner("Kalder AI Judge… (2–5 min)"):
+    st.caption("AI-dommer vurderer samtalen automatisk via lokal LLM")
+    if st.button("🤖 Kør AI-dommer", key=btn_key, use_container_width=True):
+        with st.spinner("Kalder AI-dommer via lokal model… (2–5 min)"):
             try:
                 result = judge_module.run_judge(session_id)
                 st.session_state[cache_key] = {"ok": True, "data": result}
@@ -111,8 +112,8 @@ def render_column(col_label, session_id, slot):
 
 # ── Page ──────────────────────────────────────────────────────────────────────
 
-st.title("🔍 Scenario Compare")
-st.caption("Sammenlign op til 3 simuleringer side om side for det samme spørgsmål")
+st.title("🔍 Sammenlign scenarier")
+st.caption("Sammenlign op til 3 test-samtaler side om side for det samme spørgsmål")
 
 topics       = db.get_topic_options()
 topic_labels = [t["label"] for t in topics]
@@ -161,17 +162,17 @@ st.divider()
 dc1, dc2, dc3 = st.columns(3)
 with dc1:
     session_a = st.selectbox(
-        "Simulation A", session_ids, index=default_idx(1),
+        "Samtale A", session_ids, index=default_idx(1),
         format_func=lambda s: session_map.get(s, s), key="sel_a",
     )
 with dc2:
     session_b = st.selectbox(
-        "Simulation B", session_ids, index=default_idx(2),
+        "Samtale B", session_ids, index=default_idx(2),
         format_func=lambda s: session_map.get(s, s), key="sel_b",
     )
 with dc3:
     session_c = st.selectbox(
-        "Simulation C", session_ids, index=default_idx(3),
+        "Samtale C", session_ids, index=default_idx(3),
         format_func=lambda s: session_map.get(s, s), key="sel_c",
     )
 
@@ -179,8 +180,8 @@ st.divider()
 
 col_a, col_b, col_c = st.columns(3)
 with col_a:
-    render_column("Simulation A", session_a, slot="a")
+    render_column("Samtale A", session_a, slot="a")
 with col_b:
-    render_column("Simulation B", session_b, slot="b")
+    render_column("Samtale B", session_b, slot="b")
 with col_c:
-    render_column("Simulation C", session_c, slot="c")
+    render_column("Samtale C", session_c, slot="c")
