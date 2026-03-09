@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 import pandas as pd
 import db
-from style import inject_css, metric_row, signal_color
+from style import inject_css, metric_row, signal_color, progress_bar_html
 
 inject_css()
 
@@ -100,22 +100,23 @@ with col_cat:
     st.caption("Hvilken type kundespørgsmål er chatbotten dårligst til at håndtere?")
     cats = db.get_category_summary()
     if cats:
+        parts = []
         for c in cats:
             ho = float(c["handover_pct"] or 0)
             col = signal_color(ho, (20, 50), low_is_good=True)
-            bar_w = min(int(ho), 100)
-            st.markdown(
+            bar_pct = min(round(ho), 100)
+            parts.append(
                 f'<div style="display:flex;align-items:center;gap:0.6rem;margin:0.3rem 0;'
                 f'padding:0.45rem 0.75rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px">'
                 f'<div style="flex:1;font-size:0.84rem;font-weight:600;color:#0f172a">{c["category"]}</div>'
                 f'<div style="font-size:0.72rem;color:#94a3b8;min-width:5rem;text-align:right">'
                 f'{c["sessions"]} sess. · {c["avg_turns"]} ture</div>'
-                f'<div style="display:flex;align-items:center;gap:0.4rem;min-width:70px">'
-                f'<div style="height:5px;width:{bar_w}px;max-width:50px;background:{col};border-radius:3px"></div>'
+                f'<div style="display:flex;align-items:center;gap:0.4rem;min-width:80px">'
+                f'{progress_bar_html(bar_pct, col)}'
                 f'<div style="font-size:0.9rem;font-weight:700;color:{col};min-width:2.5rem;text-align:right">{ho}%</div>'
-                f'</div></div>',
-                unsafe_allow_html=True,
+                f'</div></div>'
             )
+        st.markdown("".join(parts), unsafe_allow_html=True)
     else:
         st.info("Ingen kategoridata endnu")
 
@@ -191,11 +192,12 @@ st.markdown('<div class="section-header">Top 5 – Spørgsmål med højeste hand
 st.caption("Start din analyse her – åbn disse i Spørgsmålsanalyse for at se detaljerne")
 top_q = db.get_top_handover_questions(5)
 if top_q:
+    parts = []
     for i, q in enumerate(top_q, 1):
         ho = float(q["handover_rate_pct"] or 0)
         bar_color = signal_color(ho, (20, 50), low_is_good=True)
-        bar_width = min(int(ho), 100)
-        st.markdown(
+        bar_pct = min(round(ho), 100)
+        parts.append(
             f'<div style="display:flex;align-items:center;gap:0.75rem;margin:0.4rem 0;padding:0.5rem 0.75rem;'
             f'background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px">'
             f'<div style="font-size:0.78rem;font-weight:700;color:#94a3b8;min-width:1.2rem">{i}.</div>'
@@ -204,13 +206,13 @@ if top_q:
             f'{q["question_text"]}</div>'
             f'<div style="font-size:0.72rem;color:#64748b">{q["category"]} · {q["sessions"]} sessioner</div>'
             f'</div>'
-            f'<div style="display:flex;align-items:center;gap:0.5rem;min-width:80px">'
-            f'<div style="height:6px;width:{bar_width}px;max-width:60px;background:{bar_color};border-radius:3px"></div>'
+            f'<div style="display:flex;align-items:center;gap:0.5rem;min-width:90px">'
+            f'{progress_bar_html(bar_pct, bar_color)}'
             f'<div style="font-size:0.95rem;font-weight:700;color:{bar_color}">{ho}%</div>'
             f'</div>'
-            f'</div>',
-            unsafe_allow_html=True,
+            f'</div>'
         )
+    st.markdown("".join(parts), unsafe_allow_html=True)
 
 st.divider()
 

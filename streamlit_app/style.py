@@ -61,6 +61,19 @@ def translate_handover_assessment(raw: str) -> str:
     return _HA_LABELS.get((raw or "").lower().strip(), raw or "ukendt")
 
 
+def progress_bar_html(pct, color, width_px=60, height_px=6):
+    """Return HTML for a proportional progress bar inside a fixed-width container.
+    pct: 0-100 integer for fill width (use min(round(value), 100) before calling).
+    color: hex fill color — use signal_color() to compute.
+    """
+    return (
+        f'<div style="width:{width_px}px;height:{height_px}px;'
+        f'background:#e2e8f0;border-radius:3px;overflow:hidden">'
+        f'<div style="height:100%;width:{pct}%;background:{color};border-radius:3px"></div>'
+        f'</div>'
+    )
+
+
 def meta_pills(items):
     """Compact inline metadata row. items = list of (label, value) tuples."""
     pills = "".join(
@@ -116,21 +129,21 @@ def inject_css():
     .chat-user {
         background: #dbeafe;
         border: 1px solid #bfdbfe;
-        border-radius: 0 10px 10px 10px;
+        border-radius: 10px 0 10px 10px;
         padding: 0.5rem 0.8rem;
         font-size: 0.875rem;
         line-height: 1.5;
         max-width: 90%;
+        margin-left: auto;
     }
     .chat-bot {
         background: #f1f5f9;
         border: 1px solid #e2e8f0;
-        border-radius: 10px 10px 10px 0;
+        border-radius: 0 10px 10px 10px;
         padding: 0.5rem 0.8rem;
         font-size: 0.875rem;
         line-height: 1.55;
         max-width: 90%;
-        margin-left: auto;
     }
     .chat-bot a { color: #1e40af; }
     .handover-badge {

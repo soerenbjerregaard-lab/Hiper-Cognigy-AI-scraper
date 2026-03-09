@@ -101,22 +101,21 @@ def get_category_summary():
 
 
 def get_handover_turn_distribution():
-    """For sessions WITH handover: how many at turn 1, 2, 3+."""
+    """For sessions WITH handover: how many at turn 1, 2, 3+.
+    Returns at most 3 rows – all turns >= 3 are collapsed into one."""
     return query("""
         SELECT
             CASE
-                WHEN handover_turn = 1 THEN '1 – Straks (tur 1)'
-                WHEN handover_turn = 2 THEN '2 – Tur 2'
-                WHEN handover_turn >= 3 THEN '3+ – Sent (tur 3+)'
-                ELSE 'Ukendt'
-            END AS handover_when,
-            handover_turn,
+                WHEN handover_turn = 1 THEN 1
+                WHEN handover_turn = 2 THEN 2
+                ELSE 3
+            END AS handover_turn,
             COUNT(*) AS sessions
         FROM sessions
         WHERE handover_flag = 1
           AND handover_turn IS NOT NULL
-        GROUP BY handover_turn
-        ORDER BY handover_turn
+        GROUP BY 1
+        ORDER BY 1
     """)
 
 
