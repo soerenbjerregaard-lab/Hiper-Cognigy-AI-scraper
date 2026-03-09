@@ -1,4 +1,7 @@
 import sys
+import os
+import subprocess
+import time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -9,8 +12,42 @@ from style import inject_css, metric_row, signal_color, progress_bar_html
 
 inject_css()
 
-st.title("📊 Chatbot-kvalitet")
-st.caption("Automatiseret kvalitetsanalyse af Hipers Cognigy AI-chatbot")
+PROJECT_ROOT = Path(__file__).parent.parent.parent  # streamlit_app/pages/ → project root
+
+# ── Header + run-trigger knap ─────────────────────────────────────────────────
+_hdr, _btn = st.columns([5, 1])
+with _hdr:
+    st.title("📊 Chatbot-kvalitet")
+    st.caption("Automatiseret kvalitetsanalyse af Hipers Cognigy AI-chatbot")
+with _btn:
+    st.markdown("<div style='height:1.3rem'></div>", unsafe_allow_html=True)
+    if st.button("▶ Ny kørsel", type="primary", use_container_width=True):
+        proc = subprocess.Popen(
+            ["node", "run.js"],
+            cwd=str(PROJECT_ROOT),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        st.session_state["_run_pid"] = proc.pid
+        st.session_state["_run_at"]  = time.strftime("%H:%M")
+        st.rerun()
+
+if "_run_pid" in st.session_state:
+    pid = st.session_state["_run_pid"]
+    try:
+        os.kill(pid, 0)   # signal 0 = tjek om processen eksisterer (dræber ikke)
+        running = True
+    except (ProcessLookupError, PermissionError):
+        running = False
+    if running:
+        st.info(f"⏳ Kørsel kører siden {st.session_state['_run_at']} — opdater siden om et par minutter")
+    else:
+        _sc1, _sc2 = st.columns([5, 1])
+        _sc1.success(f"✅ Kørsel færdig (startet {st.session_state['_run_at']}) — data nedenfor er opdateret")
+        if _sc2.button("OK", key="_run_ack"):
+            del st.session_state["_run_pid"]
+            del st.session_state["_run_at"]
+            st.rerun()
 
 # ── Intro for nye brugere ─────────────────────────────────────────────────────
 with st.expander("ℹ️ Hvad viser dette dashboard?"):
@@ -20,6 +57,8 @@ with st.expander("ℹ️ Hvad viser dette dashboard?"):
 - **En kørsel** = én test-runde, hvor alle scenarier sendes til chatten parallelt
 - **En session** = én samtale (spørgsmål + opfølgning) med chatbotten
 - **Handover** = chatten sender kunden videre til et menneske. Høj rate → botten kan ikke selv svare
+- **Handover i åbningstid** = handover under en kørsel i tidsrummet 8–16, hvor kundeservice er åben (reel handover)
+- **Handover udenfor timer** = handover under en kørsel uden for åbningstiden — teknisk set sker det, men kunden når ingen reel agent
 - **Dead links** = links i bot-svar der ikke virker (404-fejl, forkerte URL'er)
 - **Fejlrate** = sessioner hvor noget gik teknisk galt (timeout, ingen svar)
 - **4+ ture** = samtaler hvor kunden stillede opfølgningsspørgsmål (tegn på engageret dialog)
@@ -34,21 +73,26 @@ Brug sidemenuen til at dykke ned i specifikke samtaler og sammenligne scenarier.
 kpis = db.get_kpis()
 if kpis:
     k = kpis[0]
-    handover_val  = float(k['handover_rate_pct'] or 0)
-    error_val     = float(k['session_error_rate_pct'] or 0)
-    deadlink_val  = float(k['dead_link_session_rate_pct'] or 0)
-    t4_val        = float(k['reach_t4_pct'] or 0)
+    error_val    = float(k['session_error_rate_pct'] or 0)
+    deadlink_val = float(k['dead_link_session_rate_pct'] or 0)
+    t4_val       = float(k['reach_t4_pct'] or 0)
 
-    # Overall health score: 100 minus penalties for problems
-    health = max(0, min(100, round(100 - handover_val * 0.5 - error_val * 2 - deadlink_val * 1.5)))
+    # Business hours handover split
+    _hours_map = {r["period"]: float(r["handover_rate_pct"] or 0)
+                  for r in (db.get_handover_by_hours() or [])}
+    ho_in  = _hours_map.get("in_hours",     float(k['handover_rate_pct'] or 0))
+    ho_out = _hours_map.get("out_of_hours", float(k['handover_rate_pct'] or 0))
+
+    # Health score baseret på åbningstids-handover (mere meningsfuld)
+    health = max(0, min(100, round(100 - ho_in * 0.5 - error_val * 2 - deadlink_val * 1.5)))
     health_color = signal_color(health, (70, 40), low_is_good=False)
 
     # Build explanation of what pulls the score down
     drivers = []
-    if handover_val > 50:
-        drivers.append(f"høj handover-rate ({handover_val}%)")
-    elif handover_val > 20:
-        drivers.append(f"forhøjet handover-rate ({handover_val}%)")
+    if ho_in > 50:
+        drivers.append(f"høj handover i åbningstid ({ho_in}%)")
+    elif ho_in > 20:
+        drivers.append(f"forhøjet handover i åbningstid ({ho_in}%)")
     if error_val > 15:
         drivers.append(f"høj fejlrate ({error_val}%)")
     elif error_val > 5:
@@ -64,28 +108,32 @@ if kpis:
         f'<div style="font-size:2.5rem;font-weight:800;color:{health_color}">{health}</div>'
         f'<div>'
         f'<div style="font-size:0.85rem;font-weight:700;color:#475569">Samlet sundhedsscore</div>'
-        f'<div style="font-size:0.75rem;color:#94a3b8">0–100 · Baseret på fejl, handover og døde links</div>'
+        f'<div style="font-size:0.75rem;color:#94a3b8">0–100 · Baseret på fejl, handover i åbningstid og døde links</div>'
         f'<div style="font-size:0.75rem;color:#64748b;margin-top:2px">{driver_text}</div>'
         f'</div>'
         f'</div>',
         unsafe_allow_html=True,
     )
 
+    bh = f"{db.BUSINESS_HOURS_START}–{db.BUSINESS_HOURS_END}"
     st.markdown(metric_row([
-        ("Kørsler",         int(k["runs"] or 0),
+        ("Kørsler",              int(k["runs"] or 0),
          "#1e40af", "Antal test-runder der er blevet kørt"),
-        ("Sessioner",       int(k["sessions"] or 0),
+        ("Sessioner",            int(k["sessions"] or 0),
          "#1e40af", "Antal individuelle samtaler med chatbotten"),
-        ("Handover-rate",   f"{handover_val}%",
-         signal_color(handover_val, (20, 50), low_is_good=True),
-         "Andel samtaler sendt videre til menneske. Lavt = botten klarer det selv"),
-        ("Fejlrate",        f"{error_val}%",
+        (f"Handover ({bh})",     f"{ho_in}%",
+         signal_color(ho_in, (20, 50), low_is_good=True),
+         f"Handover-rate for kørsler i åbningstiden ({bh}). Disse handovers er reelle — kunden kan nå en agent."),
+        ("Handover (udenfor)",   f"{ho_out}%",
+         "#94a3b8",
+         "Handover-rate for kørsler udenfor åbningstid. Kunden kan ikke nå en reel agent — brug kun som teknisk reference."),
+        ("Fejlrate",             f"{error_val}%",
          signal_color(error_val, (5, 15), low_is_good=True),
          "Andel sessioner med tekniske fejl (timeout, tomt svar)"),
-        ("Dead links",      f"{deadlink_val}%",
+        ("Dead links",           f"{deadlink_val}%",
          signal_color(deadlink_val, (5, 15), low_is_good=True),
          "Andel sessioner med ødelagte links i bot-svar"),
-        ("4+ ture",         f"{t4_val}%",
+        ("4+ ture",              f"{t4_val}%",
          signal_color(t4_val, (60, 30), low_is_good=False),
          "Samtaler med 4+ beskeder. Høj = engagerede samtaler"),
     ]), unsafe_allow_html=True)
@@ -223,7 +271,7 @@ run_health = db.get_run_health()
 if run_health:
     df_rh = pd.DataFrame(run_health)
     df_rh.columns = ["Startet", "Kørsel", "Endpoint", "Sessioner",
-                      "Fejl %", "Timeout %", "Døde links %", "Handover %"]
+                      "Fejl %", "Timeout %", "Døde links %", "Handover %", "Åbningstid?"]
     st.dataframe(df_rh, use_container_width=True, hide_index=True)
 else:
     st.info("Ingen kørsler i databasen endnu")

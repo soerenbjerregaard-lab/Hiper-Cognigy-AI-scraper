@@ -40,7 +40,7 @@ def render_chat(turns):
 # ── Page ──────────────────────────────────────────────────────────────────────
 
 st.title("💬 Samtaleudforsker")
-st.caption("Udforsk individuelle samtaler og kør AI-dommeren")
+st.caption("Find og læs én specifik samtale — vælg kørsel → session, se fuldt transcript og kør AI-dommeren")
 
 # ── Filters full-width at top ─────────────────────────────────────────────────
 runs       = db.get_run_options()

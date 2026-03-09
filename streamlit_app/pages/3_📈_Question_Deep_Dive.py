@@ -28,7 +28,7 @@ def render_chat(turns):
 # ── Page ──────────────────────────────────────────────────────────────────────
 
 st.title("📈 Spørgsmålsanalyse")
-st.caption("Analysér ét spørgsmål på tværs af alle test-kørsler – se om svarkvaliteten ændrer sig over tid")
+st.caption("Track ét spørgsmål på tværs af alle kørsler — ser botten bedre ud over tid? (Modsat Samtaleudforsker, der viser én session)")
 
 questions = db.get_question_options()
 q_labels  = [q["label"] for q in questions]

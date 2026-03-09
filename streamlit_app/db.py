@@ -7,6 +7,17 @@ DB_PATH = os.environ.get(
     str(Path(__file__).parent.parent / "simlab.db"),
 )
 
+# ── Business hours config ─────────────────────────────────────────────────────
+# Handover udenfor disse timer er teknisk, men kunden kan ikke nå en reel agent.
+BUSINESS_HOURS_START = 8   # 08:00 (inklusiv)
+BUSINESS_HOURS_END   = 16  # 16:00 (eksklusiv)
+
+
+def _in_biz_hours(ts_col="r.run_started_at"):
+    """SQL fragment: TRUE hvis kørslen startede i åbningstiden."""
+    h = f"CAST(strftime('%H', {ts_col}) AS INTEGER)"
+    return f"({h} >= {BUSINESS_HOURS_START} AND {h} < {BUSINESS_HOURS_END})"
+
 
 def get_conn():
     conn = sqlite3.connect(DB_PATH)
@@ -68,7 +79,8 @@ def get_endpoint_summary():
 
 
 def get_run_health():
-    return query("""
+    in_h = _in_biz_hours()
+    return query(f"""
         SELECT
             r.run_started_at,
             SUBSTR(r.run_id, 1, 8)                                                      AS run_short,
@@ -77,9 +89,25 @@ def get_run_health():
             ROUND(AVG(CASE WHEN s.error_count > 0 THEN 1.0 ELSE 0 END) * 100, 1)      AS error_rate_pct,
             ROUND(AVG(CASE WHEN s.timeout_count > 0 THEN 1.0 ELSE 0 END) * 100, 1)    AS timeout_rate_pct,
             ROUND(AVG(CASE WHEN s.dead_link_count > 0 THEN 1.0 ELSE 0 END) * 100, 1)  AS dead_link_rate_pct,
-            ROUND(AVG(s.handover_flag) * 100, 1)                                        AS handover_rate_pct
+            ROUND(AVG(s.handover_flag) * 100, 1)                                        AS handover_rate_pct,
+            CASE WHEN {in_h} THEN '✅' ELSE '⛔' END                                    AS i_aabningstid
         FROM runs r JOIN sessions s ON s.run_id = r.run_id
         GROUP BY 1,2,3,4 ORDER BY r.run_started_at DESC
+    """)
+
+
+def get_handover_by_hours():
+    """Handover-rate opdelt på åbningstid vs. udenfor.
+    Returnerer maks 2 rækker: period='in_hours' | 'out_of_hours'."""
+    in_h = _in_biz_hours()
+    return query(f"""
+        SELECT
+            CASE WHEN {in_h} THEN 'in_hours' ELSE 'out_of_hours' END AS period,
+            COUNT(DISTINCT s.session_id)                               AS sessions,
+            ROUND(AVG(s.handover_flag) * 100, 1)                      AS handover_rate_pct
+        FROM sessions s
+        JOIN runs r ON r.run_id = s.run_id
+        GROUP BY 1
     """)
 
 
