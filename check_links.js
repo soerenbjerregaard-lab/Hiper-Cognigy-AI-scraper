@@ -2,14 +2,17 @@
 // Link-validering: tester alle URLs fra bot-svar
 // Detekterer både hårde fejl (4xx/5xx/timeout) og soft 404s
 // (redirect til forside/generisk hjælpeside)
+// Validerer desuden hiper.dk-links mod sitemappet — ét fetch per kørsel
+// fanger URL-drift (links der er flyttet men endnu ikke returnerer 404).
 //
 // Usage (standalone):  node check_links.js
 // Importeres også af phase3_followup.js og køres automatisk
 
 const { openDb } = require('./db');
 
-const CONCURRENCY = 5;
-const TIMEOUT_MS  = 10000;
+const CONCURRENCY  = 5;
+const TIMEOUT_MS   = 10000;
+const SITEMAP_URL  = 'https://www.hiper.dk/sitemap.xml';
 
 // Tekstfragmenter der indikerer "siden findes ikke" i HTML-body
 const NOT_FOUND_MARKERS = [
@@ -56,6 +59,54 @@ function isContentNotFound(html, originalUrl) {
   return false;
 }
 
+// ── Sitemap-validering ────────────────────────────────────────────────────────
+
+/**
+ * Normaliserer en hiper.dk-URL til sitemap-format:
+ *  - strip #anchor og ?query
+ *  - strip trailing slash (undtagen roddomænet)
+ * Returnerer null for URL'er der ikke er på www.hiper.dk.
+ */
+function normalizeForSitemap(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname !== 'www.hiper.dk') return null; // subdomæner og eksterne ignoreres
+    u.hash   = '';
+    u.search = '';
+    let str = u.toString();
+    // Behold trailing slash kun for rodsiden (/)
+    if (str.endsWith('/') && u.pathname !== '/') str = str.slice(0, -1);
+    return str;
+  } catch { return null; }
+}
+
+/** Henter sitemappet og returnerer et Set med normaliserede URL'er. */
+async function fetchSitemapUrls() {
+  try {
+    const res = await fetch(SITEMAP_URL, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HiperLinkChecker/1.0)' },
+    });
+    const xml = await res.text();
+    const urls = new Set();
+    for (const m of xml.matchAll(/<loc>(.*?)<\/loc>/g)) {
+      const norm = normalizeForSitemap(m[1].trim());
+      if (norm) urls.add(norm);
+    }
+    console.log(`Sitemap: ${urls.size} kendte URL'er hentet fra ${SITEMAP_URL}`);
+    return urls;
+  } catch (err) {
+    console.warn(`Sitemap-fetch fejlede (${err.message}) — springer sitemap-validering over`);
+    return null;  // null = deaktivér sitemap-check for denne kørsel
+  }
+}
+
+/** Returnerer true for URL'er der skal valideres mod sitemappet (kun www.hiper.dk). */
+function isHiperUrl(url) {
+  try { return new URL(url).hostname === 'www.hiper.dk'; } catch { return false; }
+}
+
+// ── HTTP-validering ───────────────────────────────────────────────────────────
+
 async function checkUrl(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -87,9 +138,32 @@ async function run(db) {
   // Migrer link_checks-tabellen til at inkludere final_url og redirected
   try { db.exec('ALTER TABLE link_checks ADD COLUMN final_url TEXT'); } catch {}
   try { db.exec('ALTER TABLE link_checks ADD COLUMN redirected INTEGER DEFAULT 0'); } catch {}
+  try { db.exec('ALTER TABLE link_checks ADD COLUMN not_in_sitemap INTEGER DEFAULT 0'); } catch {}
 
   // Re-tjek poster der mangler final_url (cachet før denne opdatering)
   db.exec('DELETE FROM link_checks WHERE final_url IS NULL');
+
+  // Hent sitemappet én gang for hele kørslen
+  const sitemapUrls = await fetchSitemapUrls();
+
+  // Opdatér eksisterende cache-entries mod det nye sitemap
+  // (fanger URL'er der var OK ved HTTP-check men nu er forsvundet fra sitemappet)
+  if (sitemapUrls) {
+    const cached = db.prepare("SELECT url FROM link_checks WHERE url LIKE '%hiper.dk%'").all();
+    const updateSitemap = db.prepare('UPDATE link_checks SET not_in_sitemap=? WHERE url=?');
+    let updatedCount = 0;
+    for (const row of cached) {
+      const normUrl = normalizeForSitemap(row.url);
+      const notIn = normUrl !== null && !sitemapUrls.has(normUrl) ? 1 : 0;
+      updateSitemap.run(notIn, row.url);
+      if (notIn) updatedCount++;
+    }
+    // Sæt ok=0 for alle hiper.dk-links der ikke er i sitemappet (uanset HTTP-status)
+    db.exec("UPDATE link_checks SET ok=0 WHERE not_in_sitemap=1");
+    if (updatedCount > 0) {
+      console.log(`Sitemap: ${updatedCount} cached URL'er markeret som ikke-i-sitemap\n`);
+    }
+  }
 
   // Hent alle unikke URLs fra bot-svar
   const rows = db.prepare(
@@ -113,19 +187,32 @@ async function run(db) {
     const queue = [...unchecked];
     let done = 0;
     const insertCheck = db.prepare(
-      'INSERT OR REPLACE INTO link_checks (url, status_code, ok, final_url, redirected) VALUES (?, ?, ?, ?, ?)'
+      'INSERT OR REPLACE INTO link_checks (url, status_code, ok, final_url, redirected, not_in_sitemap) VALUES (?, ?, ?, ?, ?, ?)'
     );
 
     async function worker() {
       while (queue.length > 0) {
         const url    = queue.shift();
         const result = await checkUrl(url);
-        insertCheck.run(url, result.status, result.ok ? 1 : 0, result.finalUrl, result.softDead ? 1 : 0);
+
+        // Sitemap-check: www.hiper.dk-URL er ugyldig hvis den ikke kendes af sitemappet
+        const normUrl = normalizeForSitemap(url);
+        const notInSitemap = sitemapUrls !== null
+          && normUrl !== null
+          && !sitemapUrls.has(normUrl)
+          ? 1 : 0;
+
+        // En URL er "ok" kun hvis den består HTTP-check OG sitemap-check
+        const ok = (result.ok && !notInSitemap) ? 1 : 0;
+
+        insertCheck.run(url, result.status, ok, result.finalUrl, result.softDead ? 1 : 0, notInSitemap);
         done++;
-        const icon  = result.ok ? '✓' : '✗';
+
+        const icon  = ok ? '✓' : '✗';
         const label = result.status === 0 ? 'timeout' : String(result.status);
-        const note  = result.contentDead ? ' [content: ikke fundet]'
-                    : result.softDead    ? ` [redirect → ${result.finalUrl}]`
+        const note  = notInSitemap        ? ' [ikke i sitemap]'
+                    : result.contentDead  ? ' [content: ikke fundet]'
+                    : result.softDead     ? ` [redirect → ${result.finalUrl}]`
                     : '';
         console.log(`[${done}/${unchecked.length}] ${icon} ${label}${note}  ${url}`);
       }
@@ -150,24 +237,28 @@ async function run(db) {
   }
 
   // Opsummering
-  const totalChecked   = db.prepare('SELECT COUNT(*) as n FROM link_checks').get().n;
-  const deadCount      = db.prepare('SELECT COUNT(*) as n FROM link_checks WHERE ok=0').get().n;
-  const redirectCount  = db.prepare('SELECT COUNT(*) as n FROM link_checks WHERE redirected=1').get().n;
-  const hardDeadCount  = deadCount - redirectCount;
+  const totalChecked      = db.prepare('SELECT COUNT(*) as n FROM link_checks').get().n;
+  const deadCount         = db.prepare('SELECT COUNT(*) as n FROM link_checks WHERE ok=0').get().n;
+  const sitemapDeadCount  = db.prepare('SELECT COUNT(*) as n FROM link_checks WHERE not_in_sitemap=1').get().n;
+  const redirectCount     = db.prepare('SELECT COUNT(*) as n FROM link_checks WHERE redirected=1 AND not_in_sitemap=0').get().n;
+  const hardDeadCount     = deadCount - sitemapDeadCount - redirectCount;
 
   console.log(`\nResultat: ${deadCount} problematiske links ud af ${totalChecked} unikke`);
-  if (redirectCount > 0) console.log(`  Soft 404 (redirect til generisk side): ${redirectCount}`);
-  if (hardDeadCount > 0) console.log(`  Hård fejl (4xx/5xx/timeout):           ${hardDeadCount}`);
+  if (sitemapDeadCount > 0) console.log(`  Ikke i sitemap (URL-drift):             ${sitemapDeadCount}`);
+  if (redirectCount    > 0) console.log(`  Soft 404 (redirect til generisk side):  ${redirectCount}`);
+  if (hardDeadCount    > 0) console.log(`  Hård fejl (4xx/5xx/timeout):            ${hardDeadCount}`);
 
   if (deadCount > 0) {
     const deadList = db.prepare(
-      'SELECT url, status_code, redirected, final_url FROM link_checks WHERE ok=0 ORDER BY redirected DESC, url'
+      `SELECT url, status_code, redirected, not_in_sitemap, final_url
+       FROM link_checks WHERE ok=0
+       ORDER BY not_in_sitemap DESC, redirected DESC, url`
     ).all();
     console.log('\nProblematiske links:');
     deadList.forEach(l => {
-      const code = l.status_code === 0 ? 'timeout' : l.status_code;
-      const type = l.redirected ? 'soft-404' : `HTTP ${code}`;
-      const extra = l.redirected ? ` → ${l.final_url}` : '';
+      const code  = l.status_code === 0 ? 'timeout' : l.status_code;
+      const type  = l.not_in_sitemap ? 'ikke-i-sitemap' : l.redirected ? 'soft-404' : `HTTP ${code}`;
+      const extra = l.redirected && !l.not_in_sitemap ? ` → ${l.final_url}` : '';
       console.log(`  [${type}]  ${l.url}${extra}`);
     });
   }
