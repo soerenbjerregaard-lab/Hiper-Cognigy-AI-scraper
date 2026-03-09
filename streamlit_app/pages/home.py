@@ -14,18 +14,21 @@ inject_css()
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent  # streamlit_app/pages/ → project root
 
-# ── Header + run-trigger knap ─────────────────────────────────────────────────
-_hdr, _btn = st.columns([5, 1])
-with _hdr:
-    st.title("📊 Chatbot-kvalitet")
+# ── Header ────────────────────────────────────────────────────────────────────
+st.title("📊 Chatbot-kvalitet")
+
+# Kontrolrækken er under titlen så dropdown ikke klippes af Streamlits header-bar
+_cap_col, _ep_col, _btn_col = st.columns([4, 1, 1])
+with _cap_col:
     st.caption("Automatiseret kvalitetsanalyse af Hipers Cognigy AI-chatbot")
-with _btn:
+with _ep_col:
     endpoint_choice = st.selectbox(
         "Endpoint",
         options=["gpt41", "gpt5"],
         label_visibility="collapsed",
         key="_endpoint_sel",
     )
+with _btn_col:
     if st.button("▶ Ny kørsel", type="primary", use_container_width=True):
         # Two-step pipeline:
         #   1. node run.js         → writes conversations.db + exports/*.csv
