@@ -22,8 +22,11 @@ with _hdr:
 with _btn:
     st.markdown("<div style='height:1.3rem'></div>", unsafe_allow_html=True)
     if st.button("▶ Ny kørsel", type="primary", use_container_width=True):
+        # Two-step pipeline:
+        #   1. node run.js         → writes conversations.db + exports/*.csv
+        #   2. build_simlab_db.py  → rebuilds simlab.db from the new CSV exports
         proc = subprocess.Popen(
-            ["node", "run.js"],
+            ["bash", "-c", "node run.js && python3 scripts/build_simlab_db.py"],
             cwd=str(PROJECT_ROOT),
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
@@ -40,10 +43,10 @@ if "_run_pid" in st.session_state:
     except (ProcessLookupError, PermissionError):
         running = False
     if running:
-        st.info(f"⏳ Kørsel kører siden {st.session_state['_run_at']} — opdater siden om et par minutter")
+        st.info(f"⏳ Kørsel kører siden {st.session_state['_run_at']} — scraper + DB-import. Opdater om et par minutter.")
     else:
         _sc1, _sc2 = st.columns([5, 1])
-        _sc1.success(f"✅ Kørsel færdig (startet {st.session_state['_run_at']}) — data nedenfor er opdateret")
+        _sc1.success(f"✅ Kørsel + DB-import færdig (startet {st.session_state['_run_at']}) — data nedenfor er opdateret")
         if _sc2.button("OK", key="_run_ack"):
             del st.session_state["_run_pid"]
             del st.session_state["_run_at"]
