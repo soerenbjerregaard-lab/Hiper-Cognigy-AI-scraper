@@ -357,3 +357,59 @@ def get_question_by_run(question_key):
         WHERE s.question_key = ?
         GROUP BY 1,2 ORDER BY r.run_started_at
     """, (question_key,))
+
+
+# ── Dead Links ────────────────────────────────────────────────────────────────
+
+def get_dead_link_urls():
+    """Alle døde link-URL'er på tværs af alle kørsler, sorteret efter hyppighed."""
+    return query("""
+        SELECT
+            j.value                         AS url,
+            COUNT(*)                        AS hits,
+            COUNT(DISTINCT t.session_id)    AS sessions
+        FROM turns t, json_each(t.dead_links_json) j
+        WHERE t.dead_links_json IS NOT NULL
+          AND t.dead_links_json NOT IN ('[]', '')
+        GROUP BY 1
+        ORDER BY 2 DESC
+    """)
+
+
+def get_dead_links_by_category():
+    """Antal sessioner med døde links og unikke URLs per emneområde."""
+    return query("""
+        SELECT
+            s.category,
+            COUNT(DISTINCT s.session_id)    AS sessions_with_deadlinks,
+            COUNT(DISTINCT j.value)         AS unique_urls,
+            COUNT(*)                        AS total_hits
+        FROM sessions s
+        JOIN turns t ON t.session_id = s.session_id,
+             json_each(t.dead_links_json) j
+        WHERE t.dead_links_json IS NOT NULL
+          AND t.dead_links_json NOT IN ('[]', '')
+          AND s.category IS NOT NULL
+        GROUP BY 1
+        ORDER BY 2 DESC
+    """)
+
+
+def get_dead_links_by_run():
+    """Antal sessioner med døde links og total hits per kørsel."""
+    return query("""
+        SELECT
+            r.run_started_at,
+            r.endpoint,
+            COUNT(DISTINCT s.session_id)    AS sessions_with_deadlinks,
+            COUNT(DISTINCT j.value)         AS unique_urls,
+            COUNT(*)                        AS total_hits
+        FROM sessions s
+        JOIN runs r ON r.run_id = s.run_id
+        JOIN turns t ON t.session_id = s.session_id,
+             json_each(t.dead_links_json) j
+        WHERE t.dead_links_json IS NOT NULL
+          AND t.dead_links_json NOT IN ('[]', '')
+        GROUP BY r.run_id, r.run_started_at, r.endpoint
+        ORDER BY r.run_started_at DESC
+    """)

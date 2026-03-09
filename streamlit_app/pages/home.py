@@ -20,19 +20,25 @@ with _hdr:
     st.title("📊 Chatbot-kvalitet")
     st.caption("Automatiseret kvalitetsanalyse af Hipers Cognigy AI-chatbot")
 with _btn:
-    st.markdown("<div style='height:1.3rem'></div>", unsafe_allow_html=True)
+    endpoint_choice = st.selectbox(
+        "Endpoint",
+        options=["gpt41", "gpt5"],
+        label_visibility="collapsed",
+        key="_endpoint_sel",
+    )
     if st.button("▶ Ny kørsel", type="primary", use_container_width=True):
         # Two-step pipeline:
         #   1. node run.js         → writes conversations.db + exports/*.csv
         #   2. build_simlab_db.py  → rebuilds simlab.db from the new CSV exports
         proc = subprocess.Popen(
-            ["bash", "-c", "node run.js && python3 scripts/build_simlab_db.py"],
+            ["bash", "-c", f"node run.js --endpoint {endpoint_choice} && python3 scripts/build_simlab_db.py"],
             cwd=str(PROJECT_ROOT),
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        st.session_state["_run_pid"] = proc.pid
-        st.session_state["_run_at"]  = time.strftime("%H:%M")
+        st.session_state["_run_pid"]      = proc.pid
+        st.session_state["_run_at"]       = time.strftime("%H:%M")
+        st.session_state["_run_endpoint"] = endpoint_choice
         st.rerun()
 
 if "_run_pid" in st.session_state:
@@ -42,14 +48,17 @@ if "_run_pid" in st.session_state:
         running = True
     except (ProcessLookupError, PermissionError):
         running = False
+    ep = st.session_state.get("_run_endpoint", "")
+    ep_tag = f" [{ep}]" if ep else ""
     if running:
-        st.info(f"⏳ Kørsel kører siden {st.session_state['_run_at']} — scraper + DB-import. Opdater om et par minutter.")
+        st.info(f"⏳ Kørsel{ep_tag} kører siden {st.session_state['_run_at']} — scraper + DB-import. Opdater om et par minutter.")
     else:
         _sc1, _sc2 = st.columns([5, 1])
-        _sc1.success(f"✅ Kørsel + DB-import færdig (startet {st.session_state['_run_at']}) — data nedenfor er opdateret")
+        _sc1.success(f"✅ Kørsel{ep_tag} + DB-import færdig (startet {st.session_state['_run_at']}) — data nedenfor er opdateret")
         if _sc2.button("OK", key="_run_ack"):
             del st.session_state["_run_pid"]
             del st.session_state["_run_at"]
+            st.session_state.pop("_run_endpoint", None)
             st.rerun()
 
 # ── Intro for nye brugere ─────────────────────────────────────────────────────
